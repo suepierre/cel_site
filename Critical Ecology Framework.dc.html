@@ -23,6 +23,11 @@ html,body{margin:0;padding:0;background:#FFFFFF}
 *{box-sizing:border-box}
 a{color:#000000;text-decoration:none}
 a:hover{color:#FE6453}
+@media (max-width:860px){
+  [data-m="fwstage"]{width:100%!important}
+  [data-m="fwrow"]{grid-template-columns:1fr!important;gap:14px!important}
+  [data-m="fwphoto"]{aspect-ratio:16/9!important}
+}
 </style>
 <script src="./image-slot.js"></script>
 </helmet>
@@ -42,14 +47,14 @@ a:hover{color:#FE6453}
 
     <div style="display:flex;flex-direction:column;align-items:center;gap:0">
       <sc-for list="{{ stages }}" as="s" hint-placeholder-count="4">
-        <div onMouseEnter="{{ s.enter }}" onMouseLeave="{{ s.leave }}" style="width:{{ s.width }};max-width:100%;background:{{ s.bg }};border-top:1px solid #D8D8D8;border-left:{{ s.accentBar }};border-right:1px solid #D8D8D8;border-bottom:{{ s.bottomRule }};opacity:{{ s.opacity }};cursor:default;transition:background .3s cubic-bezier(.2,.7,.2,1),opacity .3s cubic-bezier(.2,.7,.2,1),border-left-color .3s cubic-bezier(.2,.7,.2,1)">
-          <div style="display:grid;grid-template-columns:{{ s.cols }};gap:clamp(20px,2.4vw,44px);align-items:start;padding:clamp(24px,2.6vw,38px) clamp(20px,2.4vw,40px)">
+        <div data-m="fwstage" onMouseEnter="{{ s.enter }}" onMouseLeave="{{ s.leave }}" style="width:{{ s.width }};max-width:100%;background:{{ s.bg }};border-top:1px solid #D8D8D8;border-left:{{ s.accentBar }};border-right:1px solid #D8D8D8;border-bottom:{{ s.bottomRule }};opacity:{{ s.opacity }};cursor:default;transition:background .3s cubic-bezier(.2,.7,.2,1),opacity .3s cubic-bezier(.2,.7,.2,1),border-left-color .3s cubic-bezier(.2,.7,.2,1)">
+          <div data-m="fwrow" style="display:grid;grid-template-columns:{{ s.cols }};gap:clamp(20px,2.4vw,44px);align-items:start;padding:clamp(24px,2.6vw,38px) clamp(20px,2.4vw,40px)">
             <div style="display:flex;flex-direction:column;gap:10px">
               <span style="font-family:ResidenzMono;font-size:clamp(20px,1.8vw,30px);letter-spacing:0.08em;line-height:1;color:{{ s.ink }};font-variant-numeric:tabular-nums">{{ s.num }}</span>
               <span style="display:block;width:34px;height:2px;background:{{ s.ink }}"></span>
             </div>
             <sc-if value="{{ s.showPhoto }}" hint-placeholder-val="{{ true }}">
-              <div style="aspect-ratio:{{ s.aspect }};overflow:hidden;background:#E1E1E1">
+              <div data-m="fwphoto" style="aspect-ratio:{{ s.aspect }};overflow:hidden;background:#E1E1E1">
                 <image-slot id="{{ s.slot }}" shape="rect" fit="cover" src="{{ s.src }}" credit="{{ s.credit }}" placeholder="{{ s.ph }}"></image-slot>
               </div>
             </sc-if>
