@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Light.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Book.otf") format("opentype");font-weight:350;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Light.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-SemiBold.otf") format("opentype");font-weight:600;font-display:swap}
+@font-face{font-family:ResidenzMono;src:url("./ResidenzGrotesk-MonoLight.otf") format("opentype");font-weight:300;font-display:swap}
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+a{color:#000000;text-decoration:none}
+a:hover{color:#FE6453}
+</style>
+</helmet>
+
+<div style="font-family:Residenz,Helvetica,Arial,sans-serif;color:#313131;background:#FFFFFF;padding:{{ shellPad }}">
+  <div style="max-width:1720px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(24px,2.6vw,40px)">
+
+    <sc-if value="{{ showHeader }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;flex-direction:column;gap:14px;border-bottom:1px solid #D8D8D8;padding-bottom:clamp(20px,2.4vw,34px)">
+        <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#678E79">CONCEPTUAL FIGURE</span>
+        <h1 style="margin:0;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;font-size:clamp(28px,3.2vw,54px);line-height:1.1;letter-spacing:0;color:#000000;text-wrap:pretty">Power as a quantitative driver of ecosystem change</h1>
+        <p style="margin:0;font-size:clamp(15px,1.15vw,18px);line-height:1.5;color:#313131;max-width:80ch;text-wrap:pretty">Start by reading this interactive conceptual figure from left to right. Power, a feature of all societies, determines what groups have the agency to affect natural systems in consequential ways. The results ripple through the structure and function of ecosystems. The arcs beneath represent feedback effects. Hover any element to read what it means, see examples of what we might measure to understand this part of the Earth system, and what traditional global change sciences leaves out.</p>
+      </div>
+    </sc-if>
+
+    <div onMouseEnter="{{ timeEnter }}" onMouseLeave="{{ hoverOff }}" onClick="{{ timeClick }}" style="display:flex;flex-direction:column;gap:12px;border:1px solid #D8D8D8;padding:16px clamp(14px,1.6vw,22px);opacity:{{ timeOpacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1);cursor:default">
+      <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#6E6E6E">LEGEND · TIME HORIZONS</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px clamp(16px,2vw,32px)">
+        <sc-for list="{{ times }}" as="t" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:2px;border-left:3px solid {{ t.ink }};padding-left:11px">
+            <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.16em;color:{{ t.ink }}">{{ t.label }}</span>
+            <span style="font-size:13.5px;font-weight:500;line-height:1.25;color:#000000">{{ t.name }}</span>
+            <span style="font-size:12px;line-height:1.35;color:#6E6E6E">{{ t.span }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#678E79">HOVER TO PREVIEW · CLICK TO KEEP IT OPEN</span>
+      <span style="flex:1;height:1px;background:#D8D8D8"></span>
+      <sc-if value="{{ isPinned }}" hint-placeholder-val="{{ false }}">
+        <button type="button" onClick="{{ unpin }}" style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#000000;background:#CEE13E;border:none;padding:7px 12px;cursor:pointer;white-space:nowrap">PINNED · CLICK TO RELEASE</button>
+      </sc-if>
+    </div>
+
+    <div style="position:sticky;bottom:0;z-index:6;background:#FFFFFF;padding-top:12px;order:9">
+      <div style="display:grid;grid-template-columns:{{ detailCols }};gap:clamp(12px,1.5vw,26px);background:#FBF8E2;border-top:4px solid {{ detailInk }};border-bottom:1px solid #D8D8D8;padding:clamp(13px,1.5vw,18px) clamp(16px,1.8vw,24px);max-height:40vh;overflow-y:auto;transition:border-top-color .3s cubic-bezier(.2,.7,.2,1)">
+        <div style="display:flex;flex-direction:column;gap:7px">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:{{ detailInk }}">{{ detailKicker }}</span>
+            <sc-if value="{{ isPinned }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:ResidenzMono;font-size:9px;letter-spacing:0.18em;color:#000000;background:#CEE13E;padding:3px 7px">PINNED</span>
+            </sc-if>
+          </div>
+          <h3 style="margin:0;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;font-size:clamp(16px,1.35vw,19px);line-height:1.15;letter-spacing:0;color:#000000;text-wrap:pretty">{{ detailTitle }}</h3>
+          <p style="margin:0;font-size:12.5px;line-height:1.45;color:#313131;text-wrap:pretty">{{ detailBody }}</p>
+        </div>
+        <sc-if value="{{ hasMeasure }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:7px;border-left:1px solid #D8D8D8;padding-left:clamp(14px,1.6vw,22px)">
+            <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#678E79">RELEVANT VARIABLES</span>
+            <p style="margin:0;font-size:12.5px;line-height:1.45;color:#313131;text-wrap:pretty">{{ detailMeasure }}</p>
+          </div>
+        </sc-if>
+        <sc-if value="{{ hasSide }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:7px;border-left:1px solid #D8D8D8;padding-left:clamp(14px,1.6vw,22px)">
+            <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#6E6E6E">MAINSTREAM SCIENCE OMITS</span><p style="margin:0;font-size:12.5px;line-height:1.45;color:#313131;text-wrap:pretty">{{ detailOmits }}</p>
+            
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="overflow-x:auto;padding-bottom:6px">
+      <div style="min-width:1170px;display:flex;flex-direction:column;gap:0">
+
+        <div style="display:grid;grid-template-columns:218px 42px 214px 42px 250px 42px 340px;gap:0;align-items:start">
+
+          <div onMouseEnter="{{ s0enter }}" onMouseLeave="{{ hoverOff }}" onClick="{{ s0click }}" style="display:flex;flex-direction:column;gap:12px;opacity:{{ s0opacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1)">
+            <div style="display:flex;align-items:flex-start;gap:10px;min-height:74px">
+              <span style="width: 22px; height: 22px; flex: 0 0 auto; border-radius: 50%; background: rgb(103, 142, 121); color: rgb(255, 255, 255); font-family: ResidenzMono; font-size: 11px; display: flex; align-items: center; justify-content: center;">1</span>
+              <span style="font-size: 13.5px; font-weight: 500; line-height: 1.3; color: rgb(0, 0, 0); text-wrap: pretty;">Social power shapes who uses the environment, and how.</span>
+            </div>
+            <div style="background:{{ s0bg }};padding:0 0 4px;display:flex;flex-direction:column;gap:9px;transition:background .3s cubic-bezier(.2,.7,.2,1)">
+              <span style="font-size:12.5px;font-weight:600;line-height:1.25;color:#000000;border-bottom:1px solid #D8D8D8;padding-bottom:9px">Examples&nbsp;</span>
+              <sc-for list="{{ behaviours }}" as="b" hint-placeholder-count="4">
+                <sc-if value="{{ b.isLink }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ b.href }}" target="_blank" rel="noopener" onClick="{{ b.stop }}" style="display:block;background:#E1E1E1;color:#313131;font-size:12px;line-height:1.3;padding:10px 22px 10px 12px;text-decoration:underline;cursor:pointer;clip-path:polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%)" style-hover="background:#CEE13E;color:#000000">{{ b.text }}</a>
+                </sc-if>
+                <sc-if value="{{ b.isPlain }}" hint-placeholder-val="{{ true }}">
+                  <span style="display:block;background:#E1E1E1;color:#313131;font-size:12px;line-height:1.3;padding:10px 22px 10px 12px;clip-path:polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%)">{{ b.text }}</span>
+                </sc-if>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:center;padding-top:150px"><span style="font-family:ResidenzMono;font-size:17px;color:#A8A8A8">→</span></div>
+
+          <div onMouseEnter="{{ s1enter }}" onMouseLeave="{{ hoverOff }}" onClick="{{ s1click }}" style="display:flex;flex-direction:column;gap:12px;opacity:{{ s1opacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1)">
+            <div style="display:flex;align-items:flex-start;gap:10px;min-height:74px">
+              <span style="width: 22px; height: 22px; flex: 0 0 auto; border-radius: 50%; background: rgb(103, 142, 121); color: rgb(255, 255, 255); font-family: ResidenzMono; font-size: 11px; display: flex; align-items: center; justify-content: center;">2</span>
+              <span style="font-size: 13.5px; font-weight: 500; line-height: 1.3; color: rgb(0, 0, 0); text-wrap: pretty;">Direct and indirect disturbances result.</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ disturbances }}" as="d" hint-placeholder-count="4">
+                <span style="display:block;border:1px solid {{ d.ink }};background:{{ s1bg }};color:#313131;font-size:12.5px;line-height:1.35;padding:12px 11px;transition:background .3s cubic-bezier(.2,.7,.2,1)">{{ d.text }}</span>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:center;padding-top:150px"><span style="font-family:ResidenzMono;font-size:17px;color:#A8A8A8">→</span></div>
+
+          <div onMouseEnter="{{ s2enter }}" onMouseLeave="{{ hoverOff }}" onClick="{{ s2click }}" style="display:flex;flex-direction:column;gap:12px;opacity:{{ s2opacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1)">
+            <div style="display:flex;align-items:flex-start;gap:10px;min-height:74px">
+              <span style="width: 22px; height: 22px; flex: 0 0 auto; border-radius: 50%; background: rgb(103, 142, 121); color: rgb(255, 255, 255); font-family: ResidenzMono; font-size: 11px; display: flex; align-items: center; justify-content: center;">3</span>
+              <span style="font-size: 13.5px; font-weight: 500; line-height: 1.3; color: rgb(0, 0, 0); text-wrap: pretty;">Parts of the Earth system respond and change on different time scales</span>
+            </div>
+            <div style="border:1px solid #6B5E8E;padding:7px 7px 7px 12px;background:{{ s2bg }};transition:background .3s cubic-bezier(.2,.7,.2,1)">
+              <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.16em;color:#6B5E8E">TIME 3</span>
+              <div style="border:1px solid #BC7057;padding:7px 7px 7px 12px;margin-top:5px">
+                <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.16em;color:#BC7057">TIME 2</span>
+                <div style="border:1px solid #678E79;padding:11px;margin-top:5px;display:flex;flex-direction:column;gap:8px">
+                  <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.16em;color:#678E79">TIME 1</span>
+                  <span style="font-size:12.5px;font-weight:600;line-height:1.3;color:#000000">Geophysical and historical template</span>
+                  <span style="font-size:12px;line-height:1.4;color:#313131">Topography, geology, soils, past disturbance</span>
+                  <span style="font-size:12px;font-weight:600;line-height:1.4;color:#678E79;border-top:1px solid #D8D8D8;padding-top:8px">+ Indigenous and colonizing human patterns</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:center;padding-top:150px"><span style="font-family:ResidenzMono;font-size:17px;color:#A8A8A8">→</span></div>
+
+          <div onMouseEnter="{{ s3enter }}" onMouseLeave="{{ hoverOff }}" onClick="{{ s3click }}" style="display:flex;flex-direction:column;gap:12px;opacity:{{ s3opacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1)">
+            <div style="display:flex;align-items:flex-start;gap:10px;min-height:74px">
+              <span style="width:22px;height:22px;flex:none;border-radius:50%;background:#678E79;color:#FFFFFF;font-family:ResidenzMono;font-size:11px;display:flex;align-items:center;justify-content:center">4</span>
+              <span style="font-size:13.5px;font-weight:500;line-height:1.3;color:#000000;text-wrap:pretty">As ecosystem changes compound , the functional assemblages that emerge are symptomatic of the social systems that preceded.</span>
+            </div>
+            <div style="position:relative;aspect-ratio:1 / 1;border:1px solid #6B5E8E;border-radius:50%;background:{{ s3bg }};display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.2,.7,.2,1)">
+              <span style="position:absolute;top:10px;left:0;right:0;text-align:center;font-family:ResidenzMono;font-size:10px;letter-spacing:0.16em;line-height:1;color:#6B5E8E">TIME 3</span>
+              <div style="position:relative;width:79%;height:79%;border:1px solid #BC7057;border-radius:50%;display:flex;align-items:center;justify-content:center">
+                <span style="position:absolute;top:9px;left:0;right:0;text-align:center;font-family:ResidenzMono;font-size:10px;letter-spacing:0.16em;line-height:1;color:#BC7057">TIME 2</span>
+                <div style="position:relative;width:73%;height:73%;border:1px solid #678E79;border-radius:50%">
+                  <span style="position:absolute;top:9px;left:0;right:0;text-align:center;font-family:ResidenzMono;font-size:10px;letter-spacing:0.16em;line-height:1;color:#678E79">TIME 1</span>
+                  <svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%">
+                    <defs><marker id="cefTip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#678E79"></path></marker></defs>
+                    <line x1="100" y1="62" x2="100" y2="138" stroke="#678E79" stroke-width="1.4" marker-start="url(#cefTip)" marker-end="url(#cefTip)"></line>
+                    <line x1="58" y1="100" x2="142" y2="100" stroke="#678E79" stroke-width="1.4" marker-start="url(#cefTip)" marker-end="url(#cefTip)"></line>
+                    <line x1="72" y1="72" x2="128" y2="128" stroke="#678E79" stroke-width="1.4" marker-start="url(#cefTip)" marker-end="url(#cefTip)"></line>
+                    <line x1="128" y1="72" x2="72" y2="128" stroke="#678E79" stroke-width="1.4" marker-start="url(#cefTip)" marker-end="url(#cefTip)"></line>
+                  </svg>
+                  <span style="position:absolute;top:23%;left:0;right:0;text-align:center;font-size:11px;font-weight:500;line-height:1.1;color:#000000">Vegetation</span>
+                  <span style="position:absolute;bottom:16%;left:0;right:0;text-align:center;font-size:11px;font-weight:500;line-height:1.1;color:#000000">Hydrology</span>
+                  <span style="position:absolute;left:5%;top:50%;transform:translateY(-50%);width:54px;font-size:11px;font-weight:500;line-height:1.1;color:#000000">Biogeo­chemistry</span>
+                  <span style="position:absolute;right:5%;top:50%;transform:translateY(-50%);font-size:11px;font-weight:500;line-height:1.1;color:#000000;text-align:right">Foodweb</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px;padding-top:26px;margin-top:2px;border-top:1px solid #D8D8D8">
+          <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#6E6E6E">FEEDBACKS · CONSEQUENCE RUNS BACK</span>
+          <sc-for list="{{ loops }}" as="a" hint-placeholder-count="3">
+            <div onMouseEnter="{{ a.enter }}" onMouseLeave="{{ a.leave }}" onClick="{{ a.click }}" style="margin-left:{{ a.left }};width:{{ a.width }};display:flex;flex-direction:column;gap:7px;opacity:{{ a.opacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1);cursor:default">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px">
+                <span style="font-size:13px;font-weight:500;line-height:1.3;color:#000000">{{ a.label }}</span>
+                <span style="font-family:ResidenzMono;font-size:9.5px;letter-spacing:0.18em;color:#6E6E6E;white-space:nowrap">{{ a.route }}</span>
+              </div>
+              <div style="display:flex;align-items:center">
+                <span style="font-family:ResidenzMono;font-size:16px;line-height:1;color:{{ a.ink }}">←</span>
+                <span style="flex:1;height:{{ a.weight }};background:{{ a.ink }};transition:height .3s cubic-bezier(.2,.7,.2,1)"></span>
+                <span style="width:9px;height:9px;flex:none;background:{{ a.ink }}"></span>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px 40px">
+      <div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #678E79;padding-top:12px">
+        <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#678E79">CRITICAL ECOLOGY · SCOPE OF ANALYSIS</span>
+        <span style="font-size:13.5px;line-height:1.5;color:#313131">Stages 1 through 4, including the distal and ultimate drivers, plus every feedback.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;border-top:2px dashed #A8A8A8;padding-top:12px">
+        <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">MAINSTREAM GLOBAL CHANGE SCIENCE · SCOPE OF ANALYSIS</span>
+        <span style="font-size:13.5px;line-height:1.5;color:#6E6E6E">Begins at stage 2, the proximate driver. Stage 1 is assumed negligible.</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px 40px;border-top:1px solid #D8D8D8;padding-top:18px">
+      <span style="font-size:13px;line-height:1.5;color:#313131">Critical ecology conceptual figure © Suzanne Pierre, PhD.&nbsp;&nbsp;</span>
+      <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.2em;color:#6E6E6E">Figure structure inspired by the Hubbard Brook LTER.</span>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1560,&quot;height&quot;:1180},&quot;embedded&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Figure&quot;},&quot;tint&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#D4EED5&quot;,&quot;options&quot;:[&quot;#D4EED5&quot;,&quot;#D9D8FD&quot;,&quot;#FBF8E2&quot;,&quot;#E1E1E1&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Figure&quot;}}">
+const BEHAVIOURS = [
+  { text: 'Early plantation monocultures used chattel slavery to produce cash crops.' },
+  { text: 'Caste-based land ownership limited lower-caste agricultural seed sovereignty.', href: 'https://doi.org/10.1068/a43215' },
+  { text: 'Theft of indigenous land enabled fossil fuel extraction and emissions.' },
+  { text: 'Racial segregation sited poor, Black neighborhoods in areas near white-owned polluting factories.' }
+];
+
+const DISTURBANCES = [
+  { text: 'Changing atmospheric chemistry', ink: '#678E79' },
+  { text: 'Changing climate', ink: '#678E79' },
+  { text: 'Changing biota', ink: '#678E79' },
+  { text: 'Terrestrial and aquatic nutrient imbalances', ink: '#678E79' }
+];
+
+const TIMES = [
+  { label: 'TIME 3', name: 'Long-term future', span: 'Centuries + scale', ink: '#6B5E8E' },
+  { label: 'TIME 2', name: 'Near future', span: 'Decadal to century scale', ink: '#BC7057' },
+  { label: 'TIME 1', name: 'Present', span: 'present-decadal scale', ink: '#678E79' }
+];
+
+const STAGES = [
+  {
+    kicker: 'STAGE 1 · DISTAL / ULTIMATE DRIVER',
+    title: 'Cultural values legitimize and codify behaviours',
+    body: '"Social systems" are social relations shaped by a common operational logic and made formal by institutions. When those systems maintain power disparities, such as in chattel slavery, enterprises that interact with nature, such as agriculture, can extract more resources per unit of labor.',
+    measure: 'Archived historical records; colonial-era accounting; tribal treaties; corporate land holding and transfer across a colonial temporal scope; voting records; census records',
+    omits: 'Wealth (e.g. GDP) is treated as a characteristic, rather than as the product of a dynamic system. Stopping at national wealth omits the colonial histories through which it accumulated.'
+  },
+  {
+    kicker: 'STAGE 2 · PROXIMATE DRIVER',
+    title: 'Direct and indirect disturbances result',
+    body: 'Dominant groups have the power to transform and extract from nature, often while disempowering others. Their decisions produce direct geochemical and indirect biogeochemical and ecological disturbances. These mechanisms underlying the disturbances are well understood.',
+    measure: 'Emissions inventories; landscape fragmentation; deforestation; afforestation; land deed patterns; pollution efflux',
+    omits: 'This is where mainstream ecology and climate science focuses -- the symptoms of human actions and systems, excluding the antecedents.'
+  },
+  {
+    kicker: 'STAGE 3 · INTERACTION',
+    title: 'Disturbance  to the Landscape Template',
+    body: 'Disturbance operates on the physical template, which includes the long-term conditions that predate human influence (geologic conditions, long-term climate). The physical template of the Earth influences where potential resources, from fertile soils to oil fields, are located, and where exploitation may take place.',
+    measure: 'Dynamics of soil chemistry and structure; potential net primary production; plant community structure/function; ecohydrological dynamics; land-use and land-tenure history',
+    omits: 'Conditions created by human systems-- from warming to soil nutrient depletion-- are understood as context at best, with no resolution on the power dynamics that set disturbance conditions.'
+  },
+  {
+    kicker: 'STAGE 4 · RESPONSE',
+    title: 'Functional responses reflect emergent socio-ecological syndromes',
+    body: 'Vegetation, biogeochemistry, foodweb and hydrology respond as a coupled system, compounding across all three horizons. Critical ecology hypothesizes that power systems drive Earth systems change detectably from plot to planet.',
+    measure: 'Regression-based approaches, dynamical systems modelling and predictive modelling, with power operationalized as a predictor variable.',
+    omits: 'Response is mapped in ever greater detail while its distal causes stay undefined, so interventions target biophysical consequences, not systemic causes.'
+  }
+];
+
+const LOOPS = [
+  {
+    label: 'Functional ecology shapes the landscape template.',
+    route: 'STAGE 4 → 3',
+    left: '641px', width: '337px',
+    ink: '#678E79',
+    kicker: 'FEEDBACK · STAGE 4 → STAGE 3',
+    body: 'Ecosystem properties are not a fixed backdrop. Vegetation, hydrology and biogeochemistry remake the soils that determine which places are commodifiable, and so which are targeted next.',
+    omits: 'Treated as succession alone, decoupled from the extraction history that set the initial conditions.'
+  },
+  {
+    label: 'Functional ecology feeds back to disturbance processes.',
+    route: 'STAGE 4 → 2',
+    left: '367px', width: '611px',
+    ink: '#BC7057',
+    kicker: 'FEEDBACK · STAGE 4 → STAGE 2',
+    body: 'Degraded ecosystems provoke further intervention. Eroded soils in the U.S. Southeast prompted kudzu as erosion control; it grew out of control and is now targeted for eradication.',
+    omits: 'The plant becomes the problem. Eradication addresses the organism, not the land relations that opened the gap it filled.'
+  },
+  {
+    label: 'Analytical frameworks potentiate behavioural change and new steady states.',
+    route: 'STAGE 4 → 1',
+    left: '109px', width: '869px',
+    ink: '#000000',
+    kicker: 'FEEDBACK · STAGE 4 → STAGE 1',
+    body: 'The loop the framework exists to close. Quantitative evidence linking power asymmetry to degradation makes systemic causes legible, and interventions that address them arguable.',
+    omits: 'Without it, mitigation is designed inside the order that produced the problem — carbon markets, BECCS and geoengineering leave the operational logic untouched.'
+  }
+];
+
+const DEFAULT_DETAIL = {
+  kicker: 'HOW TO READ IT',
+  title: 'Causation runs forward; consequence runs back.',
+  body: 'Read left to right: power dynamics of societies are encoded in hierarchies. Power determines who can access and control land, and what the environment is used for. Resulting disturbances play out on the existing landscape template, including the geology and hydrology of that place. Under these power systems, ecosystems respond, and produce biophysical feedbacks. The lines beneath run right to left — reflecting the natural feedbacks that occur in nature. As we study and expose this dynamic system, the awareness creates potential for societal change, and alternative future ecological states.'
+};
+
+class Component extends DCLogic {
+  state = { hover: null, pinned: null };
+
+  pin(id) {
+    const self = this;
+    return function (e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      const same = self.state.pinned === id;
+      self.setState({ pinned: same ? null : id, hover: same ? null : id });
+    };
+  }
+
+  renderVals() {
+    const self = this;
+    const hover = this.state.pinned || this.state.hover;
+    const tint = this.props.tint || '#D4EED5';
+    const dim = 0.42;
+
+    let d = DEFAULT_DETAIL;
+    let hasSide = false, hasMeasure = false, detailInk = '#678E79';
+    if (hover && hover.slice(0, 2) === 'st') {
+      const st = STAGES[Number(hover.slice(2))];
+      d = { kicker: st.kicker, title: st.title, body: st.body, measure: st.measure, omits: st.omits };
+      hasSide = true; hasMeasure = true;
+    } else if (hover && hover.slice(0, 2) === 'fb') {
+      const f = LOOPS[Number(hover.slice(2))];
+      d = { kicker: f.kicker, title: f.label, body: f.body, omits: f.omits };
+      hasSide = true;
+      detailInk = f.ink === '#000000' ? '#000000' : f.ink;
+    } else if (hover === 'time') {
+      d = {
+        kicker: 'LEGEND · TIME',
+        title: 'Time is a legend for the whole diagram, not a stage in it.',
+        body: 'Time 1 is the past, when colonial and plantation land relations were established. Time 2 is the near future, the horizon on which mitigation is argued. Time 3 is centuries beyond. The landscape template and the functional response accumulate all three, which is why both are drawn nested rather than sequential.'
+      };
+    }
+
+    const stageVals = {};
+    STAGES.forEach(function (st, i) {
+      const id = 'st' + i;
+      const active = hover === id;
+      stageVals['s' + i + 'enter'] = function () { if (!self.state.pinned) self.setState({ hover: id }); };
+      stageVals['s' + i + 'click'] = self.pin(id);
+      stageVals['s' + i + 'opacity'] = (hover === null || active) ? 1 : dim;
+      stageVals['s' + i + 'bg'] = active ? tint : '#FFFFFF';
+      stageVals['s' + i + 'ink'] = active ? '#678E79' : '#5478BE';
+    });
+
+    return Object.assign({
+      showHeader: !this.props.embedded,
+      shellPad: this.props.embedded
+        ? 'clamp(22px,2.4vw,36px) clamp(14px,1.8vw,28px) clamp(26px,2.8vw,44px)'
+        : 'clamp(40px,5vw,76px) clamp(20px,2.6vw,40px) clamp(44px,4.6vw,80px)',
+      times: TIMES,
+      behaviours: BEHAVIOURS.map(function (b, i) {
+        return {
+          id: 'bh' + i,
+          text: b.text,
+          href: b.href || undefined,
+          isLink: Boolean(b.href),
+          isPlain: !b.href,
+          stop: function (e) { if (e && e.stopPropagation) e.stopPropagation(); }
+        };
+      }),
+      disturbances: DISTURBANCES.map(function (x, i) { return { id: 'ds' + i, text: x.text, ink: x.ink }; }),
+      timeEnter: function () { if (!self.state.pinned) self.setState({ hover: 'time' }); },
+      timeClick: self.pin('time'),
+      hoverOff: function () { if (!self.state.pinned) self.setState({ hover: null }); },
+      isPinned: Boolean(this.state.pinned),
+      unpin: function (e) { if (e && e.stopPropagation) e.stopPropagation(); self.setState({ pinned: null, hover: null }); },
+      timeOpacity: (hover === null || hover === 'time') ? 1 : dim,
+      detailKicker: d.kicker,
+      detailTitle: d.title,
+      detailBody: d.body,
+      detailMeasure: d.measure || '',
+      detailOmits: d.omits || '',
+      detailInk: detailInk,
+      detailCols: hasMeasure
+        ? 'minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr)'
+        : (hasSide ? 'minmax(0,1.15fr) minmax(0,1fr)' : 'minmax(0,1fr)'),
+      hasSide: hasSide,
+      hasMeasure: hasMeasure,
+      loops: LOOPS.map(function (f, i) {
+        const id = 'fb' + i;
+        const active = hover === id;
+        return {
+          id: id,
+          label: f.label,
+          route: f.route,
+          left: f.left,
+          width: f.width,
+          ink: f.ink,
+          weight: active ? '4px' : '2px',
+          opacity: (hover === null || active) ? 1 : dim,
+          click: self.pin(id),
+          enter: function () { if (!self.state.pinned) self.setState({ hover: id }); },
+          leave: function () { if (!self.state.pinned) self.setState({ hover: null }); }
+        };
+      })
+    }, stageVals);
+  }
+}
+</script>
+</body>
+</html>
