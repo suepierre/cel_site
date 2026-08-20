@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Critical Ecology Lab</title>
+<style>
+  html,body{margin:0;height:100%}
+  body{background:#FFFFFF;color:#000000;font-family:Helvetica,Arial,sans-serif;display:flex;align-items:center;justify-content:center}
+  .w{display:flex;flex-direction:column;gap:14px;max-width:38ch;padding:32px}
+  .k{font-size:11px;letter-spacing:0.3em;color:#FE6453}
+  h1{margin:0;font-size:26px;font-weight:500;line-height:1.2;letter-spacing:0}
+  p{margin:0;font-size:15px;line-height:1.5;color:#313131}
+  a{color:#000000;text-decoration:underline;text-underline-offset:3px}
+  a:hover{color:#FE6453}
+</style>
+<script>
+(function () {
+  var MAP = {"research":"research","our-research":"research","themes":"themes","themes-theory":"themes","conceptual-figure":"conceptual-figure","current-projects":"current-projects","projects":"current-projects","ecological-scars":"ecological-scars","scholarly-meetings":"scholarly-meetings","ideas":"ideas","analysis-ideas":"ideas","browse":"browse","articles":"browse","resources":"browse","explainer-videos":"explainer-videos","videos":"explainer-videos","about":"about","about-us":"about","mission":"mission","funding":"funding","funders":"funding","our-story":"our-story","story":"our-story","team":"team","meet-the-team":"team","people":"team","donate":"donate","give":"donate","support":"donate","support-us":"donate","programs":"programs","programmes":"programs","academic-training":"academic-training","training":"academic-training","lefa":"lefa","cefa":"lefa","field-academy":"lefa","eco-afro":"eco-afro","eco-afro-futures":"eco-afro","public-events":"public-events","events":"public-events","news":"news","press":"news","updates":"news","blog":"news","contact":"contact","contact-us":"contact"};
+  var parts = location.pathname.replace(/\/+$/, '').split('/').filter(Boolean);
+  var base = '/';
+  // GitHub project pages serve from /repo-name/ — keep that prefix if present
+  if (parts.length > 1 && !MAP[parts[0]]) { base = '/' + parts[0] + '/'; parts = parts.slice(1); }
+  var last = (parts[parts.length - 1] || '').toLowerCase();
+  var route = MAP[last];
+  if (route) { location.replace(base + '#' + route); }
+  else { setTimeout(function () { location.replace(base); }, 2600); }
+})();
+</script>
+</head>
+<body>
+  <div class="w">
+    <span class="k">CRITICAL ECOLOGY LAB</span>
+    <h1>That page has moved.</h1>
+    <p>Our site was rebuilt and this address no longer exists. Taking you to the homepage &mdash; or <a href="/">go there now</a>.</p>
+  </div>
+</body>
+</html>
