@@ -36,6 +36,23 @@ a:hover{color:#FE6453}
 @font-face{font-family:"ABC Gramercy Fine";src:url("./ABCGramercyFine-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"ABC Gramercy Fine";src:url("./ABCGramercyFine-Medium.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (max-width:860px){
+  [data-m="split"]{grid-template-columns:1fr!important;min-height:0!important}
+  [data-m="splitimg"]{min-height:0!important;height:56vh}
+  [data-m="one"]{grid-template-columns:1fr!important;gap:20px!important}
+  [data-m="pairimg"]{height:250px!important}
+  [data-m="cards"]{grid-template-columns:1fr!important}
+  [data-m="mosaic"]{grid-template-columns:1fr!important;grid-auto-rows:auto!important}
+  [data-m="mosaic"]>*{grid-column:span 1!important;grid-row:span 1!important;padding-left:0!important;padding-right:0!important}
+  [data-m="mosaic"]>*:has(image-slot){height:230px}
+  [data-m="lhead"]{display:none!important}
+  [data-m="lrow"]{grid-template-columns:1fr!important;gap:12px!important;align-items:start!important}
+  [data-m="lrow"]>div{height:210px!important}
+  [data-m="ldetail"]{grid-template-columns:1fr!important;gap:0!important}
+  [data-m="ldetail"]>span:empty{display:none}
+  [data-m="nav"]{gap:6px 16px!important;margin-left:0!important;width:100%}
+  [data-m="nav"]>a{font-size:14px!important}
+}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 </style>
 <script src="./image-slot.js"></script>
@@ -49,7 +66,7 @@ a:hover{color:#FE6453}
       <span style="font-weight:700;font-size:clamp(13px,1.15vw,17px);letter-spacing:0.13em;line-height:1;white-space:nowrap">CRITICAL ECOLOGY</span>
       <span style="font-family:ResidenzMono;font-size:clamp(9px,0.72vw,10.5px);letter-spacing:0.34em;color:#FE6453;line-height:1">LAB</span>
     </a>
-    <nav style="display:flex;align-items:center;flex-wrap:wrap;gap:8px clamp(13px,1.7vw,30px);margin-left:auto">
+    <nav data-m="nav" style="display:flex;align-items:center;flex-wrap:wrap;gap:8px clamp(13px,1.7vw,30px);margin-left:auto">
       <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
         <a href="#" onClick="{{ n.go }}" onMouseEnter="{{ n.enter }}" style="font-size:clamp(12px,1.02vw,14.5px);font-weight:{{ n.weight }};letter-spacing:0.01em;padding:6px 0;white-space:nowrap;border-bottom:1.5px solid {{ n.rule }};transition:border-color .2s,color .2s" style-hover="color:#FE6453">{{ n.label }}</a>
       </sc-for>
@@ -118,8 +135,8 @@ a:hover{color:#FE6453}
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <main>
   <sc-if value="{{ homeSplit }}" hint-placeholder-val="{{ true }}">
-    <section style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:78vh;border-bottom:1px solid #D8D8D8;animation:rise .5s ease both">
-      <div style="overflow:hidden;min-height:520px">
+    <section data-m="split" style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:78vh;border-bottom:1px solid #D8D8D8;animation:rise .5s ease both">
+      <div data-m="splitimg" style="overflow:hidden;min-height:520px">
         <div style="width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.03)">
           <image-slot id="home-splash-landscape" shape="rect" fit="cover" src="./river-meander-mist.jpg" credit="Photo by Oncy Oni on Pexels" placeholder="SPLASH — field portrait or landscape, vertical crop, full-bleed"></image-slot>
         </div>
@@ -148,7 +165,7 @@ a:hover{color:#FE6453}
   </sc-if>
   <sc-if value="{{ homeMosaic }}" hint-placeholder-val="{{ false }}">
     <section style="padding:clamp(32px,3.6vw,56px) clamp(20px,2.6vw,40px) clamp(44px,5vw,72px);border-bottom:1px solid #D8D8D8;animation:rise .5s ease both">
-      <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:170px;gap:14px">
+      <div data-m="mosaic" style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:170px;gap:14px">
         <div style="grid-column:span 3;grid-row:span 3;overflow:hidden"><image-slot id="home-mos-1" shape="rect" fit="cover" src="./field-team-processing.jpg" credit="Photo by Sophia Ramirez" placeholder="SPLASH A — lead photograph, 3:2 landscape"></image-slot></div>
         <div style="grid-column:span 3;grid-row:span 2;padding:8px 24px 8px 32px;display:flex;flex-direction:column;justify-content:center;gap:22px">
           <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">MISSION STATEMENT</span>
@@ -251,7 +268,7 @@ a:hover{color:#FE6453}
     </div>
   </section>
   <section style="padding:clamp(24px,2.6vw,38px) clamp(20px,2.6vw,40px) clamp(36px,4vw,60px);border-bottom:1px solid #D8D8D8;background:{{ pageTint }}">
-    <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,3.6vw,56px);align-items:end">
+    <div data-m="one" style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,3.6vw,56px);align-items:end">
       <div style="display:flex;flex-direction:column;gap:20px">
         <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:{{ pageInk }}">{{ pageKicker }}</span>
         <h1 style="margin:0;font-size:clamp(32px,3.9vw,64px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ pageTitle }}</h1>
@@ -270,7 +287,7 @@ a:hover{color:#FE6453}
       <div style="max-width:1560px;margin:0 auto">
 
         <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
-          <div style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
+          <div data-m="one" style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
             <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ b.h }}</h2>
             <div style="display:flex;flex-direction:column;gap:18px;max-width:66ch">
               <sc-for list="{{ b.body }}" as="line" hint-placeholder-count="2">
@@ -292,8 +309,8 @@ a:hover{color:#FE6453}
         </sc-if>
 
         <sc-if value="{{ b.isPair }}" hint-placeholder-val="{{ false }}">
-          <div style="display:grid;grid-template-columns:{{ b.cols }};gap:56px;align-items:center">
-            <div style="order:{{ b.ordA }};height:440px;overflow:hidden">
+          <div data-m="one" style="display:grid;grid-template-columns:{{ b.cols }};gap:56px;align-items:center">
+            <div data-m="pairimg" style="order:{{ b.ordA }};height:440px;overflow:hidden">
               <div style="width:100%;height:100%;transition:transform 1s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.035)">
                 <image-slot id="{{ b.slot }}" shape="rect" fit="cover" src="{{ b.src }}" credit="{{ b.cred }}" placeholder="{{ b.ph }}"></image-slot>
               </div>
@@ -310,7 +327,7 @@ a:hover{color:#FE6453}
         <sc-if value="{{ b.isCards }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;flex-direction:column;gap:34px">
             <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
-            <div style="display:grid;grid-template-columns:{{ b.grid }};gap:22px">
+            <div data-m="cards" style="display:grid;grid-template-columns:{{ b.grid }};gap:22px">
               <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="3">
                 <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;gap:15px;transition:transform .3s" style-hover="transform:translateY(-4px)">
                   <div style="height:230px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ i.slot }}" shape="rect" fit="cover" src="{{ i.src }}" credit="{{ i.cred }}" placeholder="{{ i.ph }}"></image-slot></div>
@@ -340,7 +357,7 @@ a:hover{color:#FE6453}
             </div>
             <div style="display:flex;flex-direction:column">
               <sc-if value="{{ b.hasHeaders }}" hint-placeholder-val="{{ false }}">
-                <div style="display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1.05fr) minmax(0,0.5fr) 56px 110px;gap:28px;align-items:end;padding-bottom:10px">
+                <div data-m="lhead" style="display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1.05fr) minmax(0,0.5fr) 56px 110px;gap:28px;align-items:end;padding-bottom:10px">
                   <span></span>
                   <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#9A9A9A">{{ b.colTitle }}</span>
                   <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#9A9A9A">{{ b.colNote }}</span>
@@ -351,7 +368,7 @@ a:hover{color:#FE6453}
               </sc-if>
               <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="4">
                 <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;padding:20px 0 0;border-top:1px solid #D8D8D8;transition:padding-left .25s,background .25s;--od:0px;--oo:0" style-hover="padding-left:12px;background:#FAFAFA;--od:180px;--oo:1">
-                  <div style="display:grid;grid-template-columns:{{ i.cols }};gap:28px;align-items:center;padding-bottom:20px">
+                  <div data-m="lrow" style="display:grid;grid-template-columns:{{ i.cols }};gap:28px;align-items:center;padding-bottom:20px">
                     <sc-if value="{{ i.hasThumb }}" hint-placeholder-val="{{ true }}"><div style="height:96px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ i.slot }}" shape="rect" fit="cover" src="{{ i.src }}" credit="{{ i.cred }}" placeholder="{{ i.ph }}"></image-slot></div></sc-if>
                     <span style="font-size:20px;font-weight:500;line-height:1.2;letter-spacing:0">{{ i.label }}</span>
                     <span style="font-size:14px;font-weight:400;line-height:1.5;letter-spacing:0.02em;color:#6E6E6E">{{ i.note }}</span>
@@ -363,7 +380,7 @@ a:hover{color:#FE6453}
                   </div>
                   <sc-if value="{{ i.detail }}" hint-placeholder-val="{{ false }}">
                     <div style="overflow:hidden;max-height:var(--od,0px);opacity:var(--oo,0);transition:max-height .4s cubic-bezier(.2,.7,.2,1),opacity .3s ease">
-                      <div style="display:grid;grid-template-columns:130px minmax(0,1fr);gap:28px;padding:0 0 24px">
+                      <div data-m="ldetail" style="display:grid;grid-template-columns:130px minmax(0,1fr);gap:28px;padding:0 0 24px">
                         <span></span>
                         <p style="margin:0;font-size:15px;line-height:1.6;font-weight:400;letter-spacing:0.01em;color:#313131;max-width:74ch;text-wrap:pretty">{{ i.detail }}</p>
                       </div>
@@ -376,7 +393,7 @@ a:hover{color:#FE6453}
         </sc-if>
 
         <sc-if value="{{ b.isForm }}" hint-placeholder-val="{{ false }}">
-          <div style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
+          <div data-m="one" style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
             <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
             <div style="display:flex;flex-direction:column;gap:22px;max-width:640px">
               <sc-for list="{{ b.items }}" as="f" hint-placeholder-count="4">
