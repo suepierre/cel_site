@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><rect width="120" height="120" fill="#1F3B2C"></rect><text x="60" y="72" font-family="Georgia,serif" font-size="38" fill="#FE6453" text-anchor="middle">CEL</text></svg></template>
+<helmet>
+<style>
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Thin.otf") format("opentype");font-weight:100;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Light.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-SemiBold.otf") format("opentype");font-weight:600;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Bold.otf") format("opentype");font-weight:700;font-display:swap}
+@font-face{font-family:ResidenzMono;src:url("./ResidenzGrotesk-MonoLight.otf") format("opentype");font-weight:300;font-display:swap}
+html,body{margin:0;padding:0;background:#FFFFFF;overflow-x:hidden;overflow-anchor:none}
+*{box-sizing:border-box}
+a{color:#000000;text-decoration:none}
+a:hover{color:#FE6453}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Book.otf") format("opentype");font-weight:350;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Medium.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-Light.otf") format("opentype");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-Book.otf") format("opentype");font-weight:350;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-BookItalic.otf") format("opentype");font-weight:350;font-style:italic;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-RegularItalic.otf") format("opentype");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-Medium.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy";src:url("./ABCGramercy-Bold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy Fine";src:url("./ABCGramercyFine-Regular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"ABC Gramercy Fine";src:url("./ABCGramercyFine-Medium.otf") format("opentype");font-weight:500;font-style:normal;font-display:swap}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="min-height:100vh;background:#FFFFFF;color:#000000;font-family:Residenz,Helvetica,Arial,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased">
+
+<sc-if value="{{ navBar }}" hint-placeholder-val="{{ true }}">
+<header style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid #D8D8D8">
+  <div style="max-width:1560px;margin:0 auto;padding:12px clamp(16px,2.6vw,40px);min-height:74px;display:flex;align-items:center;flex-wrap:wrap;gap:10px clamp(14px,2.4vw,44px)">
+    <a href="#" onClick="{{ goHome }}" style="display:flex;flex-direction:column;gap:1px;flex:none">
+      <span style="font-weight:700;font-size:clamp(13px,1.15vw,17px);letter-spacing:0.13em;line-height:1;white-space:nowrap">CRITICAL ECOLOGY</span>
+      <span style="font-family:ResidenzMono;font-size:clamp(9px,0.72vw,10.5px);letter-spacing:0.34em;color:#FE6453;line-height:1">LAB</span>
+    </a>
+    <nav style="display:flex;align-items:center;flex-wrap:wrap;gap:8px clamp(13px,1.7vw,30px);margin-left:auto">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="6">
+        <a href="#" onClick="{{ n.go }}" onMouseEnter="{{ n.enter }}" style="font-size:clamp(12px,1.02vw,14.5px);font-weight:{{ n.weight }};letter-spacing:0.01em;padding:6px 0;white-space:nowrap;border-bottom:1.5px solid {{ n.rule }};transition:border-color .2s,color .2s" style-hover="color:#FE6453">{{ n.label }}</a>
+      </sc-for>
+      <a href="#" onClick="{{ goDonate }}" style="font-size:clamp(12px,1.02vw,14.5px);font-weight:500;white-space:nowrap;color:#FFFFFF;background:#000000;padding:10px clamp(14px,1.6vw,22px);border-radius:2px;transition:background .2s" style-hover="background:#CEE13E;color:#000000">Donate</a>
+    </nav>
+  </div>
+  <sc-if value="{{ megaShow }}" hint-placeholder-val="{{ false }}">
+    <div onMouseLeave="{{ megaClose }}" style="border-top:1px solid #D8D8D8;background:#FFFFFF;animation:fadein .18s ease both">
+      <div style="max-width:1560px;margin:0 auto;padding:clamp(22px,2.4vw,34px) clamp(20px,2.6vw,40px) 40px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:56px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.28em;color:#6E6E6E">{{ megaLabel }}</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px 40px">
+            <sc-for list="{{ megaChildren }}" as="c" hint-placeholder-count="4">
+              <a href="#" onClick="{{ c.go }}" style="font-size:22px;font-weight:300;padding:9px 0;border-bottom:1px solid #D8D8D8;display:flex;justify-content:space-between;gap:16px;transition:padding-left .2s" style-hover="padding-left:8px;color:#FE6453">{{ c.label }}<span style="font-family:ResidenzMono;font-size:11px;color:#A8A8A8">{{ c.num }}</span></a>
+            </sc-for>
+          </div>
+        </div>
+        <div style="height:210px;overflow:hidden">
+          <image-slot id="{{ megaSlotId }}" shape="rect" fit="cover" src="{{ megaSlotSrc }}" credit="{{ megaSlotCredit }}" placeholder="{{ megaSlotHint }}"></image-slot>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</sc-if>
+
+<sc-if value="{{ navMinimal }}" hint-placeholder-val="{{ false }}">
+<header style="position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.94);backdrop-filter:blur(10px);border-bottom:1px solid #D8D8D8">
+  <div style="max-width:1560px;margin:0 auto;padding:12px clamp(16px,2.6vw,40px);min-height:74px;display:flex;align-items:center;gap:clamp(16px,2.4vw,40px)">
+    <a href="#" onClick="{{ goHome }}" style="display:flex;flex-direction:column;gap:1px;flex:none">
+      <span style="font-weight:700;font-size:clamp(13px,1.15vw,17px);letter-spacing:0.13em;line-height:1;white-space:nowrap">CRITICAL ECOLOGY</span>
+      <span style="font-family:ResidenzMono;font-size:clamp(9px,0.72vw,10.5px);letter-spacing:0.34em;color:#FE6453;line-height:1">LAB</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:clamp(10px,1.4vw,18px);margin-left:auto">
+      <a href="#" onClick="{{ goDonate }}" style="font-size:clamp(12px,1.02vw,14.5px);font-weight:500;white-space:nowrap;color:#FFFFFF;background:#000000;padding:10px clamp(14px,1.6vw,22px);border-radius:2px;transition:background .2s" style-hover="background:#CEE13E;color:#000000">Donate</a>
+      <button type="button" onClick="{{ toggleMenu }}" style="display:flex;align-items:center;gap:10px;background:transparent;border:1px solid #000000;padding:10px clamp(14px,1.6vw,20px);cursor:pointer;font-family:ResidenzMono;font-size:11px;letter-spacing:0.24em;color:#000000;transition:background .2s,border-color .2s" style-hover="background:#CEE13E;border-color:#CEE13E">
+        <sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><span>INDEX</span></sc-if>
+        <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><span>CLOSE</span></sc-if>
+        <span style="display:flex;flex-direction:column;gap:3px;width:14px">
+          <span style="height:1.5px;background:currentColor;display:block"></span>
+          <span style="height:1.5px;background:currentColor;display:block"></span>
+          <span style="height:1.5px;background:currentColor;display:block"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:74px 0 0 0;z-index:39;background:#000000;color:#FFFFFF;overflow:auto;animation:fadein .2s ease both">
+    <div style="max-width:1560px;margin:0 auto;padding:clamp(36px,4vw,56px) clamp(20px,2.6vw,40px) 80px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:48px 40px">
+      <sc-for list="{{ navSections }}" as="s" hint-placeholder-count="7">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <a href="#" onClick="{{ s.go }}" style="color:#FFFFFF;font-size:30px;font-weight:300;line-height:1.05;letter-spacing:-0.01em" style-hover="color:#CEE13E">{{ s.label }}</a>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <sc-for list="{{ s.children }}" as="c" hint-placeholder-count="3">
+              <a href="#" onClick="{{ c.go }}" style="color:#9A9A9A;font-size:14px;font-weight:300" style-hover="color:#CEE13E">{{ c.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<main>
+  <sc-if value="{{ homeSplit }}" hint-placeholder-val="{{ true }}">
+    <section style="display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:78vh;border-bottom:1px solid #D8D8D8;animation:rise .5s ease both">
+      <div style="overflow:hidden;min-height:520px">
+        <div style="width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.03)">
+          <image-slot id="home-splash-landscape" shape="rect" fit="cover" src="./river-meander-mist.jpg" credit="Photo by Oncy Oni on Pexels" placeholder="SPLASH — field portrait or landscape, vertical crop, full-bleed"></image-slot>
+        </div>
+      </div>
+      <div style="padding:clamp(48px,6vw,96px) clamp(24px,4.4vw,80px);display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2vw,30px);max-width:760px">
+        <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">MISSION STATEMENT</span>
+        <h1 style="margin:0;font-size:clamp(30px,3.4vw,58px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">Headline statement — one bold sentence naming the connection between social inequality and Earth systems.</h1>
+        <p style="margin:0;font-size:clamp(15px,1.2vw,18px);line-height:1.2;font-weight:400;letter-spacing:0;color:#313131;max-width:52ch;text-wrap:pretty">One-sentence description of the lab: who we are, what we study, and what it makes possible. Two lines maximum.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;padding-top:6px">
+          <a href="#" onClick="{{ goResearch }}" style="font-size:14.5px;font-weight:500;background:#000000;color:#FFFFFF;padding:14px 26px;border-radius:2px;transition:background .2s" style-hover="background:#CEE13E;color:#000000">Explore the research</a>
+          <a href="#" onClick="{{ goAbout }}" style="font-size:14.5px;font-weight:500;border:1px solid #000000;padding:14px 26px;border-radius:2px;transition:background .2s,color .2s" style-hover="background:#000000;color:#FFFFFF">Who we are</a>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+  <sc-if value="{{ homeFull }}" hint-placeholder-val="{{ false }}">
+    <section style="position:relative;height:88vh;min-height:600px;border-bottom:1px solid #D8D8D8;animation:rise .5s ease both">
+      <div style="position:absolute;inset:0"><image-slot id="home-splash-full-landscape" shape="rect" fit="cover" src="./river-meander-mist.jpg" credit="Photo by Oncy Oni on Pexels" placeholder="SPLASH — full-bleed editorial photograph, horizon low, room for type at bottom-left"></image-slot></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,0.78) 0%,rgba(0,0,0,0.24) 46%,rgba(0,0,0,0) 72%)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;pointer-events:none;padding:0 clamp(24px,4.4vw,80px) clamp(48px,6vw,88px);display:flex;flex-direction:column;gap:24px;max-width:1200px">
+        <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">OUR MISSION</span>
+        <h1 style="margin:0;color:#FFFFFF;font-size:clamp(34px,4.6vw,74px);line-height:1.08;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty;max-width:22ch">Critical Ecology Lab</h1>
+        <p style="margin:0;color:rgba(255,255,255,0.86);font-size:19px;line-height:1.2;font-weight:400;letter-spacing:0;max-width:50ch">A research institute fighting to expose the roots of the climate crisis, and manifest our future beyond it.</p>
+      </div>
+    </section>
+  </sc-if>
+  <sc-if value="{{ homeMosaic }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:clamp(32px,3.6vw,56px) clamp(20px,2.6vw,40px) clamp(44px,5vw,72px);border-bottom:1px solid #D8D8D8;animation:rise .5s ease both">
+      <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:170px;gap:14px">
+        <div style="grid-column:span 3;grid-row:span 3;overflow:hidden"><image-slot id="home-mos-1" shape="rect" fit="cover" src="./field-team-processing.jpg" credit="Photo by Sophia Ramirez" placeholder="SPLASH A — lead photograph, 3:2 landscape"></image-slot></div>
+        <div style="grid-column:span 3;grid-row:span 2;padding:8px 24px 8px 32px;display:flex;flex-direction:column;justify-content:center;gap:22px">
+          <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">MISSION STATEMENT</span>
+          <h1 style="margin:0;font-size:clamp(26px,2.9vw,44px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">The Critical Ecology Lab is a startup environmental research institution, people’s think tank, and creative community hub.</h1>
+          <p style="margin:0;font-size:17px;line-height:1.2;font-weight:400;letter-spacing:0;color:#313131;max-width:46ch">We investigate and explain the ways that the natural world, from soils to the atmosphere, has been shaped by the ideas of racial and cultural supremacy, natural resource exploitation, and social exclusion.</p>
+        </div>
+        <div style="grid-column:span 2;overflow:hidden"><image-slot id="home-mos-2" shape="rect" fit="cover" src="./red-soil-macro.jpg" credit="Photo by Liam Briese on Unsplash" placeholder="SPLASH B — detail / soil, macro"></image-slot></div>
+        <div style="grid-column:span 1;overflow:hidden"><image-slot id="home-mos-3" shape="rect" fit="cover" src="./lab-portrait-seated.jpg" placeholder="SPLASH C — portrait"></image-slot></div>
+        <div style="grid-column:span 2;overflow:hidden"><image-slot id="home-mos-4" shape="rect" fit="cover" src="./field-team-understory.jpg" credit="Photo by Sophia Ramirez" placeholder="SPLASH D — convening, wide"></image-slot></div>
+        <div style="grid-column:span 4;overflow:hidden"><image-slot id="home-mos-5" shape="rect" fit="cover" src="./sugarcane-dusk.jpg" placeholder="SPLASH E — landscape, panoramic crop"></image-slot></div>
+      </div>
+    </section>
+  </sc-if>
+
+  <section style="padding:clamp(52px,6vw,88px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8;background:#FBF8E2">
+    
+  <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:38px">
+      
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <h2 style="margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">Not sure where to start?</h2>
+        <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.24em;color:#6E6E6E">FOUR ENTRY POINTS</span>
+      </div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+        <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="4">
+          <a href="#" onClick="{{ q.go }}" style="display:flex;flex-direction:column;gap:16px;border:1px solid #D8D8D8;padding:0 0 26px;background:#FFFFFF;transition:border-color .2s,transform .3s,box-shadow .3s" style-hover="border-color:#000000;transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,0.09)">
+            <div style="height:190px;overflow:hidden"><image-slot id="{{ q.slot }}" shape="rect" fit="cover" src="{{ q.src }}" credit="{{ q.cred }}" placeholder="{{ q.ph }}"></image-slot></div>
+            <div style="padding:0 24px;display:flex;flex-direction:column;gap:9px">
+              <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.26em;color:#FE6453">{{ q.kicker }}</span>
+              <span style="font-size:22px;font-weight:500;line-height:1.2;letter-spacing:0">{{ q.label }}</span>
+              <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 14px; font-weight: 400; line-height: 1.5; letter-spacing: 0.02em; color: #6E6E6E">{{ q.note }}</span></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div></section>
+
+  
+
+  <section style="padding:clamp(52px,6vw,88px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8">
+    <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:38px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:640px">
+          <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.28em;color:#5478BE">PRESS &amp; LAB UPDATES</span>
+          <h2 style="margin:0;font-size:clamp(24px,2.3vw,34px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">Updates and press from the Lab.</h2>
+        </div>
+        <a href="#" onClick="{{ goNews }}" style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.22em;border-bottom:1px solid #000000;padding-bottom:4px">ALL PRESS &amp; LAB UPDATES</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <sc-for list="{{ newsItems }}" as="p" hint-placeholder-count="3">
+          <a href="#" onClick="{{ p.go }}" style="display:flex;flex-direction:column;gap:16px">
+            <div style="height:280px;overflow:hidden">
+              <div style="width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">
+                <image-slot id="{{ p.slot }}" shape="rect" fit="cover" src="{{ p.src }}" placeholder="{{ p.ph }}"></image-slot>
+              </div>
+            </div>
+            <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.22em;color:#5478BE">{{ p.meta }}</span>
+            <span style="font-size:23px;font-weight:500;line-height:1.2;letter-spacing:0">{{ p.label }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section><section style="padding:clamp(52px,6vw,88px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8;background:#D9D8FD">
+    <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
+      <h2 style="margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">Our Programs</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+        <sc-for list="{{ programCards }}" as="g" hint-placeholder-count="3">
+          <a href="#" onClick="{{ g.go }}" style="display:flex;flex-direction:column;gap:18px">
+            <div style="height:280px;overflow:hidden">
+              <div style="width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">
+                <image-slot id="{{ g.slot }}" shape="rect" fit="cover" src="{{ g.src }}" credit="{{ g.cred }}" placeholder="{{ g.ph }}"></image-slot>
+              </div>
+            </div>
+            <span style="font-size:23px;font-weight:500;line-height:1.2;letter-spacing:0">{{ g.label }}</span>
+            <span style="font-size:14px;font-weight:400;line-height:1.5;letter-spacing:0.02em;color:#313131;max-width:38ch">{{ g.note }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position:relative;height:52vh;min-height:380px">
+    <div style="position:absolute;inset:0"><image-slot id="home-donate" shape="rect" fit="cover" src="./hands-soil.jpg" placeholder="FULL-BLEED — hands / soil / community work, wide crop"></image-slot></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:rgba(0,0,0,0.52)"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;text-align:center;padding:0 40px">
+      <h2 style="margin:0;color:#FFFFFF;font-size:clamp(28px,3.1vw,46px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;max-width:24ch;text-wrap:pretty">Earth Science for Wise Action.</h2>
+      <a href="#" onClick="{{ goDonate }}" style="pointer-events:auto;font-size:15px;font-weight:500;background:#FFFFFF;color:#000000;padding:15px 34px;border-radius:2px;transition:background .2s,color .2s" style-hover="background:#CEE13E;color:#000000">Donate</a>
+    </div>
+  </section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isPage }}" hint-placeholder-val="{{ false }}">
+<main style="animation:rise .45s ease both">
+  <section style="padding:clamp(28px,3.4vw,52px) clamp(20px,2.6vw,40px) 0;background:{{ pageTint }}">
+    <div style="max-width:1560px;margin:0 auto;display:flex;gap:9px;align-items:center;font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.2em;color:#6E6E6E">
+      <a href="#" onClick="{{ goHome }}" style="color:#6E6E6E">HOME</a>
+      <sc-for list="{{ crumbs }}" as="c" hint-placeholder-count="1">
+        <span style="color:#A8A8A8">/</span>
+        <a href="#" onClick="{{ c.go }}" style="color:#6E6E6E">{{ c.label }}</a>
+      </sc-for>
+    </div>
+  </section>
+  <section style="padding:clamp(24px,2.6vw,38px) clamp(20px,2.6vw,40px) clamp(36px,4vw,60px);border-bottom:1px solid #D8D8D8;background:{{ pageTint }}">
+    <div style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,3.6vw,56px);align-items:end">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:{{ pageInk }}">{{ pageKicker }}</span>
+        <h1 style="margin:0;font-size:clamp(32px,3.9vw,64px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ pageTitle }}</h1>
+        <p style="margin:0;font-size:18px;line-height:1.2;font-weight:400;letter-spacing:0;color:#313131;max-width:54ch;text-wrap:pretty">{{ pageStandfirst }}</p>
+      </div>
+      <div style="height:300px;overflow:hidden">
+        <div style="width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
+          <image-slot id="{{ pageSlotId }}" shape="rect" fit="cover" src="{{ pageSlotSrc }}" credit="{{ pageSlotCredit }}" placeholder="{{ pageSlotHint }}"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="3">
+    <section style="padding:clamp(46px,5.2vw,76px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8">
+      <div style="max-width:1560px;margin:0 auto">
+
+        <sc-if value="{{ b.isText }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
+            <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ b.h }}</h2>
+            <div style="display:flex;flex-direction:column;gap:18px;max-width:66ch">
+              <sc-for list="{{ b.body }}" as="line" hint-placeholder-count="2">
+                <p style="margin: 0; font-family: 'ABC Gramercy','ABC Gramercy Display',Georgia,serif; font-size: 18px; line-height: 1.4; font-weight: 350; letter-spacing: 0; color: #313131; text-wrap: pretty; font-style: normal">{{ line }}</p>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isPhoto }}" hint-placeholder-val="{{ false }}">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
+            <div style="height:{{ b.hgt }};overflow:hidden">
+              <div style="width:100%;height:100%;transition:transform 1s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.035)">
+                <image-slot id="{{ b.slot }}" shape="rect" fit="cover" src="{{ b.src }}" credit="{{ b.cred }}" placeholder="{{ b.ph }}"></image-slot>
+              </div>
+            </div>
+            <sc-if value="{{ b.hasCap }}" hint-placeholder-val="{{ false }}"><figcaption style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.14em;color:#6E6E6E;max-width:70ch">{{ b.cap }}</figcaption></sc-if>
+          </figure>
+        </sc-if>
+
+        <sc-if value="{{ b.isPair }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:{{ b.cols }};gap:56px;align-items:center">
+            <div style="order:{{ b.ordA }};height:440px;overflow:hidden">
+              <div style="width:100%;height:100%;transition:transform 1s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.035)">
+                <image-slot id="{{ b.slot }}" shape="rect" fit="cover" src="{{ b.src }}" credit="{{ b.cred }}" placeholder="{{ b.ph }}"></image-slot>
+              </div>
+            </div>
+            <div style="order:{{ b.ordB }};display:flex;flex-direction:column;gap:18px">
+              <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
+              <sc-for list="{{ b.body }}" as="line" hint-placeholder-count="2">
+                <p style="margin:0;font-family:'ABC Gramercy','ABC Gramercy Display',Georgia,serif;font-size:18px;line-height:1.4;font-weight:350;letter-spacing:0;color:#313131;max-width:52ch;text-wrap:pretty">{{ line }}</p>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isCards }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:34px">
+            <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
+            <div style="display:grid;grid-template-columns:{{ b.grid }};gap:22px">
+              <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="3">
+                <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;gap:15px;transition:transform .3s" style-hover="transform:translateY(-4px)">
+                  <div style="height:230px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ i.slot }}" shape="rect" fit="cover" src="{{ i.src }}" credit="{{ i.cred }}" placeholder="{{ i.ph }}"></image-slot></div>
+                  <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#FE6453">{{ i.kicker }}</span>
+                  
+                  <span style="font-size:21px;font-weight:500;line-height:1.2;letter-spacing:0">{{ i.label }}</span><span style="font-size:14px;font-weight:400;line-height:1.5;letter-spacing:0.02em;color:#6E6E6E">{{ i.note }}</span>
+                  <sc-if value="{{ i.detail }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:0;font-size:14.5px;font-weight:400;line-height:1.6;letter-spacing:0.01em;color:#313131;max-width:52ch;text-wrap:pretty">{{ i.detail }}</p>
+                  </sc-if>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isList }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:26px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap">
+              <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
+              <sc-if value="{{ b.sortable }}" hint-placeholder-val="{{ false }}">
+                <button type="button" onClick="{{ b.sortToggle }}" style="display:flex;align-items:center;gap:10px;border:1px solid #D8D8D8;background:#FFFFFF;cursor:pointer;padding:9px 14px;font-family:ResidenzMono;font-size:11px;letter-spacing:0.22em;color:#313131;transition:border-color .2s,background .2s" style-hover="border-color:#313131;background:#CEE13E">
+                  <span>{{ b.sortLabel }}</span>
+                  <span style="font-size:13px;line-height:1;transform:{{ b.sortArrow }};transition:transform .3s">↓</span>
+                </button>
+              </sc-if>
+              <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.22em;color:#6E6E6E">{{ b.meta }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <sc-if value="{{ b.hasHeaders }}" hint-placeholder-val="{{ false }}">
+                <div style="display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1.05fr) minmax(0,0.5fr) 56px 110px;gap:28px;align-items:end;padding-bottom:10px">
+                  <span></span>
+                  <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#9A9A9A">{{ b.colTitle }}</span>
+                  <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#9A9A9A">{{ b.colNote }}</span>
+                  <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#9A9A9A">{{ b.colAuthor }}</span>
+                  <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.22em;color:#9A9A9A">{{ b.colDate }}</span>
+                  <span></span>
+                </div>
+              </sc-if>
+              <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="4">
+                <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;padding:20px 0 0;border-top:1px solid #D8D8D8;transition:padding-left .25s,background .25s;--od:0px;--oo:0" style-hover="padding-left:12px;background:#FAFAFA;--od:180px;--oo:1">
+                  <div style="display:grid;grid-template-columns:{{ i.cols }};gap:28px;align-items:center;padding-bottom:20px">
+                    <sc-if value="{{ i.hasThumb }}" hint-placeholder-val="{{ true }}"><div style="height:96px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ i.slot }}" shape="rect" fit="cover" src="{{ i.src }}" credit="{{ i.cred }}" placeholder="{{ i.ph }}"></image-slot></div></sc-if>
+                    <span style="font-size:20px;font-weight:500;line-height:1.2;letter-spacing:0">{{ i.label }}</span>
+                    <span style="font-size:14px;font-weight:400;line-height:1.5;letter-spacing:0.02em;color:#6E6E6E">{{ i.note }}</span>
+                    <sc-if value="{{ i.showAuthor }}" hint-placeholder-val="{{ false }}">
+                      <span style="font-size:14px;font-weight:500;line-height:1.4;letter-spacing:0;color:#313131">{{ i.author }}</span>
+                    </sc-if>
+                    <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.14em;color:#313131;font-variant-numeric:tabular-nums">{{ i.yearLabel }}</span>
+                    <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.2em;color:#A8A8A8">{{ i.kicker }}</span>
+                  </div>
+                  <sc-if value="{{ i.detail }}" hint-placeholder-val="{{ false }}">
+                    <div style="overflow:hidden;max-height:var(--od,0px);opacity:var(--oo,0);transition:max-height .4s cubic-bezier(.2,.7,.2,1),opacity .3s ease">
+                      <div style="display:grid;grid-template-columns:130px minmax(0,1fr);gap:28px;padding:0 0 24px">
+                        <span></span>
+                        <p style="margin:0;font-size:15px;line-height:1.6;font-weight:400;letter-spacing:0.01em;color:#313131;max-width:74ch;text-wrap:pretty">{{ i.detail }}</p>
+                      </div>
+                    </div>
+                  </sc-if>
+                </a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isForm }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
+            <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
+            <div style="display:flex;flex-direction:column;gap:22px;max-width:640px">
+              <sc-for list="{{ b.items }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">{{ f.label }}</span>
+                  <div style="height:{{ f.h }};border:1px solid #C9C9C9;background:#FAFAFA"></div>
+                </div>
+              </sc-for>
+              <div style="align-self:flex-start;font-size:14.5px;font-weight:500;color:#FFFFFF;background:#000000;padding:14px 28px;border-radius:2px">Submit</div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isFigure }}" hint-placeholder-val="{{ false }}">
+          <figure style="margin:0;display:flex;flex-direction:column;gap:16px;background:#E1E1E1;padding:40px;border:1px solid #D8D8D8">
+            <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.26em;color:#FE6453">{{ b.h }}</span>
+            <div style="height:520px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ b.slot }}" shape="rect" fit="contain" placeholder="{{ b.ph }}"></image-slot></div>
+            <sc-if value="{{ b.hasCap }}" hint-placeholder-val="{{ false }}"><figcaption style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.14em;color:#6E6E6E;max-width:74ch">{{ b.cap }}</figcaption></sc-if>
+          </figure>
+        </sc-if>
+
+        <sc-if value="{{ b.isConceptFig }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:12px;max-width:80ch">
+              <h2 style="margin:0;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;font-size:clamp(26px,2.6vw,38px);line-height:1.1;letter-spacing:0">{{ b.h }}</h2>
+              <p style="margin:0;font-size:clamp(15px,1.2vw,18px);line-height:1.5;letter-spacing:0.02em;color:#313131;text-wrap:pretty">{{ b.body }}</p>
+            </div>
+            <div style="border:1px solid #D8D8D8">
+              <dc-import name="Critical Ecology Conceptual Figure" embedded="{{ true }}" hint-size="100%,1240px" style="width:100%"></dc-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isFramework }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:12px;max-width:74ch">
+              <h2 style="margin:0;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;font-size:clamp(26px,2.6vw,38px);line-height:1.1;letter-spacing:0">{{ b.h }}</h2>
+              <p style="margin:0;font-size:clamp(15px,1.2vw,18px);line-height:1.5;letter-spacing:0.02em;color:#313131;text-wrap:pretty">{{ b.body }}</p>
+            </div>
+            <div style="border:1px solid #D8D8D8">
+              <dc-import name="Critical Ecology Framework" embedded="{{ true }}" hint-size="100%,1180px" style="width:100%"></dc-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isLineage }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <div style="display:flex;flex-direction:column;gap:12px;max-width:74ch">
+              <h2 style="margin:0;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;font-size:clamp(26px,2.6vw,38px);line-height:1.1;letter-spacing:0">{{ b.h }}</h2>
+              <p style="margin:0;font-size:clamp(15px,1.2vw,18px);line-height:1.5;letter-spacing:0.02em;color:#313131;text-wrap:pretty">{{ b.body }}</p>
+            </div>
+            <div style="height:{{ b.embedH }};border:1px solid #D8D8D8;overflow:hidden">
+              <dc-import name="CEL Lineage Map" embedded="{{ true }}" hint-size="100%,760px" style="width:100%;height:100%"></dc-import>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isTags }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.26em;color:#6E6E6E">{{ b.h }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ b.tags }}" as="t" hint-placeholder-count="6">
+                <span style="font-size:13px;font-weight:400;letter-spacing:0.02em;line-height:1;border:1px solid #D8D8D8;padding:10px 16px;border-radius:2px;transition:background .2s,border-color .2s" style-hover="background:#CEE13E;border-color:#000000">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isNext }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:22px">
+            <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.26em;color:#6E6E6E">{{ b.h }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="3">
+                <a href="#" onClick="{{ i.go }}" style="font-size:16px;font-weight:400;border:1px solid #C9C9C9;padding:13px 22px;border-radius:2px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#000000;color:#FFFFFF;border-color:#000000">{{ i.label }}</a>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+    </section>
+  </sc-for>
+</main>
+</sc-if>
+
+<footer style="background:#000000;color:#FFFFFF;padding:clamp(52px,6vw,80px) clamp(20px,2.6vw,40px) 44px">
+  <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:64px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:36px 28px">
+      <sc-for list="{{ navSections }}" as="s" hint-placeholder-count="7">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <a href="#" onClick="{{ s.go }}" style="color:#FFFFFF;font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em" style-hover="color:#FE6453">{{ s.upper }}</a>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <sc-for list="{{ s.children }}" as="c" hint-placeholder-count="3">
+              <a href="#" onClick="{{ c.go }}" style="color:#9A9A9A;font-size:13.5px;font-weight:300;line-height:1.35" style-hover="color:#FFFFFF">{{ c.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;border-top:1px solid #4A4A4A;padding-top:26px">
+      <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#8A8A8A">Designed by Studio Yukiko 2026</span>
+      <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#8A8A8A">Copyright Critical Ecology Lab 2026</span>
+    </div>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;navVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;topbar&quot;,&quot;mega&quot;,&quot;minimal&quot;],&quot;default&quot;:&quot;minimal&quot;,&quot;tsType&quot;:&quot;'topbar'|'mega'|'minimal'&quot;,&quot;section&quot;:&quot;Variations&quot;},&quot;homeVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;fullbleed&quot;,&quot;mosaic&quot;],&quot;default&quot;:&quot;fullbleed&quot;,&quot;tsType&quot;:&quot;'split'|'fullbleed'|'mosaic'&quot;,&quot;section&quot;:&quot;Variations&quot;}}">
+const T = (h, ...body) => ({ t: 'text', h, body });
+const P = (ph, cap, hgt) => ({ t: 'photo', ph, cap, hgt: hgt || '310px' });
+const PAIR = (h, ph, body, flip) => ({ t: 'pair', h, ph, body, flip: !!flip });
+const CARDS = (h, items, per) => ({ t: 'cards', h, items, per: per || 3 });
+const LIST = (h, meta, items, noThumb) => ({ t: 'list', h, meta, items, noThumb: !!noThumb });
+const FORM = (h, items) => ({ t: 'form', h, items });
+const FIG = (h, ph, cap) => ({ t: 'figure', h, ph, cap });
+const NEXT = (h, items) => ({ t: 'next', h, items });
+const TAGS = (h, tags) => ({ t: 'tags', h, tags });
+const LINEAGE = (h, body, hgt) => ({ t: 'lineage', h, body, hgt });
+const FRAMEWORK = (h, body, hgt) => ({ t: 'framework', h, body, hgt });
+const CONCEPTFIG = (h, body) => ({ t: 'conceptfig', h, body });
+const c = (label, note, ph, kicker, to, url, img, detail, year, author) => ({ label, note, ph, kicker, to, url, img, detail, year, author });
+
+// LAUNCH CUT: routes hidden from nav and the index until their content is finished.
+// Remove a route from this list to publish it. Nothing else needs to change.
+const DRAFT = [
+  'vision', 'departments', 'hierarchy', 'press-kit', 'opportunities',
+  'shop', 'merch', 'reports', 'courses', 'research-opportunities'
+];
+const isDraft = id => DRAFT.indexOf(id) !== -1;
+
+const SECTIONS = [
+  { id: 'research', label: 'Research', children: ['themes', 'current-projects', 'research-opportunities', 'scholarly-meetings'] },
+  { id: 'ideas', label: 'Ideas & Resources', children: ['browse', 'explainer-videos', 'reports'] },
+  { id: 'about', label: 'About', children: ['our-story', 'team', 'press-kit', 'opportunities'] },
+  { id: 'programs', label: 'Programs', children: ['academic-training', 'eco-afro', 'public-events'] },
+  { id: 'news', label: 'Press & Lab Updates', children: [] },
+  { id: 'shop', label: 'Shop', children: ['merch'] },
+  { id: 'contact', label: 'Contact', children: [] }
+];
+
+const PAGES = {
+  research: { kicker: 'RESEARCH', title: 'Research', parent: null,
+    stand: 'We investigate how social inequality and extractive economic systems have shaped climate change and ecological dysfunction at local to global scales.',
+    slot: 'SPLASH — fieldwork, wide crop',
+    blocks: [
+      CARDS('Four ways in', [
+        c('Themes & Theory', 'The conceptual frame behind the work.', 'Diagram or archival image', 'FRAMEWORK', 'themes'),
+        c('Current Projects', 'Active studies, sites and collaborators.', 'Field site, medium crop', 'ACTIVE', 'current-projects'),
+        c('Research Opportunities', 'Fellowships, assistantships, open calls.', 'Researcher portrait', 'JOIN US', 'research-opportunities'),
+        c('Scholarly Meetings', 'Convenings, symposia, working groups.', 'Convening, wide crop', 'GATHERINGS', 'scholarly-meetings')
+      ], 4),
+      P('FULL-BLEED — landscape showing an ecosystem under study', 'Caption line — location, year, photographer credit.'),
+      T('Why this research', 'We investigate how social inequality and extractive economic systems have shaped climate change and ecological dysfunction at local to global scales. The insights we generate help us to create just solutions towards effective land stewardship, just sustainability intervetions, and ecological reparations for colonized and oppressed populations.', 'We practice connecting environmental measurement with intergenerational understandings and memories of a changing planet. We don\u2019t "work with communities", we are the community.')
+    ] },
+  themes: { kicker: 'RESEARCH', title: 'Themes & Theory', parent: 'research',
+    stand: 'An emerging framework and its application.',
+    slot: 'Conceptual / archival image',
+    blocks: [
+      T('The Framework', 'Critical Ecology is an interdisciplinary and emerging approach to investigating and explaining global ecological change under the influence of human activities. It uniquely focuses on the ways that power disparities in societies enable unsustainable biophysical changes on planet Earth.', 'This area of research is being integrated and refined by Dr. Suzanne Pierre and colleagues of the Critical Ecology Lab. It is built upon thought lineages and technical approaches from a range of humanities and physical science disciplines.'),
+      FRAMEWORK('The Critical Ecology Analytical Framework', 'Critical Ecology works across physical and temporal scales to identify the complex, root causes of global ecological change.', '1180px'),
+      CARDS('Themes', [
+        c('Power ', 'Social power — the capacity to access resources and influence their distribution — treated as a quantitative variable from the plot to the planetary scale.', 'Theme photo, square crop', 'THEME 01', 'themes'),
+        c('Extraction', 'How colonial and capitalist land relations organised the spatial and temporal intensity of resource extraction, and what that left in the soil.', 'Theme photo, square crop', 'THEME 02', 'themes'),
+        c('Earth system feedbacks', 'How ecological responses loop back to shape which places are targeted next, and what mitigation is thought possible.', 'Theme photo, square crop', 'THEME 03', 'themes')
+      ]),
+      NEXT('GO NEXT', [{ label: 'Current Projects', to: 'current-projects' }, { label: 'Conceptual Figure', to: 'conceptual-figure' }])
+    ] },
+  'conceptual-figure': { kicker: 'RESEARCH', title: 'Conceptual Figure', parent: 'themes',
+    stand: 'Critical Ecology works across physical and temporal scales to identify the complex, root causes of global ecological change.',
+    slot: 'Detail crop of the figure',
+    blocks: [
+      CONCEPTFIG('Figure 1 · The critical ecology analytical framework', 'Causation runs left to right, from shared logics to functional ecological response. Feedbacks run right to left. Hover any stage or feedback to read its contents, how the lab measures it, and what conventional global change science leaves out.'),
+      T('How to read it', 'Read left to right for the causal chain: value systems codify behaviours, behaviours produce disturbance, disturbance meets the landscape template, and the template produces functional ecological response. Read the lines beneath right to left for the feedbacks that make this a system rather than a sequence.')
+    ] },
+  'current-projects': { kicker: 'RESEARCH', title: 'Current Projects', parent: 'research',
+    stand: 'Research, education and public convening projects, past and present.',
+    slot: 'Field team at work',
+    blocks: [
+      LIST('Active projects', 'FILTER BY THEME / SITE / YEAR', [
+        c('Ecological Scars of Plantation Slavery Initiative', 'St. Croix, US Virgin Islands · did plantation slavery leave a detectable ecological signature?', 'Former sugarcane plantation, wide crop', 'ONGOING', 'ecological-scars', undefined, undefined, 'Mapping former sugarcane plantations on St. Croix through archival records and Crucian oral histories, then comparing soil chemistry, microbial communities and plant diversity across secondary forests of different ages.', '2022'),
+        c('Hubbard Brook Experimental Forest', 'New Hampshire · social drivers of ecological disturbance at an NSF LTER site.', 'Northern hardwood forest', 'ONGOING', 'current-projects', 'https://hubbardbrook.org', undefined, 'Work with Hubbard Brook Experimental Forest NSF Long Term Ecological Research scientists quantifying relationships between the social drivers of ecological disturbances and long-term environmental responses measured at the site.')
+      ]),
+      P('FULL-BLEED — instrumentation or sampling detail', 'Caption line — what is pictured.')
+    ] },
+  'ecological-scars': { kicker: 'RESEARCH', title: 'Ecological Scars of Plantation Slavery Initiative', parent: 'current-projects',
+    stand: 'Did plantation agriculture and the logic of slavery on Danish-colonised St. Croix leave an ecological signature that can be detected in the present?',
+    slot: 'SPLASH — sunlit rows of sugarcane, the crop the plantations were built on',
+    blocks: [
+      TAGS('TAGGED', ['Soil biogeochemistry', 'Plantation ecology', 'Colonial land use', 'Microbial ecology', 'Plant functional diversity', 'Stable isotopes', 'Caribbean dry forest', 'Community-engaged research', 'Environmental history', 'St. Croix, USVI']),
+      T('The question',
+        'Understanding why and how human beliefs shaped the environment in the past is a key to understanding how ecosystems work today — and how society can be in right relationship in the future.',
+        'What unique impacts did the Trans-Atlantic Slave Trade have on Caribbean island soil and plant communities? The lab is asking whether the plantation era left a signature in the land that can still be measured.'),
+      PAIR('Background', 'Cane burning before harvest', [
+        'Colonial plantations growing cash crops like sugarcane covered the majority of the Caribbean from the 16th century until as recently as the early 20th century. For hundreds of years, the labour that transformed the land came from enslaved Black Africans. This massive land use replaced forested ecosystems with monocultures, and its intensity was dependent on racial violence.',
+        'Plant and microbial function are the foundation of forest ecosystems. To study how nutrient and water cycling respond to past human activity and present climate change, the specific activity has to be named: slave plantation agriculture extracted groundwater and soil nutrients for export crops using Black people as tools.',
+        'Seeing the landscape as a mosaic of responses to plantation logic is both a chance to understand a particular ecological syndrome and an opportunity to develop the ecological heritage narrative for Crucian people.'
+      ]),
+      P('FULL-BLEED — cut cane, the export commodity at the centre of the system', 'Sugarcane stalks after harvest.'),
+      LIST('Objectives', 'SEVEN LINES OF WORK', [
+        c('Map former plantations', 'Archival records and Crucian oral histories used to locate forested sites of former sugarcane plantations.', 'Archival map detail', 'ARCHIVE', 'ecological-scars'),
+        c('Reconstruct enslaved populations', 'Derive populations of enslaved people working through the duration of plantation operation where possible.', 'Ledger or document detail', 'ARCHIVE', 'ecological-scars'),
+        c('Compare soil characteristics', 'Physical and chemical soil properties across a network of secondary forests on former cane land.', 'Soil horizon profile', 'SOILS', 'ecological-scars'),
+        c('Trace sugarcane carbon', 'Determine whether soil carbon derived from sugarcane remains in the soils today.', 'Stable isotope sample prep', 'ISOTOPES', 'ecological-scars'),
+        c('Compare microbial communities', 'Fungal and bacterial/archaeal community characteristics between former cane fields and unplanted soils.', 'Microscope image', 'MICROBES', 'ecological-scars'),
+        c('Compare plant diversity', 'Species and functional diversity across former plantation forests of different ages.', 'Understory vegetation survey', 'VEGETATION', 'ecological-scars'),
+        c('Map elevation and refuge', 'Spatial and temporal relationships between elevation, plantation establishment, maroon forest refuges, and present-day soil ecology and biodiversity.', 'Topographic map', 'LANDSCAPE', 'ecological-scars')
+      ]),
+      LIST('Current status', 'MOST RECENT FIRST', [
+        c('Sampling expands to 7 of 20 sites', 'Soil sampling and vegetation surveys conducted; preliminary soils data being analysed. NSF EAGER grant awarded.', 'Field team sampling', 'CURRENT', 'ecological-scars', 'https://www.nsf.gov/awardsearch/showAward?AWD_ID=2347365', undefined, 'EAGER: Analyzing the Long-Term Soil Biogeochemistry Impacts of Plantation Agriculture and Implications for the Anthropocene Through Community-Engaged Research and Education.', '2024'),
+        c('Plots expanded across the island', 'Research plots extended beyond Estate Little Princess to former plantations across St. Croix; further soil sampling.', 'Field plot establishment', 'PAST', 'ecological-scars', undefined, undefined, undefined, '2023'),
+        c('Soils prepared for analysis', 'Samples prepared for chemical and stable isotope analysis.', 'Sample prep bench', 'PAST', 'ecological-scars', undefined, undefined, undefined, '2022-11'),
+        c('First plots established', 'Forest research plots established and characterised at Estate Little Princess; first soil sampling.', 'Estate Little Princess forest', 'PAST', 'ecological-scars', 'https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/us-virgin-islands-estate-little-princess/', undefined, undefined, '2022-04')
+      ]),
+      CARDS('Who is involved', [
+        c('CEL team', 'Dr. Suzanne Pierre · Dr. Em Whalen', 'Lab portrait', 'CEL', 'team'),
+        c('External collaborators', 'Dr. Olasee Davis (University of the Virgin Islands) · Nautica Jones (UC Santa Cruz) · PaShun Hawkins (UCLA) · community collaborators and property owners.', 'Collaborators in the field', 'PARTNERS', 'ecological-scars'),
+        c('Funding', 'National Geographic Society · National Science Foundation · Walking Softer Foundation · donations.', 'Field equipment detail', 'SUPPORT', 'donate')
+      ]),
+      NEXT('GO NEXT', [{ label: 'Support this project', to: 'donate' }, { label: 'Current Projects', to: 'current-projects' }, { label: 'Themes & Theory', to: 'themes' }])
+    ] },
+  'research-opportunities': { kicker: 'RESEARCH', title: 'Research Opportunities', parent: 'research',
+    stand: 'Ways for students and researchers to work with the lab.',
+    slot: 'Researcher portrait, vertical crop',
+    blocks: [
+      PAIR('Who should apply', 'Portrait of a fellow or student', [
+        'Graduate and undergraduate students work with CEL and their degree-granting institutions to integrate critical ecology frameworks into their theses and dissertations. These collaborations deepen our knowledge and practice and connect students to unique resources.',
+        'We strongly encourage applications from people who are from socially marginalized backgrounds and who are historically underrepresented in the natural sciences, including but not limited to queer, trans, non-binary, Black, Indigenous, people of color, and disabled people.'
+      ]),
+      LIST('Open positions', 'UPDATED MONTHLY', [
+        c('PLACEHOLDER — no open positions were listed on the old site', 'Add role, location and commitment when a position opens.', 'Workplace photo', 'PLACEHOLDER', 'research-opportunities')
+      ]),
+      NEXT('RELATED', [{ label: 'Opportunities', to: 'opportunities' }, { label: 'Academic Training', to: 'academic-training' }])
+    ] },
+  'scholarly-meetings': { kicker: 'RESEARCH', title: 'Scholarly Meetings & Convenings', parent: 'research',
+    stand: 'Convenings and symposia organized by the Critical Ecology Lab and where Lab research is shared.',
+    slot: 'Convening, room full of people',
+    blocks: [
+      LIST('Upcoming & past', 'CHRONOLOGICAL', [
+        c('Invisible Impacts Symposium', 'Virtual · June 8–9, 2026 · practitioners, scholars, students and educators.', 'Symposium announcement graphic', 'PAST', 'scholarly-meetings', 'https://iisymposium.criticalecologylab.org', 'invisible-impacts-symposium', 'Two days on the impacts that conventional environmental science leaves out — the social, economic and bodily consequences of ecological change. Open to practitioners, scholars, students and educators at every level.', '2026-06-08')
+      ]),
+      P('FULL-BLEED — panel or workshop in progress', 'Caption line — event, year, photographer credit.')
+    ] },
+
+  ideas: { kicker: 'IDEAS & RESOURCES', title: 'Analysis & Ideas', parent: null,
+    stand: 'Original and selected insights on the causes -- and futures-- of the climate crisis.',
+    slot: 'SPLASH — reading, archive or teaching scene',
+    blocks: [
+      CARDS('', [
+        c('Browse by Topics, Earth Systems, and Geography', 'Our full catalogue.', 'Editorial photo, landscape', 'EXPLORE', 'browse'),
+        c('Explainer Videos', 'Short pieces that unpack focal ideas.', 'Video still with play affordance', 'WATCH', 'explainer-videos'),
+        c('Reports', 'Long-form, data-driven, and free white papers.', 'Report cover flat-lay', 'DOWNLOAD', 'reports')
+      ]),
+      T('How to use this library: ', 'This library is a dynamic set of resources gathered to help people explore and understand major issues concerning the roles of power and inequality in shaping the Earth system. \nThese resources are intended for anyone interested in learning for personal, pedagogical, or professional impact.', 'All opinions and perspectives reflected belong to the author of record, and do not necessarily reflect the views and opinions of the Critical Ecology Lab unless explicitly stated. Please cite pieces according to standard attribution practices where appropriate.'),
+      T('Citation & reuse', 'Every item in this library carries an author of record and a date of publication. Cite the individual piece, not the library: author, title, Critical Ecology Lab, year, and the URL of the page you used.', 'Unless a piece states otherwise, material here may be shared and taught with attribution and without charge. Commercial use, republication in full, and adaptation require written permission. Third-party material reproduced under licence or fair use remains the property of its original rights holder and is credited in place.', 'For permissions, corrections, or a citation in a format not covered here, write to us through the contact page.')
+    ] },
+  browse: { kicker: 'IDEAS & RESOURCES', title: 'Browse Articles, Topics & Earth Systems', parent: 'ideas',
+    stand: 'Resources supporting our thinking, organized like the Earth.',
+    slot: 'Lead article image',
+    blocks: [
+      LIST('All entries', 'TOPIC · EARTH SYSTEM · DATE', [
+        c('Critical Ecology: Environment and Social Systems', 'Ologies with Alie Ward · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5mZWVkYnVybmVyLmNvbS9PbG9naWVz/episode/NWFmYzJiMjYtOTNhYi00N2MyLWIyODktMmEzZTNlNWNhYmVh?ep=6&hl=en'),
+        c('The Future of Forestry', 'The Last Stand · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://soundcloud.com/creativetimenyc/tls-e2-9-28'),
+        c('Dr. Suzanne Pierre on Reshaping a Siloed Science', 'For The Wild · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://forthewild.world/listen/dr-suzanne-pierre-on-reshaping-a-siloed-science-150'),
+        c('Nance Klehm with Ecosystems Ecologist Dr. Suzanne Pierre', 'Spontaneous Vegetation · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://iono.fm/e/993827'),
+        c('Defining Sociophysical Drivers of Ecological Change', 'Cary Institute of Ecosystem Studies · seminar.', 'Seminar still', 'SEMINAR', 'browse', 'https://www.caryinstitute.org/news-insights/scientific-seminar-video/critical-ecology-defining-sociophysical-drivers-ecological'),
+        c('Theoretical Lineage of Critical Ecology', 'Critical Ecology Lab · workshop.', 'Workshop still', 'WORKSHOP', 'browse', 'https://www.youtube.com/watch?t=506s&v=LireLlbEyxk'),
+        c('Learning How to Live Together: A Symbiotic Worldview', 'Sheffield DocFest · panel.', 'Panel still', 'PANEL', 'browse', 'https://vimeo.com/566639849'),
+        c('CEL Reading List', 'Our favorite books on Bookshop.org.', 'Book stack', 'READING', 'browse', 'https://bookshop.org/shop/criticalecologylab'),
+        c('Patreon', 'Get an exclusive behind-the-scenes look at our research, thought-provoking content, and the opportunity to engage with our community of change-makers.', 'Contextual photo', 'SUBSCRIBE', 'browse', 'https://patreon.com/CriticalEcologyLab')
+      ]),
+      T('Citation & reuse', 'Cite articles by their author of record, not by the lab: Author, “Title,” Critical Ecology Lab, year, URL. Where a piece has been revised, cite the version date shown on the article.', 'Articles may be quoted, excerpted, and assigned in teaching with attribution. Republishing an article in full, translating it, or including it in a paid or sponsored product requires written permission from the author and the lab.', 'Figures, maps, and data visualisations may be reproduced with attribution to the lab and to the underlying data source named in the caption. Photographs are licensed to the lab and are not covered by this clause — request permission separately.')
+    ] },
+  'explainer-videos': { kicker: 'IDEAS & RESOURCES', title: 'Explainer Videos', parent: 'ideas',
+    stand: 'Recorded talks, workshops and panels. The old site had no numbered explainer series — these are the existing recordings.',
+    slot: 'Featured video still',
+    blocks: [
+      P('FEATURED VIDEO — 16:9 still or embed poster frame', 'Caption line — episode title and runtime.', '330px'),
+      CARDS('Recordings', [
+        c('Theoretical Lineage of Critical Ecology', 'Critical Ecology Lab · workshop.', 'Video still, 16:9', 'WORKSHOP', 'explainer-videos', 'https://www.youtube.com/watch?t=506s&v=LireLlbEyxk'),
+        c('Defining Sociophysical Drivers of Ecological Change', 'Cary Institute of Ecosystem Studies · seminar.', 'Video still, 16:9', 'SEMINAR', 'explainer-videos', 'https://www.caryinstitute.org/news-insights/scientific-seminar-video/critical-ecology-defining-sociophysical-drivers-ecological'),
+        c('Learning How to Live Together: A Symbiotic Worldview', 'Sheffield DocFest · panel.', 'Video still, 16:9', 'PANEL', 'explainer-videos', 'https://vimeo.com/566639849')
+      ]),
+      T('Full channel', 'All recordings are collected on the CEL YouTube channel: @criticalecologylab.'),
+      T('Citation & reuse', 'Cite an episode by title, series, and publication year: “Episode Title,” Explainer Videos, Critical Ecology Lab, year, URL. When quoting on-screen speech, include the timecode.', 'Episodes may be screened in classrooms, workshops, and community settings at no cost and without prior permission, provided they are shown in full and unaltered, with the lab credited. Clipping, dubbing, re-editing, or embedding an episode in another production requires written permission.', 'Do not upload copies to other platforms. Link or embed from the original instead, so that viewer counts and corrections stay with the source.')
+    ] },
+  reports: { kicker: 'IDEAS & RESOURCES', title: 'Reports', parent: 'ideas',
+    stand: 'PLACEHOLDER — the old site published no report series. Peer-reviewed output is listed below; describe the series once it exists.',
+    slot: 'Report cover, angled flat-lay',
+    blocks: [
+      LIST('Report series', 'PDF · CITABLE', [
+        c('When the window is a mirror: how do dominant theories limit our understanding of nature?', 'Bulletin of the Ecological Society of America · Dr. Pierre contributing author.', 'Journal cover', 'PUBLICATION', 'post-window-mirror', undefined, undefined, undefined, '2024'),
+        c('PLACEHOLDER — no standalone report series existed on the old site', 'Add authors, year and page count as reports are published.', 'Report cover', 'PLACEHOLDER', 'reports')
+      ]),
+      T('Citation & reuse', 'Reports are the lab’s citable publications. Cite as: Author(s), Title, Critical Ecology Lab, year. Where a report carries a DOI or version number, cite that rather than the URL, so the reference resolves to the exact edition you read.', 'Reports are free to download, print, and distribute in full for research, teaching, organising, and policy work, provided they are not altered and not sold. Extracts may be quoted with attribution. Adapting a report, translating it, or reproducing it inside a commercial publication requires written permission.', 'Underlying data are released alongside the report where the terms of collection allow. Data reuse requires attribution to both the report and any partner institution named in it. Corrections and errata are published on this page and carry the original publication date alongside the revision date.')
+    ] },
+
+  about: { kicker: 'ABOUT', title: 'About', parent: null,
+    stand: 'Critical Ecology Lab is a group of scientists and community members using their skills—lived experience, technical training, creative practice— to investigate and inform others about the social and economic root causes of the global planetary crisis.',
+    slot: 'SPLASH — group portrait of the team',
+    blocks: [
+      T('What we are', 'The Critical Ecology Lab is a startup environmental research institution, people\u2019s think tank, and creative community hub.', 'We go beyond the binary of academic institutions versus community organizations by weaving together decolonial scientific research and frameworks for climate change, transformative education and community activation, and fair nature/climate solutions for maximum impact.'),
+      CARDS('Read further', [
+        c('Mission', 'What we are here to do.', 'Symbolic landscape', 'MISSION', 'mission'),
+        c('Vision', 'The world this work is building toward.', 'Horizon photograph', 'VISION', 'vision'),
+        c('Funding', 'Who funds us and on what terms.', 'Document or meeting photo', 'FUNDING', 'funding')
+      ]),
+      CARDS('Elsewhere in About', [
+        c('Our Story', 'How the lab came to be.', 'Archival photograph', 'HISTORY', 'our-story'),
+        c('Meet the Team', 'People, departments, structure.', 'Team portrait grid', 'PEOPLE', 'team'),
+        c('Press Kit', 'Logos, photography, boilerplate.', 'Press kit flat-lay', 'MEDIA', 'press-kit'),
+        c('Opportunities', 'Roles and collaborations.', 'Workplace photo', 'WORK WITH US', 'opportunities'),
+        c('Donate', 'Support the work.', 'Community work photo', 'GIVE', 'donate')
+      ]),
+      P('FULL-BLEED — the team at work, environmental portrait', 'Caption line — where and when.')
+    ] },
+  mission: { kicker: 'ABOUT', title: 'Mission', parent: 'about',
+    stand: 'Our mission is to create novel processes and spaces for communities of people with scientific and generational knowledge to destabilize oppressive systems and fight back against escalating social and planetary disaster.',
+    slot: 'Symbolic landscape, vertical crop',
+    blocks: [
+      T('Mission statement', 'Our mission is to create novel processes and spaces for communities of people with scientific and generational knowledge to destabilize oppressive systems and fight back against escalating social and planetary disaster.', 'We aim to create impact-driven research that shifts public dialogue and civic action towards greater justice and, as a result, more stable and functioning ecological systems.'),
+      T('How we practise it', 'We practice connecting environmental measurement with intergenerational understandings and memories of a changing planet. We don\u2019t "work with communities", we are the community.', 'We make the scientific method a tool of empowerment used for and by people who are systematically left out of academia, and whose lives and landscapes are being shaped by unjust systems.', 'We create the conditions— the culture, resources, community solidarity, and technical skill— to provoke unnamed and unasked questions about our society and planet to emerge.', 'We investigate relationships between social, economic, and political systems, the ideologies that prop them up, and the natural systems they directly impact in the era of climate crisis.', 'We do this work by maintaining the highest standards of social responsibility and scientific integrity.', 'We center the experiences and participation of globally marginalized people and create a more equitable future for generating new knowledge and solutions.'),
+      P('FULL-BLEED — image that carries the mission emotionally', 'Caption line.'),
+      LIST('Tenets', 'SEVEN · CO-DESIGNED EACH TIME WE COLLABORATE', [
+        c('Growth & Discomfort', 'Being wrong is a gift that makes us better researchers.', 'Tenet image', 'TENET 01', 'mission', undefined, undefined, 'Allowing ourselves to engage with being wrong, called out/in, and making mistakes is a gift to ourselves that makes us better people and researchers. There is a difference between uncomfortable and unsafe situations, and it is important to analyze where a situation falls.'),
+        c('Honoring Indigenous Histories & Futures', 'Engaging meaningfully with land sovereignty.', 'Tenet image', 'TENET 02', 'mission', undefined, undefined, 'We acknowledge the Indigenous populations who were violently removed from their ancestral lands. Our work must engage meaningfully with the pasts and futures of local Indigenous communities and the movement towards land sovereignty.'),
+        c('Healing & Disturbance to Collective Wellbeing', 'Recovery builds resilience to disturbance.', 'Tenet image', 'TENET 03', 'mission', undefined, undefined, 'In ecological systems, disturbance can generate state changes and resilience depending on how the system recovers. Through building a foundation of listening, respect, and trust in the research container, we recover and grow resilient to disturbance.'),
+        c('Cultivating Interdependence Through Compassion', 'Care sets a tone of interdependence.', 'Tenet image', 'TENET 04', 'mission', undefined, undefined, 'Care within each working space can appear in different forms and results from a culture of listening and noticing. Offerings of care through communication, actions, or other supports, set a tone of interdependence that creates resilience.'),
+        c('Listening & Validating One Another', 'Validation is part of building equity in science.', 'Tenet image', 'TENET 05', 'mission', undefined, undefined, 'Validation means acknowledgment and respect towards the lived experiences of others, even if they are not shared experiences. We are validated through deep listening and communication. This is part of upending inequality and building equity in science groups.'),
+        c('Multiple Ways of Knowing Exist', 'We bring our communities\u2019 histories to the work.', 'Tenet image', 'TENET 06', 'mission', undefined, undefined, 'Our research is the sum of the past, present, and future experiences of the communities from which individual practitioners come. We do not exist in isolation; we bring out personal histories and our communities\u2019 histories to the work we do.'),
+        c('Welcoming Boundary-Breaking Questions', 'Creative questions need people to feel safe.', 'Tenet image', 'TENET 07', 'mission', undefined, undefined, 'Unique and creative questions can enter our research circles when people feel safe to bring their full selves (complete identity, concerns, experiences, fears, observations) into the research container. We are willing to engage with challenging questions and tensions.')
+      ]),
+      T('On systems', '"We don\u2019t rise to the level of our goals, we fall to the level of our systems." —James Clear')
+    ] },
+  vision: { kicker: 'ABOUT', title: 'Vision', parent: 'about',
+    stand: 'PLACEHOLDER — the previous site had no standalone vision statement. Draft one, or delete this page.',
+    slot: 'Horizon photograph',
+    blocks: [
+      T('A new model for environmental institutions', 'We go beyond the binary of academic institutions versus community organizations by weaving together decolonial scientific research and frameworks for climate change, transformative education and community activation, and fair nature/climate solutions for maximum impact.'),
+      T('Earth science for wise action', 'We investigate how social inequality and extractive economic systems have shaped climate change and ecological dysfunction at local to global scales. The insights we generate help us to create just solutions towards effective land stewardship, just sustainability intervetions, and ecological reparations for colonized and oppressed populations.'),
+      T('Enriching communities for resilience', 'The Critical Ecology Lab provides interdisciplinary environmental education resources and programs, and hosts community experiences that mobilize socioeconomically oppressed populations in strategic locations towards liberatory climate action.'),
+      PAIR('What changes', 'Community or landscape photo', ['PLACEHOLDER — a forward-looking paragraph naming the change being pursued. Nothing on the old site fills this neatly.'], true)
+    ] },
+  funding: { kicker: 'ABOUT', title: 'Funding', parent: 'about',
+    stand: 'Critical Ecology Lab is a fiscally sponsored 501(c)(3) nonprofit. Below are the funders and institutional partners supporting the work.',
+    slot: 'Meeting or document photo',
+    blocks: [
+      T('How we are funded', 'Critical Ecology Lab is a fiscally sponsored 501(c)3 nonprofit organization. Our fiscal sponsor is Inquiring Systems Inc.'),
+      LIST('Support & collaborations', 'FUNDERS AND INSTITUTIONAL PARTNERS', [
+        c('National Geographic Society', 'Wayfinder Award · Explorer support.', 'Funder logo (light background)', 'GRANT', 'funding', 'https://www.nationalgeographic.org/society/'),
+        c('National Science Foundation', 'EAGER award — long-term soil biogeochemistry impacts of plantation agriculture.', 'Funder logo (light background)', 'GRANT', 'funding', 'https://www.nsf.gov/awardsearch/showAward?AWD_ID=2347365'),
+        c('Simons Foundation · Science Sandbox', 'Support for the Liberation Ecology Field Course and Eco Afro Futures.', 'Funder logo (light background)', 'GRANT', 'funding', 'https://www.simonsfoundation.org/science-society-culture/science-sandbox/'),
+        c('Wilburforce Foundation', 'Grant support.', 'Funder logo (light background)', 'GRANT', 'funding'),
+        c('Peninsula Open Space Trust', 'Eco Afro Futures Initiative support.', 'Funder logo (light background)', 'PARTNER', 'funding', 'https://openspacetrust.org/'),
+        c('UCLA Institute of the Environment and Sustainability', 'Diversity programme collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://www.ioes.ucla.edu/diversity/'),
+        c('University of California, Merced', 'Academic collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://www.ucmerced.edu'),
+        c('University of California, Berkeley', 'Academic collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://www.berkeley.edu'),
+        c('California State University, Northridge', 'Academic collaboration.', 'Partner logo', 'PARTNER', 'funding'),
+        c('Hubbard Brook Experimental Forest', 'NSF Long Term Ecological Research site collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://hubbardbrook.org'),
+        c('Defenders of Wildlife', 'Collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://defenders.org'),
+        c('Queer Nature', 'Collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://www.queernature.org')
+      ])
+    ] },
+  'our-story': { kicker: 'ABOUT', title: 'Our Story', parent: 'about',
+    stand: 'The lab began with a question that traditional science was not asking: what does ecology miss by ignoring long-term patterns of oppression?',
+    slot: 'Archival or founding-era photograph',
+    blocks: [
+      PAIR('Beginnings', 'Archival photograph, grainy', [
+        'The Critical Ecology Lab began as a question—what does academic science miss by ignoring the relationship between long term patterns of oppression and ecosystems?',
+        'As a PhD student, Dr. Suzanne Pierre found that connecting settler colonialism, racism, and capitalism to ecology was not welcome in traditional spaces. She began describing these questions as critical ecology, a way of allowing critical social theory on race and gender to take shape in ecological inquiry. In 2017, she started an Instagram account to connect others with these ideas.',
+        'Despite the wall of resistance and doubt, she knew these questions could produce insight into how and why humans have shaped the climate crisis and how we may navigate it. Pursuing critical ecology was worth the risk. With the support of collaborator Kunal Palawat, Sue formally started the Critical Ecology Lab in winter 2020.'
+      ]),
+      P('FULL-BLEED — a moment that marks a turning point', 'Caption line — year and context.'),
+      LINEAGE('Where the work comes from', 'Twenty-nine thinkers, institutions and programmes stand behind the lab. Explore the map: hover or tap any node to read what it contributed, and use the cluster names to move between traditions.'),
+      PAIR('Where we are now', 'Present-day photograph', ['The Critical Ecology Lab is an independent, fiscally sponsored 501(c)(3) nonprofit research organization based in the California Bay Area. We research how social and economic power shape the planetary crisis, and share our findings with impacted communities and decision makers.'], true)
+    ] },
+  team: { kicker: 'ABOUT', title: 'Meet the Team', parent: 'about',
+    stand: 'Lab staff and associates.',
+    slot: 'Group portrait, wide crop',
+    blocks: [
+      CARDS('Core Team', [
+        c('Suzanne Pierre, Ph.D.', 'Founder, Executive Director', 'Portrait, 4:5 vertical', 'CORE TEAM', 'team', undefined, 'suzanne-pierre-portrait.jpg', 'Suzanne Pierre (she/her) is an ecosystems and biogeochemist, focused on plant-microbe interactions in forest soils. Suzanne received an B.A. in Environmental Studies from New York University (2013), a Ph.D. in Ecology and Evolutionary Biology from Cornell University (2018), and completed a University of California President\u2019s Postdoctoral Fellowship at UC Berkeley (2020). Her technical expertise is in applying molecular and stable isotope approaches to characterizing the biophysical mechanisms controlling nutrient and carbon cycling in plant and microbial systems experiencing climate change. She is a 2022 recipient of the National Geographic Society Wayfinder Award and is a National Geographic Explorer.'),
+        c('Stacey King, MBA', 'Director of Operations', 'Portrait, 4:5 vertical', 'CORE TEAM', 'team', undefined, 'stacey-king.webp', 'Stacey (she/her) brings over a decade of experience across engineering, investments, and strategic operations. She holds an MBA from the Haas School of Business. Most recently, she has applied this expertise to scaling a mission-driven venture capital fund and supporting climate startups as they build technically feasible and commercially viable products and solutions. In her role at Critical Ecology Lab, Stacey will help shepherd the organization into its next phase of impact through fundraising, partnerships, and operational development.')
+      ], 2),
+      LIST('Collaborators', 'RESEARCH · EDUCATION', [
+        c('Michelle Wong, Ph.D.', 'Research · Assistant Professor, Yale University, Department of Ecology and Evolutionary Biology.', 'Portrait', 'RESEARCH', 'team', undefined, 'michelle-wong.jpg', 'Trained as an ecosystem ecologist and biogeochemist. Her work examines how plants overcome nutrient limitation through the use of nutrient acquisition strategies in temperate and tropical forests. She comes to CEL acknowledging that many scientific findings have been facilitated by colonialism, and how those who wield power in science perpetuate the culture.'),
+        c('Anjum Kaur Gujral, MSc.', 'Doctoral Research Associate · University of California, Davis.', 'Portrait', 'RESEARCH', 'team', 'https://anjumgujral.weebly.com', 'anjum-gujral.webp', 'For her masters degree she studied plant form and function, as well as ecological niche and climate modeling. Through the Critical Ecology Lab, Anjum is interested in using plant traits to quantify the impacts of oppressive and extractive land-use histories on plant communities and whole ecosystems more broadly.'),
+        c('Nautica Jones Harriott', 'Doctoral Research Associate · University of California, Santa Cruz.', 'Portrait', 'RESEARCH', 'team', undefined, 'nautica-jones.webp', 'A graduate student collaborator on the Ecological Scars of Plantation Slavery project. As a woman of color with a disability, Nautica uses her personal experiences to inform her work and promote accessibility for researchers of diverse backgrounds. She researches the ecological and climate resilience legacies of slavery and maroonage on postbellum forests and soil carbon storage.'),
+        c('Pa-Shun Hawkins', 'Doctoral Research Associate · UCLA Institute of the Environment and Sustainability.', 'Portrait', 'RESEARCH', 'team', undefined, 'pa-shun-hawkins.webp', 'Develops protocols for extracting environmental DNA from coral skeletons and mollusk shells. For CEL she supports Hubbard Brook Experimental Forest NSF LTER scientists with research quantifying relationships between the social drivers of ecological disturbances and long-term environmental responses.')
+      ]),
+      LIST('Academic Advisory Board', 'FOUR MEMBERS', [
+        c('Dr. Rebecca Ryals', 'Associate Professor of Agroecology, University of California, Merced.', 'Portrait', 'ADVISOR', 'team', 'https://ryalslab.com', undefined, 'She studies how nutrients and carbon cycle in agroecosystems, and how the management of these cycles contributes to climate change mitigation and resiliency. Her research focuses on the capture, transformation, and beneficial reuse of organic wastes as resources to rebuild soil carbon and fertility and contribute to a more just food system.'),
+        c('Dr. Alexis Patterson Williams', 'Associate Professor, University of California, Davis.', 'Portrait', 'ADVISOR', 'team', 'https://education.ucdavis.edu/faculty-profile/alexis-patterson-williams', undefined, 'Her research lies at the intersection of equity studies, social psychology, and science education. Her recent project has led to the development of an educational framework, (W)holistic Science Pedagogy, with her colleague Dr. Salina Gray.'),
+        c('Dr. Stevie Ruiz', 'Associate Professor of Chicana and Chicano Studies, California State University, Northridge.', 'Portrait', 'ADVISOR', 'team', 'https://www.csun.edu/humanities/chicana-chicano-studies/stevie-ruiz', undefined, 'His interdisciplinary research focuses on environmental justice, comparative race and ethnicity, critical science studies, and cultural geography. He is currently working on a book project titled "On Adversarial Grounds: The Racial Origins of Environmental Justice."'),
+        c('Dr. Todd Dawson', 'Professor, Department of Integrative Biology, UC Berkeley.', 'Portrait', 'ADVISOR', 'team', 'https://nature.berkeley.edu/dawsonlab/', undefined, 'Director of the Center for Stable Isotope Biogeochemistry at UC Berkeley. He has been investigating the relationship between plants and water resources in the environment for over 20 years, working in deserts and savannas, in the arctic and alpine, and in forests across North America, Australia, Chile, Brazil, and Europe.')
+      ], true),
+      NEXT('STRUCTURE', [{ label: 'Departments', to: 'departments' }, { label: 'Team Hierarchy', to: 'hierarchy' }])
+    ] },
+  departments: { kicker: 'ABOUT', title: 'Departments', parent: 'team',
+    stand: 'PLACEHOLDER — the previous site did not describe departments. It grouped people as Core Team, Collaborators and Academic Advisory Board, which now live on Meet the Team.',
+    slot: 'Working session photo',
+    blocks: [
+      CARDS('Departments', [
+        c('PLACEHOLDER', 'Name the department, what it does, who leads it.', 'Department at work', 'DEPT', 'departments'),
+        c('PLACEHOLDER', 'Name the department, what it does, who leads it.', 'Department at work', 'DEPT', 'departments'),
+        c('PLACEHOLDER', 'Name the department, what it does, who leads it.', 'Department at work', 'DEPT', 'departments')
+      ])
+    ] },
+  hierarchy: { kicker: 'ABOUT', title: 'Team Hierarchy', parent: 'team',
+    stand: 'Standfirst — how decisions are made and who reports to whom.',
+    slot: 'Leadership portrait',
+    blocks: [
+      FIG('ORG CHART', 'Drop the team hierarchy diagram', 'Figure caption — reading the structure.'),
+      T('How decisions get made', 'PLACEHOLDER — the previous site published no governance description. Known structure: Suzanne Pierre is Founder and Executive Director; Stacey King is Director of Operations; an Academic Advisory Board of four advises the research.')
+    ] },
+  'press-kit': { kicker: 'ABOUT', title: 'Press Kit', parent: 'about',
+    stand: 'Standfirst — everything a journalist needs, in one place.',
+    slot: 'Press kit flat-lay — logos and printed matter',
+    blocks: [
+      T('Media enquiries', 'Write to criticalecologylab@inquiringsystems.org. For speaking requests, use the speaker inquiry route on the contact page.', 'PLACEHOLDER — expected turnaround, interview availability and languages were not published on the old site.'),
+      LIST('Downloads', 'LOGOS · PHOTOGRAPHY · BOILERPLATE', [
+        c('Logo pack', 'SVG and PNG · light and dark lockups.', 'Logo lockup on flat colour', 'DOWNLOAD', 'press-kit'),
+        c('Approved photography', 'High-resolution field and portrait images, with credits.', 'Contact sheet', 'DOWNLOAD', 'press-kit'),
+        c('Boilerplate & bios', 'One-paragraph description, leadership bios, fact sheet.', 'Printed document detail', 'DOWNLOAD', 'press-kit')
+      ]),
+      NEXT('SEE ALSO', [{ label: 'Press & Lab Updates', to: 'news' }, { label: 'Contact', to: 'contact' }])
+    ] },
+  opportunities: { kicker: 'ABOUT', title: 'Opportunities', parent: 'about',
+    stand: 'Standfirst — the ways people join or partner with the lab.',
+    slot: 'Collaborative work photo',
+    blocks: [
+      T('No current opportunities', 'There are no open roles, fellowships or partnership calls at the moment.', 'Tell us you are interested and we will be in touch when something opens.'),
+      LIST('Stay in touch', 'ROLLING', [
+        c('Volunteer interest form', 'Share your skills and availability — reviewed on a rolling basis.', 'Contextual photo', 'OPEN', 'opportunities', 'https://docs.google.com/forms/d/e/1FAIpQLScqgh3jLO6zBCqlTIM_SpYpYVThWWgUJyZjbhVcAnOUYPDEiw/viewform')
+      ]),
+      T('What it is like to work here', 'We co-design and revisit the lab\u2019s values each time we collaborate, cultivating compassion, vulnerability and accountability in our professional community. The seven tenets on the Mission page describe the culture in full.', 'PLACEHOLDER — pay transparency and remote policy were not published on the old site.')
+    ] },
+  donate: { kicker: 'SUPPORT', title: 'Donate', parent: 'about',
+    stand: 'Gifts to the lab fund field research, free public programs, and paid positions for scientists and community researchers.',
+    slot: 'SPLASH — community or field work, wide crop',
+    blocks: [
+      PAIR('Where the money goes', 'Photograph of funded work', [
+        'As a nonprofit, Black and woman-founded institution, we are building a new pathway for scientific experts and communities to produce the high-quality information and interventions needed in this critical moment for the environment and society.',
+        'Invest in values-aligned scientific research, education, and empowerment of historically marginalized communities.',
+        'Recurring gifts are the most useful to us: they cover salaries and field seasons that span years. One-time gifts go to the work already underway.'
+      ]),
+      LIST('Make a gift', 'GIVE NOW', [
+        c('Give through Donorbox', 'One-time or monthly, by card or bank transfer.', 'Contextual photo', 'DONATE', 'donate', 'https://donorbox.org/seed-funding-the-critical-ecology-lab-1')
+      ]),
+      LIST('Ways to give', 'THREE ROUTES', [
+        c('Donate online', 'Card or bank transfer through Donorbox.', 'Contextual photo', 'ONLINE', 'donate', 'https://donorbox.org/seed-funding-the-critical-ecology-lab-1'),
+        c('Book a call with our CEO', 'For leadership and major gifts.', 'Contextual photo', 'CALL', 'donate', 'https://calendar.app.google/6qhzVtF4FNsZdxzv8'),
+        c('Donate by check', 'Critical Ecology Lab, c/o Inquiring Systems Inc., 1275 Fourth Street #371, Santa Rosa, CA 95404.', 'Contextual photo', 'CHECK', 'donate')
+      ]),
+      T('Other ways to give', 'Critical Ecology Lab is an independent, fiscally sponsored 501(c)(3) nonprofit research organization based in the California Bay Area. Our fiscal sponsor is Inquiring Systems Inc.', 'A Leadership Giving Interest Form is available for donors considering a major gift.')
+    ] },
+
+  programs: { kicker: 'PROGRAMS', title: 'Programs', parent: null,
+    stand: 'Our public programs dissolve the harmful barriers between advanced Earth science and everyday people.',
+    slot: 'SPLASH — teaching or field course scene',
+    blocks: [
+      CARDS('Programmes', [
+        c('Academic Training', 'Courses and structured training.', 'Classroom or field teaching', 'TRAINING', 'academic-training'),
+        c('Eco Afro Futures Platform', 'Media and convening platform.', 'Platform key art', 'PLATFORM', 'eco-afro'),
+        c('Public Events', 'Talks, screenings, community gatherings.', 'Audience at an evening event', 'EVENTS', 'public-events')
+      ]),
+      P('FULL-BLEED — cohort in the field', 'Caption line — programme, cohort year, credit.')
+    ] },
+  'academic-training': { kicker: 'PROGRAMS', title: 'Academic Training', parent: 'programs',
+    stand: 'Accessible resources from entry-level to advanced.',
+    slot: 'Teaching moment, medium crop',
+    blocks: [
+      T('The pedagogy', 'Our vision merges scientific training with decolonial and anti-oppression theory/praxis in the legacy of the Freedom Schools of the U.S. Civil Rights Movement. We teach ecological systems thinking, critical analysis of power structures, and field research skills, while building a reflexive and affirming environment that centers the knowledge, experiences and healing of Black, Indigenous and people of color.', 'Through its courses, CEL readies the next generation of environmental professionals to pursue ecological truth telling and respond boldly to planetary and humanitarian crisis.'),
+      CARDS('Tracks', [
+        c('Liberation Ecology Field Academy', 'The immersive flagship training program linking ecological and social theory with technical scientific research practices.', 'LEFA cohort photo', 'PROGRAM', 'lefa'),
+        c('Critical Ecology EDU', 'Fee-based e-courses. Self-paced, open to anyone — no application required.', 'Course still or screen', 'E-COURSES', 'academic-training')
+      ], 2),
+      LIST('Past courses', 'MOST RECENT FIRST', [
+        c('Liberation Ecology International Course', 'Center for Planetary Pedagogies (C4PP) · online course.', 'Course key image', 'TAUGHT', 'academic-training', 'https://www.centerforplanetarypedagogies.org/courses/liberation-ecology', undefined, 'Offered through a partnership with the Center for Planetary Pedagogies (C4PP): an introduction to Critical Ecological thought as both a science and an analytical framework— how ecological research can engage with liberation by quantifying the impacts of power disparities.', '2025-01-01'),
+        c('Liberation Ecology Field Course', 'Critical Ecology Lab · field cohort.', 'LEFA 2025 cohort photo', 'TAUGHT', 'lefa', undefined, 'lefa-cohort-group.jpg', 'The 2025 cohort of the field course, linking ecological and social theory with technical field research practice.', '2025-06-01'),
+        c('Liberation Ecology Field Course', 'Critical Ecology Lab · field cohort.', 'LEFA 2023 cohort photo', 'TAUGHT', 'lefa', undefined, 'lefa-field-seminar.jpg', 'The inaugural 2023 cohort of the field course.', '2023-06-01')
+      ])
+    ] },
+  lefa: { kicker: 'PROGRAMS', title: 'Liberation Ecology Field Academy (LEFA)', parent: 'academic-training',
+    stand: 'The Liberation Ecology Field Course prepares young adults working in environment-related fields to better understand and mitigate the climate crisis by addressing the role of racial capitalism and social inequality shaping ecosystems and society.',
+    slot: 'LEFA cohort in the field',
+    blocks: [
+      PAIR('Course description', 'Cohort at work', [
+        'The Liberation Ecology Field Course (LEFC) aims to prepare young adults working in environment-related fields to better understand and mitigate the climate crisis by addressing the role of racial capitalism and social inequality shaping ecosystems and society. The course integrates technical and historical knowledge of local and global environmental change phenomena; methods for environmental analysis; critical social theory of environmental change; and inner work to repair the harmful effects of interpersonal and structural social injustices and build emotional resilience and dignity.',
+        'Our vision merges scientific training with decolonial and anti-oppression theory/praxis in the legacy of the Freedom Schools of the U.S. Civil Rights Movement. LEFC teaches ecological systems thinking, critical analysis of power structures, field research skills, while building a reflexive and affirming environment that centers the knowledge, experiences and healing of Black, Indigenous and people of color.',
+        'Experience with the outdoors (hiking, camping, etc.) is NOT required for participation. LEFC is intended to be accessible to all levels of comfort with the outdoors and levels of ability.'
+      ]),
+      P('FULL-BLEED — landscape of the field site', 'Caption line — site, season, credit.'),
+      LIST('Foundations', 'GOALS · OVERVIEW · ELIGIBILITY', [
+        c('Course goals', 'What the course builds the capacity of participants to do.', 'Cohort in discussion', 'GOALS', 'lefa', undefined, undefined, 'Apply analytic and field skills to pursue questions that unite BIPOC experiences with patterns of ecological change in order to dismantle persistent colonial systems. Seek ways to be good ancestors and descendants in the face of social and planetary crisis. Heal from ecological trauma and reclaim a relationship with nature that is a foundation for personal, environmental, epistemic, and political transformation.'),
+        c('Course overview', 'Virtual sessions, field days, overnight trips, and coursework.', 'Field lesson', 'STRUCTURE', 'lefa', undefined, undefined, 'Four virtual sessions providing orientation, introducing critical ecological theory, addressing and developing trust among educators and students. Four field-based day-long lessons and two overnight camping trips in locations ranging from old growth redwood forests to urban coastlines. Reading and writing assignments on core concepts of ecological and climate science, liberation theories, and hands-on data collection methodology. Further details to be announced.'),
+        c('Eligibility', 'Who the course is seeking.', 'Applicant portrait', 'APPLY', 'lefa', undefined, undefined, 'The course seeks applicants who demonstrate that they have thought deeply about their identity and positionality in relation to the unfolding of the current environmental crisis; a specific problem or question at the intersection of environmental change and social justice that they are committed to addressing; and the social and planetary future they wish to help build. We strongly encourage applications from people who are from socially marginalized backgrounds and who are historically underrepresented in the natural sciences, including but not limited to queer, trans, non-binary, Black, Indigenous, people of color, and disabled people.'),
+        c('2023 Program', 'The previous session.', 'Cohort photo', 'PAST', 'lefa', 'https://www.criticalecologylab.org/field-course-2023', undefined, undefined, '2023')
+      ]),
+      T('What participants say', '"[The course] changed my perspective on what is possible in my own journey ... That little piece of knowledge is an invaluable gift and I cannot thank CEL enough for giving me that. I know it\u2019ll serve us all well as we change the world. I\u2019ll carry it with me always." — 2023 Course Participant', '"This course was life-changing in so many ways, I can\u2019t even begin to count how many seeds of inspirations this course has planted. But overall, I\u2019m taking away the friendships I made here and a large community of people ready to collectively build together." — 2023 Course Participant'),
+      T('With support from', 'Simons Foundation, Science Sandbox.'),
+      NEXT('APPLY', [{ label: 'Courses (Free + Paid)', to: 'courses' }, { label: 'Contact', to: 'contact' }])
+    ] },
+  courses: { kicker: 'PROGRAMS', title: 'Courses (Free + Paid)', parent: 'academic-training',
+    stand: 'Standfirst — the catalogue, and the free tier.',
+    slot: 'Learner at work',
+    blocks: [
+      LIST('Catalogue', 'FREE AND PAID', [
+        c('Liberation Ecology', 'Online course · offered with the Center for Planetary Pedagogies (C4PP).', 'Course key image', 'PAST', 'courses', 'https://www.centerforplanetarypedagogies.org/courses/liberation-ecology', undefined, 'An introduction to Critical Ecological thought as both a science and an analytical framework— how ecological research can engage with liberation by quantifying the impacts of power disparities.', '2025'),
+        c('PLACEHOLDER — no standing course catalogue existed on the old site', 'Add length, format and level as courses are published.', 'Course key image', 'PLACEHOLDER', 'courses')
+      ]),
+      T('Access and scholarships', 'PLACEHOLDER — the old site published no scholarship or fee-waiver policy. The Liberation Ecology Field Course is free to participants and supported by the Simons Foundation.')
+    ] },
+  'eco-afro': { kicker: 'PROGRAMS', title: 'Eco Afro Futures Platform', parent: 'programs',
+    stand: 'Sharing climate knowledge to build abundant futures.',
+    slot: 'SPLASH — platform key art or summit photo',
+    blocks: [
+      P('FULL-BLEED — platform key art / summit stage', 'Caption line — event and year.'),
+      T('How the program drives change:', 'In order to take science out of the lab and into the imaginations of historically marginalized communities, CEL hosts the Eco Afro Futures Initiative— a series of free community events across the US where local environmental scientists, environmental justice activists, designers, educators, students, and other leaders are inspired and connect to build our future.', 'Now in its third year, EAF operates through three interconnected components.'),
+      CARDS('Explore the Initiative', [
+        c('The Summit', 'An annual convening in Oakland where scientists, artists, technologists, policymakers, and community members gather to think across disciplines, build cross-sector relationships, and generate ideas that no single field could produce alone.', 'Summit photograph', 'EVENT', 'eco-afro', 'https://www.ecoafrofutures.org'),
+        c('Curated Resources', 'A curated collection of essays, data, books, films, podcasts, and educational materials for educators, researchers, and cultural workers shaping how we understand and respond to the climate crisis.', 'Production still', 'MEDIA', 'eco-afro', 'https://www.ecoafrofutures.org'),
+        c('Network', 'A growing community of practitioners, scholars, and organizations connected through shared frameworks and a commitment to translating Black ecological knowledge into action — from the grassroots to the institutional scale.', 'Network portrait', 'PEOPLE', 'eco-afro', 'https://www.ecoafrofutures.org', 'red-cells-macro.jpg')
+      ]),
+      LIST('Past speakers', 'SELECTED', [
+        c('Dr. Suzanne Pierre', 'Critical Ecology Lab · Founder and Director.', 'Portrait', 'SPEAKER', 'team'),
+        c('Dr. Tianna Paschel', 'Associate Professor and co-director of the Black Studies Collaboratory, UC Berkeley.', 'Portrait — headshot needed', 'SPEAKER', 'eco-afro', 'https://africam.berkeley.edu/people/tianna-paschel'),
+        c('Dr. Noni Session', 'Co-Founder and Executive Director, East Bay Permanent Real Estate Cooperative.', 'Portrait — headshot needed', 'SPEAKER', 'eco-afro', 'https://ebprec.org'),
+        c('Ariam Mogos', 'Learning Designer and Technologist, Stanford d.school.', 'Portrait — headshot needed', 'SPEAKER', 'eco-afro', 'https://dschool.stanford.edu/team/ariam-mogos'),
+        c('Dr. Karen Bailey', 'Professor at University of Colorado Boulder · interdisciplinary environmental social scientist.', 'Portrait', 'SPEAKER', 'eco-afro', 'https://www.colorado.edu/envs/karen-bailey'),
+        c('Ms. Margaret Gordon', 'Founding member of the West Oakland Indicators Project.', 'Portrait', 'SPEAKER', 'eco-afro', 'https://woeip.org/about-woeip/margaret-gordon/'),
+        c('Dr. Chris Schell', 'Professor at UC Berkeley · urban ecologist and Afrofuturist.', 'Portrait', 'SPEAKER', 'eco-afro', 'https://ourenvironment.berkeley.edu/users/1757114'),
+        c('Dr. Camille Gaynus', 'Chief Science Officer at Black in Marine Science.', 'Portrait', 'SPEAKER', 'eco-afro', 'https://www.blackinmarinescience.org/camille-gaynus.html'),
+        c('Nautica Jones', 'Ph.D. student and Black Traditional Ecological Knowledge researcher.', 'Portrait', 'SPEAKER', 'team', 'https://www.eeb.ucsc.edu/about/dept-directory.php?uid=natjones', 'nautica-jones.webp')
+      ]),
+      T('With support from', 'Simons Foundation, Science Sandbox · Peninsula Open Space Trust.'),
+      NEXT('GO FURTHER', [{ label: 'EAF Website', to: 'eco-afro' }, { label: 'Become a Partner', to: 'contact' }])
+    ] },
+  'public-events': { kicker: 'PROGRAMS', title: 'Public Events', parent: 'programs',
+    stand: 'Free community events where scientists, activists, designers, educators and students connect to build our future.',
+    slot: 'SPLASH — audience at an evening event',
+    blocks: [
+      T('Nothing on the calendar right now', 'No public events are scheduled at the moment — new talks, screenings and gatherings are announced here and on our channels first.'),
+      P('FULL-BLEED — room full of people, warm light', 'Caption line — event, city, credit.'),
+      LIST('Past', 'MOST RECENT FIRST', [
+        c('CEL Virtual Community Meeting 2', 'Wednesday 29 July 2026 · 9–10 AM PDT · virtual.', 'Community meeting announcement graphic', 'PAST', 'public-events', undefined, undefined, 'The second open call of the year: a research update from the field season, what the lab is publishing next, and an open floor for questions from the community.', '2026-07-29'),
+        c('BIPOC Leaders Lounge', 'Oakland, California · SF Climate Week 2026 · 53 attended.', 'Evening gathering photo', 'PAST', 'public-events', 'https://luma.com/lgogtsr5', undefined, 'An evening of connection and vision among Black, Indigenous and allied leaders of colour across the climate space — from grassroots organising to green tech and climate philanthropy. Co-hosted with SF Climate Week to open the week by deepening networks and grounding in commitments to equity, justice and liberation.', '2026-04-20'),
+        c('Invisible Impacts Symposium', 'Virtual · June 8–9, 2026 · practitioners, scholars, students and educators.', 'Symposium announcement graphic', 'PAST', 'public-events', 'https://iisymposium.criticalecologylab.org', 'invisible-impacts-symposium', 'Two days on the impacts that conventional environmental science leaves out — the social, economic and bodily consequences of ecological change. Open to practitioners, scholars, students and educators at every level.', '2026-06-08'),
+        c('CEL Virtual Community Meeting 1', 'Wednesday 1 April 2026 · 9–10 AM PDT · virtual.', 'Community meeting announcement graphic', 'PAST', 'public-events', undefined, 'community-meeting-q1.jpg', 'The first quarterly community meeting — an hour-long introduction to the year ahead: active projects, how the lab works, and how people outside the lab can take part.', '2026-04-01')
+      ]),
+      T('Past events', 'Body paragraph — archive, recordings, how to request a talk.')
+    ] },
+
+
+  'post-founders-note': { kicker: 'LAB UPDATE', title: '[Founder\u2019s Note] Why we keep going.', parent: 'news',
+    stand: 'Whenever the work of building and sustaining the Critical Ecology Lab pushes me toward burning out, I return to an exchange I shared with a total stranger in February 2023.',
+    slot: 'Dr. Pierre lecturing at the Columbia University Climate School',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 23 March 2026',
+        'I had been invited to give a lecture at the Columbia University Climate School. Standing at the front of a large room in Columbia\u2019s Faculty House, I spoke about the ways that systematic exploitation of people leads to degradation of the planet \u2014 and how soils can reveal this history. There was a gentleman at the back of the room, standing behind a video camera, sent by the university to document the event. He was also the only Black man in the room.',
+        '\u201c\u2026telling the story of oppressed and exploited people as part of a larger story of planetary dysregulation brings more truth, honor, and dignity to our lives.\u201d',
+        'At the end of my talk, as the room was clearing, he paused just as he was passing me. He set his equipment down. He turned to shake my hand. And he said something I haven\u2019t forgotten: \u201cThank you for telling the truth. For telling the whole story about us.\u201d',
+        'He spoke with tears in his eyes. His words wicked emotion into my chest, and my own tears followed. His was the feedback I needed to hear \u2014 not from a scholar or a peer reviewer, but from someone who shares experiences and lineage with me, and who saw our research for exactly what it is. Across the theory and the data, he understood that telling the story of oppressed and exploited people as part of a larger story of planetary dysregulation brings more truth, honor, and dignity to our lives. He understood our research as a process of accountability that can lead to solutions.',
+        'That moment was simple and exceptional. And if our work succeeds, it will become a moment of self-recognition that many more people get to have \u2014 in classrooms, in field sites, in the communities where this research lives.',
+        'Our process of using science to reveal what has been hidden is revolutionary \u2014 and it yields two gifts.',
+        'The first: the Critical Ecology Lab produces knowledge about how humanity has shaped the Earth, rendered in the key of repair. The second: through the practice of research itself, our work affirms lived, generational experiences in ways that spark healing. This is what the cameraman at Columbia needed me to know. Only in healing can real repair happen \u2014 in societies, and in ecological systems alike.',
+        'From Greenland to Brazil, people across the world have shared this moment of recognition with me. A stranger on the other side of a camera in New York City reminded me that this is what we are working for. That reminder is enough to keep going.'),
+      NEXT('MORE', [{ label: 'Press & Lab Updates', to: 'news' }, { label: 'Donate', to: 'donate' }])
+    ] },
+
+  'post-stacey-king': { kicker: 'LAB UPDATE', title: 'Critical Ecology Lab Welcomes Stacey King as Director of Operations', parent: 'news',
+    stand: 'Climate investment strategist and Berkeley Haas MBA joins independent research institute to scale organizational impact.',
+    slot: 'Portrait of Stacey King',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 12 February 2026',
+        'OAKLAND, CA \u2014 Critical Ecology Lab (CEL) is pleased to announce the appointment of Stacey King as Director of Operations, effective January 2026.',
+        'King brings over a decade of experience spanning engineering, investments, and strategic operations to the role. Most recently, she served as an advisor and investor at California Innovation Fund, a mission-driven venture capital fund where she helped climate startups develop technically feasible and commercially viable products and solutions. Her work included guiding early-stage companies through go-to-market strategy, product-market fit research, and fundraising.',
+        'King holds an MBA from the University of California, Berkeley\u2019s Haas School of Business, where she developed deep expertise in strategic planning and business development. She has served as a judge for the Berkeley Big Ideas Contest, mentoring students developing innovative solutions to pressing social and environmental challenges.',
+        '\u201cWe\u2019re thrilled to welcome Stacey to the Critical Ecology Lab team,\u201d said Dr. Suzanne Pierre, CEL\u2019s founder and CEO. \u201cHer experience scaling mission-driven organizations and supporting climate ventures makes her the ideal partner as we enter our next phase of growth.\u201d',
+        'In her role at CEL, King will lead fundraising, partnership development, and operational infrastructure as the organization expands its research initiatives and educational programs. Her appointment comes as CEL builds on recent momentum, including guest lectures at the University of Greenland and continued expansion of its Ecological Scars of Plantation Slavery research initiative.',
+        '\u201cI\u2019m excited to join an organization doing such vital work at the intersection of science and justice,\u201d said King. \u201cCEL\u2019s approach to understanding how historical systems of extraction shape today\u2019s environmental crises is exactly the kind of bold, necessary research our world needs.\u201d',
+        'King is based in Oakland, where she enjoys watercolor painting, skiing in Tahoe, and reading historical fiction.',
+        'The Critical Ecology Lab is the world\u2019s first Black woman-led independent research institute, investigating how colonialism, slavery, and racial capitalism have physically shaped ecosystems and continue to drive climate change.'),
+      NEXT('MORE', [{ label: 'Meet the Team', to: 'team' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-greenland': { kicker: 'LAB UPDATE', title: 'Critical Ecology Lab Founder Delivers Historic Lectures in Nuuk, Greenland, Bridging Arctic and Caribbean Colonial Histories', parent: 'news',
+    stand: 'Dr. Suzanne Pierre becomes among the first guest lecturers for Greenland\u2019s inaugural natural sciences degree program.',
+    slot: 'Nuuk, Greenland',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 10 February 2026',
+        'NUUK, GREENLAND \u2014 In January 2026, Dr. Suzanne Pierre, founder and CEO of the Critical Ecology Lab (CEL), delivered a series of guest lectures at the University of Greenland (Ilisimatusarfik) on critical ecological science \u2014 marking a significant milestone for both the Oakland-based research institute and the Arctic university.',
+        'Dr. Pierre was invited by Professor Aviaja Lyberth Hauptmann, to lecture undergraduates in the university\u2019s SILA Department, home to Greenland\u2019s first-ever bachelor\u2019s degree program in the natural sciences. Launched in February 2025, the SILA Bachelor in Biology integrates Indigenous Greenlandic knowledge systems with Western scientific methods, grounding its curriculum in Greenlandic nature, culture, and community. Dr. Pierre\u2019s lectures on decolonial science frameworks aligned directly with SILA\u2019s mission to train scientists who understand the deep connections between ecology, culture, and history.',
+        'The timing proved significant. Dr. Pierre arrived as diplomatic tensions between the United States, Denmark, and Greenland intensified over U.S. interest in acquiring the territory \u2014 echoing Greenland\u2019s long colonial relationship with Denmark, which has included cultural erasure and the extraction of valuable minerals such as cryolite.',
+        'Dr. Pierre\u2019s lectures drew unexpected connections. The Critical Ecology Lab\u2019s flagship research initiative, \u201cEcological Scars of Plantation Slavery,\u201d examines the environmental legacy of Danish sugarcane plantations on St. Croix in the U.S. Virgin Islands \u2014 a colony Denmark operated for nearly 200 years before selling it to the United States in 1917. By presenting this research to Greenlanders still navigating their relationship with Denmark, Dr. Pierre illuminated shared colonial histories spanning 4,000 miles between the Caribbean and the Arctic.',
+        '\u201cThe conversations that emerged were extraordinary,\u201d said Dr. Pierre. \u201cMany Greenlanders had never considered the colonial connections between their history and that of the Caribbean.\u201d',
+        'Dr. Pierre concluded her visit with a public lecture at the Greenland National Museum in Nuuk, speaking alongside museum curators presenting Breathing Membranes \u2014 an exhibition exploring the cultural preservation of traditional Greenlandic practices using animal gut skin to create functional objects and art. The pairing demonstrated how Indigenous knowledge systems and critical scientific research can amplify one another in resisting ongoing colonization.',
+        'The Critical Ecology Lab, founded by Dr. Pierre, is the world\u2019s first Black woman-led independent research institute. CEL investigates how colonialism, slavery, and racial capitalism have physically shaped ecosystems and continue to drive climate change.'),
+      TAGS('TAGGED', ['events', 'education', 'collaborations', 'colonialism', 'university']),
+      NEXT('MORE', [{ label: 'Ecological Scars of Plantation Slavery Initiative', to: 'ecological-scars' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-opening-up': { kicker: 'LAB UPDATE', title: 'A note on opening up.', parent: 'news',
+    stand: 'I know it hasn\u2019t been an easy year at all.',
+    slot: 'Dr. Suzanne Pierre working to prepare soil samples for analysis at UC Berkeley',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 20 November 2025',
+        'I know it hasn\u2019t been an easy year at all. For many of us, this year revealed that the core fears we have about the soul of the United States are not unfounded anxieties, but are real and have been activated. On our screens and in our streets, state-sanctioned violence robs people of their dignity, rights, lives, and ancestral lands. Those who are not abducted, silenced, and surveilled are often left feeling helpless, seeking out what little we can do, collectively, to safeguard more vulnerable targets.',
+        'I have wanted to be a more vocal leader, using this nonprofit, the Critical Ecology Lab, and my position as a scientist, to be a greater force for grounded hope and ambitious strategy. But that\u2019s not how this year turned out. Instead of connecting more with our community, I turned inwards. I focused on our programs, research, and fundraising, but never felt that these things were perfect enough to share. So the newsletters were never sent, the social media posts stayed in drafts, and the essays remained unpublished. Ultimately, the fear of not being seen as a serious, polished research organization kept me from sharing the real work we were doing all year. \u201cWho wants to see this if it\u2019s not perfect?\u201d was the question I asked myself every month.',
+        'But while I sat on our team\u2019s accomplishments and held back my thoughts for fear of not being the \u201cright expert\u201d, things have gotten worse. At the current UN COP30 meetings, yet another batch of negotiations will be held without arriving on binding commitments, and the Indigenous Pavillion will remain on the outskirts again, a performative afterthought over an hour away from the center of decision making. Data centers will consume billions of gallons of fresh water while communities fight to maintain access to clean safe drinking water and to keep their farms running on irrigation, all so that \u201cagents\u201d can enable an unprecedented level of \u201cproductivity\u201d. Black and brown communities here in the U.S. and around the world will continue to absorb the torrential storms directly worsened by climate change like it\u2019s normal. No one is coming to our rescue.',
+        'So my reflection on the past nine months is this: people like me, playing it small and safe, is exactly why we have not seen a decline in emissions or warming in the past three decades. The basic science is clear, the contemporary perpetrators have been identified, and the cost in lives and dollars has been counted. The missing piece is the confidence and heart of oppressed people. The belief and audacity, coupled with knowledge and expertise, that can shift us from asking leaders for their attention to seizing the world\u2019s attention with evidence and action, and becoming the leaders we need.',
+        'Over the next few weeks, I am going to share everything we have done this year, and even in previous years, here at the Critical Ecology Lab. And further, I am going to share where we are going, in detail, and without tempering the vision. In return, I am going to ask that you, as a reader, do something small in return. Help us reach more learners, leaders, funders, and institutions, who should know exactly what we\u2019re doing here, and how critical ecology can shape the world we ought to have. Forward my letters to anyone who you think will find them interesting, clarifying, inspiring, or even provocative. Help us by building the most important thing any organization, or movement, can have: a broad, connected network of committed people.',
+        'As I decompose the learned limitations that have kept my ambitions for CEL\u2019s work quiet and small, I invite you to do the same. What ambitions have you put off because they seem unrealistic, or because cynicism has crept in, or because someone else seems to have done it better? What low expectations have seeped into your consciousness, limiting how widely and creatively you think about solving problems? What thinking around what is possible, and who looks like a leader, do you need to destroy, and replace with something bright and brave?',
+        'Thank you to those who have donated month after month, and shared our work and story. If you would like to start seeding a sustainable and capable Critical Ecology Lab, you can donate here.',
+        'More soon xx',
+        'Dr. Sue Pierre, Founder, Critical Ecology Lab'),
+      NEXT('MORE', [{ label: 'Donate', to: 'donate' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-science-to-action': { kicker: 'LAB UPDATE', title: 'Science to Action: Grassroots Activism for Scientists', parent: 'news',
+    stand: 'On Thursday, December 14th, 2023 Critical Ecology Lab (CEL) Founder & Director Dr. Suzanne Pierre presented a symposium at the American Geophysical Union (AGU) Annual meeting in San Francisco, CA.',
+    slot: 'AGU annual meeting, San Francisco',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 4 April 2024',
+        'From December 11th to 15th 2023, the Critical Ecology Lab team attended the American Geophysical Union (AGU) annual meeting representing our leadership in Earth Science research.',
+        'During the Science and Society segment, Dr. Pierre gave a presentation titled \u201cThe Critical Ecology Lab: Research Towards a Liberatory Anthropogenic Change Episteme\u201d. It emphasized CEL\u2019s mission and research on the terrestrial biogeochemical legacy effects of colonial resource extraction. She discussed the activism involved creating an independent organization using the Critical Ecology framework. Integrating socially critical Earth systems research enhances social liberation efforts within and beyond the traditional scientific community.',
+        'We extend heartfelt thanks to Dr. Rose Z. Abramoff at the Ronin Institute for Independent Scholarship, to all participants for their outstanding contributions to the meeting, and to AGU for facilitating this enriching experience.'),
+      T('The American Geophysical Union (AGU)',
+        'AGU is a global community supporting more than half a million advocates and professionals in the Earth and space sciences. Through broad partnerships, AGU aims to advance discovery and solution science that accelerates knowledge and creates solutions that are ethical, unbiased, and respectful of communities and their values. Their programs include serving as a scholarly publisher, convening virtual and in-person events, and providing career support. AGU was established in 1919 by the National Research Council and operated as an unincorporated affiliate of the National Academy of Sciences for over 50 years. It was independently incorporated in 1972.'),
+      T('Press contacts', 'Sacha Medjo-Akono, Assistant Lab Manager, Critical Ecology Lab \u00b7 smedjo.cel@gmail.com'),
+      NEXT('MORE', [{ label: 'Press & Lab Updates', to: 'news' }, { label: 'Themes & Theory', to: 'themes' }])
+    ] },
+
+  'post-window-mirror': { kicker: 'PUBLICATION', title: 'When the window is a mirror: how do dominant theories limit our understanding of nature?', parent: 'news',
+    stand: 'Dr. Pierre contributes to paper published by the Ecological Society of America.',
+    slot: 'Bulletin of the Ecological Society of America cover',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 2 April 2024',
+        'From August 6 to 11th of 2023, Critical Ecology Lab Founder & Director Dr. Suzanne Pierre presented at the Ecological Society for America\u2019s annual meeting.',
+        'The theme of this meeting was to contribute to the establishment of an Ecological Society of America (ESA) that is inclusive of all ecologists. This was achieved by curating programming and inviting sessions designed to actively involve ecologists from both the private and public sectors. These sessions highlighted projects that are actively applying ecological science, fostering collaboration across various sectors, nurturing the next generation of scientists and decision-makers, and effectively sharing both fundamental and applied ecological research with those who stand to benefit the most.',
+        'During the meeting\u2019s Inspire Sessions, Dr. Pierre delivered a presentation titled \u201cGeology and Greed: Long and Short-term Drivers of Plant Community Assemblage,\u201d which investigates the drivers of island vegetation dynamics, such as parent materials, topographic parameters, latitude, disturbance history, and the presence of nearby islands. These conditions not only shape plant communities but have also played a significant role in European colonization of Caribbean islands by influencing their suitability for colonial extraction. We hypothesize that plant functional diversity will exhibit the least variation following plantation abandonment on islands with the highest utility for colonial exploitation.',
+        'After these discussions, ESA published a paper titled \u201cWhen the Window is a Mirror: How Dominant Theories Limit Our Understanding of Nature\u201d (ESA 2023 INS23) on April 1st, 2024, including contribution from session speakers including Dr. Pierre. This paper, derived from insights shared during the Inspire Session, emphasizes the importance of critically examining the frames, narratives, and analogies we employ to understand nature. It urges ecologists to reflect on the stories we tell, how we tell them, and how they shape our study of the natural world.',
+        'We extend heartfelt thanks to all participants, for their outstanding contributions to the meeting, and to ESA for facilitating this enriching event.'),
+      LIST('Read the paper', 'OPEN ACCESS', [
+        c('When the Window is a Mirror: How Dominant Theories Limit Our Understanding of Nature', 'Bulletin of the Ecological Society of America \u00b7 open access.', 'Journal cover', 'DOI', 'post-window-mirror', 'https://esajournals.onlinelibrary.wiley.com/doi/10.1002/bes2.2145', undefined, undefined, '2024')
+      ]),
+      T('ESA', 'The Ecological Society of America (ESA) is a nonpartisan, nonprofit organization established in 1915 with the objectives to enhance communication among ecologists, raise public awareness about the significance of ecological science, augment resources for ecological research, and facilitate the integration of ecological science into environmental decision-making processes by fostering communication between the ecological community and policymakers.'),
+      T('Inspire Sessions', 'Inspire Sessions (INS) are fast paced and engaging sessions that consist of 6\u201310 invited talks, meant to stimulate dialogue on the subjects presented. The Inspire session titled \u201cWhen the Window is a Mirror: How Dominant Theories Limit Our Understanding of Nature\u201d at ESA 2023 aimed to explore the constraints of current theories and their implications for understanding the natural world. Through case studies, the session examined existing \u201cmirrors\u201d \u2014 instances where ecological models are built on limiting assumptions, revealing insights into our own perspectives and favored narratives.'),
+      T('The Bulletin of the Ecological Society of America', 'The official open-access record of the business of the Ecological Society of America. Non-refereed articles on ecological education, history and best practices, DEIJ and science communication are all at home in The Bulletin of the Ecological Society of America. The Bulletin publishes letters, longer commentaries, and philosophical and methodological items related to the science of ecology.'),
+      T('Press contact', 'Sacha Medjo-Akono, Assistant Lab Manager, Critical Ecology Lab \u00b7 smedjo.cel@gmail.com'),
+      NEXT('MORE', [{ label: 'Reports', to: 'reports' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+
+  'post-rockefeller': { kicker: 'LAB UPDATE', title: 'Suzanne Pierre Delivers Rockefeller University Friday Lecture Series Annual \u201cScience of Diversity, Equity, and Inclusion\u201d Lecture', parent: 'news',
+    stand: 'On Friday, March 15th 2024 Critical Ecology Lab Founder & Director, Dr. Suzanne Pierre, will join Rockefeller University\u2019s Friday Lecture Series for their Annual Science of Diversity, Equity, and Inclusion Lecture.',
+    slot: 'Dr. Pierre at Rockefeller University',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 14 March 2024',
+        'In recent years, our planet has borne witness to numerous societal and climate crises. The presence of oppressive systems, power imbalances, and knowledge gaps significantly shape the understanding and investigation of global climate and ecological change within the scientific community. Consequently, we inhabit a world where the unequal impacts of these issues are felt among diverse populations.',
+        'The Critical Ecology Lab aims to establish a scientific foundation for understanding evolving Earth systems in conjunction with persistent social inequalities. Through groundbreaking research methods, we strive to challenge and reshape fundamental scientific understanding and practices, as well as public narratives surrounding the Anthropocene. By contributing to a robust body of evidence, our lab endeavors to bolster political action addressing global change. Ultimately, our goal is to redefine the audience and methodologies of global change science, promoting inclusivity and transformation within the field.',
+        'During this lecture, Dr. Pierre will share about the founding and evolution of our distinctive independent research institution. She will also provide examples of the lab\u2019s socially critical approach to Earth systems research, along with our vision for advancing liberation within the scientific community.'),
+      T('The Annual Science of Diversity, Equity, and Inclusion Lecture',
+        'The Annual Science of Diversity, Equity, and Inclusion Lecture was established by the University in 2020. The goal of this lecture is to highlight the impactful research by leaders in the science of diversity, equity, and inclusion. This lecture is hosted by members of WISeR (Women in Science at Rockefeller), RockOut (Rockefeller\u2019s LGBTQ+ organization for sexual/gender minorities), and RiSI (The Rockefeller Inclusive Science Initiative).'),
+      T('The Friday Lecture Series',
+        'The Friday Lecture Series is one of the principal university-wide activities of the academic year. Scientists from around the world, and from varying disciplines, are invited to speak to the Rockefeller community and members of neighboring institutions to share their recent research, techniques, and findings. Lectures take place in the university\u2019s Caspary Auditorium at 3:30 p.m., preceded by a tea/coffee reception at 3:00 p.m.'),
+      T('The Rockefeller University',
+        'The Rockefeller University is a private biomedical research and graduate-only university in New York City, New York. It focuses primarily on the biological and medical sciences and provides doctoral and postdoctoral education. It is classified as a \u201cSpecial Focus \u2014 Research Institution\u201d.'),
+      T('About the lab', 'Critical Ecology Lab is a non-profit founded by Dr. Suzanne Pierre in 2020 to integrate the scientific and generational knowledge of oppressed communities to fight against social and planetary crises. They do this by facilitating informal education resources, creating novel scientific research, and activating communities towards climate action.'),
+      NEXT('MORE', [{ label: 'Press & Lab Updates', to: 'news' }, { label: 'Our Story', to: 'our-story' }])
+    ] },
+
+  'post-she-keynote': { kicker: 'LAB UPDATE', title: 'Colonization, Enslavement, and Cross-Scale Ecological Change: Critical Quantification of Global Change', parent: 'news',
+    stand: 'On Tuesday, November 7th, 2023, Critical Ecology Lab founder & Director, Dr. Suzanne Pierre delivered a Keynote address at the Society for Human Ecology\u2019s 25th international Conference in Tucson, AZ.',
+    slot: 'Society for Human Ecology conference, Tucson',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 8 March 2024',
+        'From November 5th to 8th, Dr. Suzanne Pierre and Dr. Em Whalen from Critical Ecology Lab (CEL) participated in the Society for Human Ecology\u2019s (SHE) 25th international gathering of environmental advocates and ecologists. The event featured keynote speeches, workshops, presentations, and discussions centered around the theme \u201cSowing Human Ecological Futures: Vision, Justice, and Diversity.\u201d With attendees hailing from over 20 countries across six continents, the conference provided a platform for building community, networking, and exchanging ideas. Participants shared their research, scholarship, and creative endeavors, generating numerous inspiring concepts.',
+        'Importantly, the conference provided an opportunity for CEL to spotlight its mission of transforming scientific research on a global scale. In her keynote address, Dr. Pierre shared how her journey as a Black scientist inspired the creation of our organization and outlined the core objectives of our primary research initiative, Ecological Scars of Plantation Slavery. This project delves into the study of soils affected by the Danish sugarcane plantations in St. Croix, USVI.',
+        'We extend heartfelt thanks to all participants for their outstanding contributions to the conference, and we are grateful to SHE for facilitating this enriching event.'),
+      T('The Society for Human Ecology',
+        'The Society for Human Ecology (SHE) is an international interdisciplinary professional society that promotes the use of an ecological perspective in research, education, and application. They host regular conferences, conduct workshops and symposia, and co-sponsor a variety of related activities to further integrate work among professionals in fields pertaining to human ecology. SHE is an affiliate of INTECOL (International Association for Ecology) and the Ecological Society of America (ESA), with cross ties to the Human Ecology Section of ESA. SHE publishes the online journal Human Ecology Review.'),
+      T('Press contact', 'Sacha Medjo-Akono, Assistant Lab Manager, Critical Ecology Lab \u00b7 smedjo.cel@gmail.com'),
+      NEXT('MORE', [{ label: 'Ecological Scars of Plantation Slavery Initiative', to: 'ecological-scars' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-hubbard-brook': { kicker: 'LAB UPDATE', title: 'Critical Ecology Lab Joins the Hubbard Brook NSF Long Term Ecological Research Collaboration', parent: 'news',
+    stand: 'Critical Ecology Lab is a new collaborator in the Hubbard Brook Ecosystem Study, seeking to link ecosystem processes and socioeconomic patterns over the past several decades.',
+    slot: 'Hubbard Brook Experimental Forest, New Hampshire',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 7 March 2024',
+        'Long-term attention to the details of landscapes reveals emergent patterns in soil and water. Established in 1955 by the USDA Forest Service, the Hubbard Brook Experimental Forest serves as a pivotal center for forest hydrological research. Hubbard Brook is among the 20 Experimental Forests and Rangelands (EFRs) managed by the USDA Forest Service\u2019s Northern Research Station, contributing to the 80 EFRs nationwide. Additionally, it is part of the Long Term Ecological Research (LTER) Networks funded by the National Science Foundation (NSF).',
+        'Over the years, the Hubbard Brook Experimental Forest has weathered various natural and human-induced disturbances, including 19th-century logging, acid rain, microbursts, ice storms, exotic pests, pathogens, and the impacts of climate change, such as increased precipitation and rapidly warming winters. Understanding how the forest has and will respond to these changes \u2014 under the influence of uneven political and economic conditions \u2014 is a central focus of our research efforts.',
+        'The Critical Ecology Lab\u2019s (CEL) collaboration with Hubbard Brook scientists, humanities scholars, and regional community leaders will expand what we know about the effects of social power disparities that drive human activities on biogeochemical processes over time and at the watershed scale, particularly those involving plant and microbial communities.',
+        'CEL will collaborate with Hubbard Brook staff to host gatherings of scholars and community organizers focused on advancing critical ecological research methods. These gatherings will prioritize the integration of social theories of power disparities into the study of human-induced ecological disturbances and establish research priorities in global change and social equity. Participants will include community organizers representing Tribal Nations across the Northeast, Hubbard Brook scientists, and scholars from various disciplines, including ecological sciences, critical physical geography, indigenous ecological studies, Black ecology, critical archaeology, social-ecological systems research, as well as ecosystem, social, and climate modeling.',
+        'Additionally, the project will invite undergraduate and graduate students who are Black, Indigenous, and people of color (BIPOC) in environmental fields to participate as intellectual and facilitation contributors. The lack of representation of BIPOC scholars and the concerns of oppressed and colonized populations in global change science contribute to the alienation of BIPOC students from traditional ecological sciences, resulting in attrition at later stages of study and early careers. By prioritizing these demographic groups we aim to enhance diversity, inclusion, and retention of underrepresented groups and address the gap in STEM-focused research opportunities addressing ecological and social issues holistically.'),
+      T('Hubbard Brook Ecosystem Study',
+        'The Hubbard Brook Ecosystem Study is a multidisciplinary community of scientists, students, technicians, educators, artists, and environmental leaders contributing to the long-term ecological research in the northern hardwood forest. The Study is a partnership among the USDA Forest Service, the National Science Foundation\u2019s Long Term Ecological Research (LTER) and Long Term Research in Environmental Biology (LTREB) programs, the Hubbard Brook Research Foundation, and scientists from research institutions throughout the world.'),
+      T('Hubbard Brook Research Foundation',
+        'Established in 1993, the Hubbard Brook Research Foundation (HBRF) delivers cutting-edge science to decision-makers on the front lines of environmental change. They bridge gaps between science and education, public policy, land management, corporate sustainability, and recreation. Their programs include roundtable and town-hall events, policy-relevant briefings and bulletins, social and mainstream media outreach, and communication training for students and early-career researchers.'),
+      T('Hubbard Brook Experimental Forest',
+        'The Hubbard Brook Experimental Forest is located on unceded Abenaki land in the southwestern part of the White Mountain National Forest in New Hampshire. This 3,037-hectare (~8,700-acre) forest takes the shape of a bowl-oriented valley, running east to west. Its watersheds are both north- and south-facing slopes, nine of which are equipped with stream gaging stations and other instruments, enabling scientists to delve into the movement of water and chemicals through the ecosystem. It is managed by the USDA Forest Service.'),
+      T('Press contact', 'Sacha Medjo-Akono, Assistant Lab Manager, Critical Ecology Lab \u00b7 smedjo.cel@gmail.com'),
+      NEXT('MORE', [{ label: 'Current Projects', to: 'current-projects' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-eaf-summit-2024': { kicker: 'LAB UPDATE', title: 'Critical Ecology Lab presents the Eco-Afro Futures summit! A Community Activation Event', parent: 'news',
+    stand: 'On Saturday, February 17th, 2024, Oakland locals joined Critical Ecology Lab and held a day-long summit-turned-celebration.',
+    slot: 'Eco-Afro Futures summit, Oakstop, Oakland',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 1 March 2024',
+        'This momentous gathering explores Black-led environmental science, memory, imagination, and audacious joy to ask necessary questions and build a liberated and liveable future.',
+        'Amidst the prevailing uncertainty regarding how climate change will reshape society, Black communities continue to be marginalized, globally, within mainstream sustainability movements and lack access to climate science information. In the United States, there is an urgent need to foster collective awareness, shared objectives, and community support around the distinct experiences of Black people in the face of climate change.',
+        'To amplify, connect, and celebrate the voices of Black environmental scientists, sustainable business leaders, educators, and conservationists, Critical Ecology Lab launched its first edition of \u201cEco-Afro Futures,\u201d an annual summit that brings together the Black community and allies to establish connections, enhance environmental knowledge, develop collective strategies, and unleash creativity.',
+        'Eco-Afro Futures asks \u201cWhat questions must we ask to build the future that we need?\u201d',
+        'Drawing upon the aesthetics of Afrofuturism and organizing principles of Freedom Schools, Eco-Afro Futures is a Black History Month mobilization of Black culture towards just, sustainable futures. The summit provides entry points for individuals at all levels of environmental knowledge, featuring speeches and panel discussions from prominent Black environmental thinkers, creatively designed spaces for facilitating conversations and learning, and a showcase of Black-owned, Earth-centered businesses.'),
+      LIST('Talks and panel discussions by', 'SIX SPEAKERS', [
+        c('Dr. Suzanne Pierre', 'Critical Ecology Lab Founder and Director.', 'Portrait', 'SPEAKER', 'team'),
+        c('Dr. Karen Bailey', 'Interdisciplinary environmental social scientist.', 'Portrait', 'SPEAKER', 'post-eaf-summit-2024', 'https://www.colorado.edu/envs/karen-bailey'),
+        c('Ms. Margaret Gordon', 'Founding member of the West Oakland Environmental Indicators Project.', 'Portrait', 'SPEAKER', 'post-eaf-summit-2024', 'https://woeip.org/about-woeip/margaret-gordon/'),
+        c('Dr. Camille Gaynus', 'Chief Science Officer at Black in Marine Science.', 'Portrait', 'SPEAKER', 'post-eaf-summit-2024', 'https://www.blackinmarinescience.org/camille-gaynus.html'),
+        c('Dr. Chris Schell', 'Urban ecologist, professor and Afrofuturist.', 'Portrait', 'SPEAKER', 'post-eaf-summit-2024', 'https://ourenvironment.berkeley.edu/users/1757114'),
+        c('Nautica Jones', 'Black traditional ecological knowledge researcher and PhD student.', 'Portrait', 'SPEAKER', 'team', 'https://www.eeb.ucsc.edu/about/dept-directory.php?uid=natjones', 'nautica-jones.webp')
+      ]),
+      T('The experience included',
+        'Environmental learning activities. Music by DJ Haunabauna. Films by Destyn Fuller-Hope.',
+        'A Black-owned market. Goods by Divine Roots, Sistah Scifi Books, Ramesses Art Garden, Yani Made It Candle Co., Iyoba Handmade and Peace Love Light Art. Food by Chef Ooo Wee, The Vegan Hood Chefs, Tony the Baker\u2019s Man, Rize Up Sourdough Bakery and Chestnut Street Granola. Beverages by Soul Blends Coffee, Hella Juiced and Togun Wine Collective.',
+        'Community groups: West Oakland Environmental Indicators Project, People\u2019s Programs, Movement Generation, Critical Ecology Lab, Big City Mountaineers, Acta Non Verba Youth Farms and Mandela Grocery Coop.',
+        'The Critical Ecology Lab Free Library, with books from Heyday Books, Milkweed Books, Oregon State University Press, Orbit, Counterpoint Press, University of Georgia Press, AK Press, One World Press, University of Chicago Press, Beacon Press and Library of America.'),
+      T('Details', 'Date: February 17, 2024 \u00b7 Time: 11am\u20134pm PST \u00b7 Location: 2323 Broadway, Oakland, CA (Oakstop)', 'This event was made possible through the support of the community groups mentioned and Patagonia, Science Sandbox & Simons Foundation, Peace Love & Flight, Peninsula Open Space Trust, and the Ida B. Wells JUST DATA LAB.', 'The science literacy, partnerships, and collective agenda that emerge from this event are poised to transform the way we collectively shape our ecological future.'),
+      NEXT('MORE', [{ label: 'Eco Afro Futures Platform', to: 'eco-afro' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-cdls-ucla': { kicker: 'LAB UPDATE', title: 'The Center for Diverse Leadership in Science at UCLA Presents: A Discussion with Critical Ecology Lab\u2019s Suzanne Pierre & Em Whalen', parent: 'news',
+    stand: 'Dr. Suzanne Pierre (Founder & Director, Critical Ecology Lab) and Dr. Em Whalen (Postdoctoral Researcher, CEL) discussed their work as part of the Critical Ecology Lab, and the organization\u2019s mission more broadly, at lunch with UCLA participants of the Center for Diverse Leadership in Science.',
+    slot: 'Discussion at UCLA',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 8 December 2023',
+        'After finishing their PhDs in ecology and environmental science, they both sought alternative pathways outside of academia to continue their research and education work \u2014 in a context that recognized the pressing and intertwined social and environmental crises we face today.',
+        'During this lunch, we explored the following themes, ending with a Q&A based on the group\u2019s interests: pathways for environmental science research outside academia and industry; connections between social theory, environmental justice, and quantitative science; and reframing the origins of our present environmental crises to rethink solutions.'),
+      LIST('Framing readings', 'SHARED WITH PARTICIPANTS', [
+        c('The Miracle of the Commons', 'Michelle Nijhuis \u00b7 Aeon.', 'Article', 'READING', 'post-cdls-ucla', 'https://aeon.co/essays/the-tragedy-of-the-commons-is-a-false-and-dangerous-myth'),
+        c('Whose Growth in Whose Planetary Boundaries?', 'Farhana Sultana \u00b7 excerpts: abstract, introduction, and \u201cSystems Change Needed\u201d.', 'Paper', 'READING', 'post-cdls-ucla', 'https://rgs-ibg.onlinelibrary.wiley.com/doi/epdf/10.1002/geo2.128'),
+        c('Climate Equality: A planet for the 99%', 'Oxfam \u00b7 excerpts: introduction and the section on actions.', 'Report', 'READING', 'post-cdls-ucla', 'https://oxfamilibrary.openrepository.com/bitstream/handle/10546/621551/cr-climate-equality-201123-en-summ.pdf')
+      ]),
+      T('About the Center for Diverse Leadership in Science',
+        'An initiative to promote diversity and inclusion in science, the Center for Diverse Leadership in Science (CDLS) serves as a model for the nation and the world. It has four primary objectives: invest in student scientific retention; belonging \u2014 reduce isolation and provide mentorship; give back through programs of outreach; and active learning \u2014 develop collaborative research and teaching environments.',
+        '\u201cWe create opportunities for underrepresented people to gain education and experience that empower them to become the leaders we need now and in the future, and to address problems in their communities.\u201d \u2014 Aradhna Tripati, Professor, Center for Diverse Leadership in Science Director and Primary Investigator'),
+      T('Press contact', 'Sacha Medjo-Akono, Assistant Lab Manager, Critical Ecology Lab \u00b7 smedjo.cel@gmail.com'),
+      NEXT('MORE', [{ label: 'Meet the Team', to: 'team' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  'post-wallace-foundation': { kicker: 'LAB UPDATE', title: 'The Wallace Foundation Awards nearly $3M in Research Grants to 11 Arts and Culture, Community Development, and Research Organizations Rooted in Communities of Color', parent: 'news',
+    stand: 'Joining Wallace\u2019s multiyear arts initiative launched in 2021, Critical Ecology Lab will conduct ecological and geo-chemical research which can be deployed by artists to enrich their artistic practices and their contributions to their communities\u2019 well-being.',
+    slot: 'Studio or archive detail',
+    blocks: [
+      T('By Suzanne Pierre \u00b7 17 November 2023',
+        'Critical Ecology Lab has been selected to participate in the research-focused component of The Wallace Foundation\u2019s ongoing arts initiative focused on arts organizations founded by, with, and for communities of color. Wallace awarded a total of $2.8 million to Critical Ecology Lab and ten other organizations to conduct their own research on issues relevant to the well-being of arts organizations of color and the communities they serve.',
+        'Critical Ecology Lab\u2019s project is part of Wallace\u2019s Research-Practice Partnerships (RPPs) with Arts Organizations of Color program, in which scholars and research teams work in partnership with arts organizations of color to address shared questions of interest and importance to the field and scholarship. These grants include early career scholars from a wide variety of disciplines to encourage and expand interest in conducting research in the context of the arts and culture.',
+        'The Critical Ecology Lab utilizes scientific training, creative practices, and lived experiences to question and inform the public about the role of invisible, unjust systems that shape our world and have brought on the current environmental crises.',
+        'Critical Ecology Lab will partner with the Public History Project/Price Institute-Rutgers at Newark and ArtChangeUS: Arts in a Changing America to develop a study that equips artists to address the colonial, ecological, and extractive histories of the Lower Connecticut, Long Island, New York City, and Northern New Jersey estuarial bioregion. The proposed study is intended to contribute to a growing body of research that bridges environmental crises and settler colonialism. It will explore how historical, ecological, and biogeochemical datasets and findings can be deployed by artists to enrich their artistic practices and their contributions to their communities\u2019 well-being.',
+        '\u201cEcological Justice depends on our collaboratively and creatively working across our social, cultural, community, and academic siloes to decolonize the fallacies we still live by,\u201d said Jack Tchen, Clement A. Price Professor of Public History and Humanities, Rutgers-Newark and Co-founder, Public History Project.',
+        'Critical Ecology Lab was selected through a request for proposals inviting organizations to lead the planning, implementation, or expansion of individual research projects of their own concept and design.'),
+      T('About The Wallace Foundation',
+        'The Wallace Foundation\u2019s mission is to foster equity and improvements in learning and enrichment for young people, and in the arts for everyone. Wallace works nationally, with a focus on the arts, K-12 education leadership and youth development. In all of its work, Wallace seeks to benefit both its direct grantees as well as the fields in which it works by developing and broadly sharing relevant, useful knowledge that can improve practice and policy.',
+        'These research projects are part of Wallace\u2019s five-year, $104 million arts initiative, launched in 2021, through which the foundation is partnering with arts organizations founded by, for, and with communities of color to advance their well-being, enhance understanding of their contributions to community, and ultimately to help build a more equitable and sustainable arts ecosystem.'),
+      T('Press contacts', 'Sacha Medjo-Akono, Assistant Lab Manager, Critical Ecology Lab \u00b7 smedjo.cel@gmail.com', 'For inquiries about The Wallace Foundation: Caroline Farrell, Resnicow and Associates \u00b7 CFarrell@resnicow.com \u00b7 212-671-5157'),
+      NEXT('MORE', [{ label: 'Funding', to: 'funding' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
+
+  news: { kicker: 'PRESS & LAB UPDATES', title: 'Press & Lab Updates', parent: null,
+    stand: 'Announcements written by the lab, kept separate from external press written about it.',
+    slot: 'SPLASH — newsroom-style editorial photo',
+    blocks: [
+      LIST('In the press', 'WRITTEN ABOUT THE LAB BY OTHERS', [
+        c('Unearthing Climate Colonialism on St. Croix', 'A feature on the Ecological Scars of Plantation Slavery research. ', 'Publication lead image', 'FEATURE', 'news', 'https://www.equalityinstitute.org/unearthing-climate-colonialism-on-st-croix/', 'st-croix-ridge-fieldwork.jpg', 'A feature on the lab\u2019s Ecological Scars of Plantation Slavery research on St. Croix. The publisher requires a sign-in; a free archived copy is also available via the Internet Archive.', '2024', 'The Equality Institute'),
+      ]),
+      LIST('Lab updates', '', [
+        c('[Founder\u2019s Note] Why we keep going.', 'On returning to why the work matters, after a year of holding back.', 'Lead image', 'NOTE', 'post-founders-note', undefined, undefined, undefined, '2026-03-23', 'Suzanne Pierre'),
+        c('Critical Ecology Lab Welcomes Stacey King as Director of Operations', 'Climate investment strategist and Berkeley Haas MBA joins the lab.', 'Lead image', 'NEWS', 'post-stacey-king', undefined, 'stacey-king.webp', undefined, '2026-02-12', 'Suzanne Pierre'),
+        c('Critical Ecology Lab Founder Delivers Historic Lectures in Nuuk, Greenland, Bridging Arctic and Caribbean Colonial Histories', 'Guest lectures for Greenland\u2019s first natural sciences degree programme.', 'Lead image', 'NEWS', 'post-greenland', undefined, undefined, undefined, '2026-02-10', 'Suzanne Pierre'),
+        c('A note on opening up.', 'On perfectionism, playing it small, and what that has cost.', 'Lead image', 'NOTE', 'post-opening-up', undefined, undefined, undefined, '2025-11-20', 'Suzanne Pierre'),
+        c('Science to Action: Grassroots Activism for Scientists', 'On Thursday, December 14th, 2023 Critical Ecology Lab Founder & Director Dr. Suzanne Pierre presented a symposium at the American Geophysical Union (AGU) Annual meeting in San Francisco, CA.', 'Lead image', 'SYMPOSIUM', 'post-science-to-action', undefined, undefined, undefined, '2024-04-04', 'Suzanne Pierre'),
+        c('When the window is a mirror: how do dominant theories limit our understanding of nature?', 'Dr. Pierre contributes to paper published by the Ecological Society of America.', 'Lead image', 'PUBLICATION', 'post-window-mirror', undefined, undefined, undefined, '2024-04-02', 'Suzanne Pierre'),
+        c('Suzanne Pierre Delivers Rockefeller University Friday Lecture Series Annual "Science of Diversity, Equity, and Inclusion" Lecture', 'On Friday, March 15th 2024 Critical Ecology Lab Founder & Director, Dr. Suzanne Pierre, will join Rockefeller University\u2019s Friday Lecture Series for their Annual Science of Diversity, Equity, and Inclusion Lecture.', 'Lead image', 'LECTURE', 'post-rockefeller', undefined, undefined, undefined, '2024-03-14', 'Suzanne Pierre'),
+        c('Colonization, Enslavement, and Cross-Scale Ecological Change: Critical Quantification of Global Change', 'Critical Ecology Lab joins international groups for the Society for Human Ecology\u2019s 25th Conference.', 'Lead image', 'CONFERENCE', 'post-she-keynote', undefined, undefined, undefined, '2024-03-08', 'Suzanne Pierre'),
+        c('Critical Ecology Lab Joins the Hubbard Brook NSF Long Term Ecological Research Collaboration', 'A collaboration with the Hubbard Brook Ecosystem Study.', 'Lead image', 'NEWS', 'post-hubbard-brook', undefined, undefined, undefined, '2024-03-07', 'Suzanne Pierre'),
+        c('Critical Ecology Lab presents the Eco-Afro Futures summit! A Community Activation Event', 'On Saturday, February 17th, 2024, Oakland locals joined Critical Ecology Lab and held a day-long summit-turned-celebration.', 'Lead image', 'EVENT', 'post-eaf-summit-2024', undefined, undefined, undefined, '2024-03-01', 'Suzanne Pierre'),
+        c('The Center for Diverse Leadership in Science at UCLA Presents: A Discussion with Critical Ecology Lab\u2019s Suzanne Pierre & Em Whalen', 'Dr. Suzanne Pierre and Dr. Em Whalen discussed their work as part of the Critical Ecology Lab, and the organization\u2019s mission more broadly at lunch with UCLA participants of the Center for Diverse Leadership in Science.', 'Lead image', 'TALK', 'post-cdls-ucla', undefined, undefined, undefined, '2023-12-08', 'Suzanne Pierre'),
+        c('The Wallace Foundation Awards nearly $3M in Research Grants to 11 Arts and Culture, Community Development, and Research Organizations Rooted in Communities of Color', 'Joining Wallace\u2019s multiyear arts initiative launched in 2021, Critical Ecology Lab will conduct ecological and geo-chemical research which can be deployed by artists to enrich their artistic practices and their contributions to their communities\u2019 well-being.', 'Lead image', 'GRANT', 'post-wallace-foundation', undefined, undefined, undefined, '2023-11-17', 'Suzanne Pierre')
+      ]),
+      T('Subscribe', 'Sign up with your email address to receive our newsletter.')
+    ] },
+
+  contact: { kicker: 'CONTACT', title: 'Contact', parent: null,
+    stand: 'The fastest route to a reply, and where we post.',
+    slot: 'SPLASH — place or doorway photograph',
+    blocks: [
+      FORM('Send a message', [
+        { label: 'NAME', h: '52px' }, { label: 'EMAIL', h: '52px' },
+        { label: 'SUBJECT', h: '52px' }, { label: 'MESSAGE', h: '170px' }
+      ]),
+      CARDS('Follow us', [
+        c('Instagram', '@critical_ecology · field notes, essays, announcements.', 'Feed screenshot', 'FOLLOW', 'contact', 'https://www.instagram.com/critical_ecology/'),
+        c('LinkedIn', 'Critical Ecology Lab · roles, partnerships, publications.', 'Feed screenshot', 'FOLLOW', 'contact', 'https://www.linkedin.com/company/critical-ecology-lab/'),
+        c('YouTube', '@criticalecologylab · explainers, talks, recordings.', 'Video thumbnail grid', 'SUBSCRIBE', 'contact', 'https://docs.google.com/forms/d/e/1FAIpQLScqgh3jLO6zBCqlTIM_SpYpYVThWWgUJyZjbhVcAnOUYPDEiw/viewform')
+      ]),
+      T('Reach us', 'criticalecologylab@inquiringsystems.org', 'Critical Ecology Lab, c/o Inquiring Systems Inc., 1275 4th Street #371, Santa Rosa, CA 95404', 'Critical Ecology Lab is a fiscally sponsored 501(c)3 nonprofit organization. Our fiscal sponsor is Inquiring Systems Inc.'),
+      LIST('Specific enquiries', 'THREE ROUTES', [
+        c('Speaker inquiry', 'Invite Dr. Suzanne Pierre or a lab member to speak.', 'Speaking engagement photo', 'BOOKING', 'contact', 'https://www.criticalecologylab.org/speaker-inquiry'),
+        c('Become an Eco Afro Futures partner', 'Partnership across the EAF Summit, Commons and Network.', 'Summit photograph', 'PARTNER', 'eco-afro'),
+        c('Press and media', 'Logos, photography, boilerplate and bios.', 'Press kit flat-lay', 'PRESS', 'press-kit')
+      ]),
+      P('FULL-BLEED — the place, or a map-adjacent photograph', 'Caption line — location.', '260px')
+    ] },
+
+  shop: { kicker: 'SHOP', title: 'Shop', parent: null,
+    stand: 'PLACEHOLDER — the old site had a cart but no published products. Describe the range and where proceeds go.',
+    slot: 'SPLASH — product on a body, editorial styling',
+    blocks: [
+      CARDS('Shop', [c('CEL Merch', 'Apparel, print, objects.', 'Product flat-lay', 'CATALOGUE', 'merch')], 1),
+      P('FULL-BLEED — lookbook-style product photograph', 'Caption line — product, model, credit.')
+    ] },
+  merch: { kicker: 'SHOP', title: 'CEL Merch', parent: 'shop',
+    stand: 'PLACEHOLDER — no products were listed on the old site.',
+    slot: 'Product hero, styled',
+    blocks: [
+      CARDS('Products', [
+        c('Product name', 'Price · sizes.', 'Product photo, square', 'APPAREL', 'merch'),
+        c('Product name', 'Price · sizes.', 'Product photo, square', 'PRINT', 'merch'),
+        c('Product name', 'Price · sizes.', 'Product photo, square', 'OBJECT', 'merch'),
+        c('Product name', 'Price · sizes.', 'Product photo, square', 'APPAREL', 'merch')
+      ], 4),
+      T('Shipping & returns', 'Body paragraph — fulfilment, timelines, returns policy.')
+    ] }
+};
+
+const P_ = n => './' + n + (n.indexOf('.') !== -1 ? '' : '.jpg');
+// Each route gets a topical run of photographs, used in order for its lead
+// image, editorial photos and card thumbnails.
+const ROUTE_IMG = {
+  'post-stacey-king': ['stacey-king.webp', 'lab-portrait-wide', 'city-crossing'],
+  'post-greenland': ['nuuk-greenland', 'coastal-ridge-hike', 'cane-field-burning'],
+  research: ['quadrat-gas-sampling', 'stem-section-vascular', 'cane-field-burning', 'field-team-processing', 'leaf-beetle-iridescent', 'forest-river-silt', 'soil-sorting-overhead', 'field-mapping', 'hands-soil', 'cane-stalks-cut', 'farmworkers-harvest'],
+  themes: ['soil-horizons', 'wood-section-magenta', 'quarry-sand-aerial', 'city-crossing', 'sugarcane-dusk', 'roots-forest-floor'],
+  'conceptual-figure': ['wood-section-magenta', 'cell-micrograph', 'stem-section-vascular', 'soil-horizons', 'soil-samples-bagged'],
+  'current-projects': ['cane-rows-sunlit', 'quadrat-gas-sampling', 'aphids-stem', 'field-team-understory', 'river-meander-mist', 'shield-bug-lavender', 'soil-samples-bagged', 'seedling-trays', 'stomata-microscope', 'soil-horizons', 'red-soil-macro'],
+  'ecological-scars': ['cane-rows-sunlit', 'cane-field-burning', 'cane-stalks-cut', 'soil-horizons', 'roots-forest-floor', 'forest-river-silt', 'soil-samples-bagged', 'hands-soil', 'river-meander-mist', 'stomata-microscope', 'soil-sorting-overhead', 'field-mapping', 'red-soil-macro', 'riverside-village-fog', 'lab-portrait-seated', 'farmworkers-harvest', 'sugarcane-dusk', 'river-palms-aerial', 'quadrat-gas-sampling', 'mangrove-boats-aerial'],
+  'research-opportunities': ['field-researcher-portrait', 'stomata-microscope', 'lab-portrait-wide', 'researcher-microscope', 'field-team-processing'],
+  'scholarly-meetings': ['field-team-processing', 'city-crossing', 'wood-section-magenta', 'forest-river-silt', 'lab-portrait-seated'],
+  ideas: ['leaf-veins-vertical', 'stomata-microscope', 'algae-water', 'river-palms-aerial', 'tortoise-beetle-leaf', 'cell-micrograph', 'smokestack-moon', 'quarry-sand-aerial', 'bee-pollinator'],
+  browse: ['algae-water', 'damselfly-shade', 'smokestack-moon', 'mine-coal-aerial', 'stem-section-vascular', 'leaf-veins', 'forest-river-silt', 'cell-micrograph', 'shield-bug-lavender', 'soil-horizons', 'tree-canopy', 'mangrove-boats-aerial', 'city-crossing'],
+  'explainer-videos': ['stomata-microscope', 'cell-micrograph', 'aphids-stem', 'leaf-veins', 'algae-water', 'wood-section-magenta', 'soil-horizons', 'bee-pollinator'],
+  reports: ['plastic-waste', 'smokestack-moon', 'mine-coal-aerial', 'quarry-sand-aerial', 'stem-section-vascular', 'soil-horizons', 'algae-water'],
+  about: ['field-researcher-portrait', 'lab-portrait-seated', 'coastal-ridge-hike', 'soil-sorting-overhead', 'city-crossing', 'farmworkers-harvest', 'lab-portrait-wide', 'roots-forest-floor'],
+
+  mission: ['coastal-ridge-hike', 'tree-canopy', 'river-meander-mist', 'sugarcane-dusk'],
+  vision: ['leaf-veins-vertical', 'tree-canopy', 'bee-pollinator', 'algae-water'],
+  funding: ['city-crossing', 'lab-portrait-seated', 'field-mapping'],
+  'our-story': ['sugarcane-dusk', 'farmworkers-harvest', 'hands-soil', 'coastal-ridge-hike'],
+  team: ['field-team-processing', 'field-researcher-portrait', 'lab-portrait-wide', 'lab-portrait-seated'],
+  departments: ['soil-samples-bagged', 'researcher-microscope', 'lab-portrait-wide', 'field-mapping'],
+  hierarchy: ['lab-portrait-seated', 'field-mapping'],
+  'press-kit': ['city-crossing', 'smokestack-moon', 'plastic-waste'],
+  opportunities: ['field-team-processing', 'lab-portrait-wide', 'field-mapping'],
+  donate: ['hands-soil', 'farmworkers-harvest', 'river-meander-mist', 'tree-canopy', 'roots-forest-floor'],
+  programs: ['field-team-understory', 'soil-sorting-roots', 'seedling-trays', 'city-crossing', 'vineyard-harvest'],
+  'academic-training': ['soil-sorting-roots', 'researcher-microscope', 'stem-section-vascular', 'seedling-trays', 'lab-portrait-wide', 'field-mapping'],
+  lefa: ['field-team-understory', 'quadrat-gas-sampling', 'coastal-ridge-hike', 'river-palms-aerial', 'damselfly-shade', 'hands-soil', 'cane-rows-sunlit', 'soil-samples-bagged', 'field-mapping'],
+  courses: ['researcher-microscope', 'stomata-microscope', 'cell-micrograph', 'tortoise-beetle-leaf', 'leaf-veins', 'bee-pollinator', 'field-mapping'],
+  'eco-afro': ['riverside-village-fog', 'sugarcane-dusk', 'mangrove-boats-aerial', 'city-crossing', 'river-palms-aerial', 'vineyard-harvest', 'cane-rows-sunlit', 'farmworkers-harvest'],
+  'public-events': ['city-crossing', 'field-team-processing', 'lab-portrait-seated', 'riverside-village-fog', 'coastal-ridge-hike', 'farmworkers-harvest'],
+  news: ['smokestack-moon', 'plastic-waste', 'cane-field-burning', 'algae-water', 'city-crossing', 'farmworkers-harvest', 'soil-horizons', 'mine-coal-aerial', 'lab-portrait-wide', 'leaf-veins'],
+  contact: ['city-crossing', 'roots-forest-floor', 'lab-portrait-wide', 'bee-pollinator', 'lab-portrait-seated', 'coastal-ridge-hike'],
+  shop: ['sugarcane-dusk', 'leaf-veins', 'cane-stalks-cut', 'bee-pollinator'],
+  merch: ['bee-pollinator', 'leaf-veins-vertical', 'sugarcane-dusk', 'algae-water']
+};
+// Highlight pairs from the comms playbook: a primary tone for the eyebrow,
+// its lighter highlight as the section's page-hero band.
+const SECTION_COLOR = {
+  research: ['#678E79', '#D4EED5'],
+  ideas: ['#5478BE', '#E1E1E1'],
+  about: ['#BC7057', '#FBF8E2'],
+  programs: ['#6B5E8E', '#D9D8FD'],
+  news: ['#5478BE', '#E1E1E1'],
+  shop: ['#000000', '#CEE13E'],
+  contact: ['#4FA8CE', '#CDF5FF'],
+  donate: ['#FE6453', '#FBF8E2']
+};
+const SOPHIA = ['quadrat-gas-sampling', 'field-team-processing', 'coastal-ridge-hike', 'field-team-understory', 'field-researcher-portrait', 'field-mapping'];
+const CREDITS = {
+  'nuuk-greenland': 'Photo by John Kristian Petersen on Pexels',
+  'researcher-microscope': 'Photo by Cornell CALS',
+  'soil-sorting-overhead': 'Photo by Cornell CALS',
+  'soil-samples-bagged': 'Photo by Cornell CALS',
+  'lab-portrait-seated': 'Photo by Cornell CALS',
+  'lab-portrait-wide': 'Photo by Cornell CALS',
+  'shield-bug-lavender': 'Photo by Ali Goode on Pexels',
+  'wood-section-magenta': 'Micrograph by Fayette Reynolds M.S. on Pexels',
+  'stem-section-vascular': 'Micrograph by Fayette Reynolds M.S. on Pexels',
+  'aphids-stem': 'Photo by Egor Kamelev on Pexels',
+  'stomata-microscope': 'Micrograph by Lidija Ostojic on Pexels',
+  'tortoise-beetle-leaf': 'Photo by Jimbear on Pexels',
+  'leaf-beetle-iridescent': 'Photo by Erik Karits on Pexels',
+  'damselfly-shade': 'Photo by Mujahid Jihad on Pexels',
+  'cane-field-burning': 'Photo by Karl Ahnee on Pexels',
+  'cane-stalks-cut': 'Photo by Pacific on Pexels',
+  'cane-rows-sunlit': 'Photo by Mau Mascaro on Pexels',
+  'quarry-sand-aerial': 'Photo by Volker Braun on Pexels',
+  'mine-coal-aerial': 'Photo by Xiang Qi on Pexels',
+  'forest-river-silt': 'Photo by Diego Concepcion on Pexels',
+  'river-meander-mist': 'Photo by Oncy Oni on Pexels',
+  'river-palms-aerial': 'Photo by Pok Rie on Pexels',
+  'mangrove-boats-aerial': 'Photo by Munandar on Pexels',
+  'riverside-village-fog': 'Photo by Lucas da Costa on Pexels'
+};
+const credOf = p => {
+  if (!p) return undefined;
+  const k = Object.keys(CREDITS).filter(n => p.indexOf(n) !== -1)[0];
+  if (k) return CREDITS[k];
+  return SOPHIA.some(n => p.indexOf(n) !== -1) ? 'Photo by Sophia Ramirez' : undefined;
+};
+const FALLBACK = ['roots-forest-floor', 'soil-horizons', 'lab-portrait-wide', 'algae-water'];
+const pick = (route, n) => { const l = ROUTE_IMG[route] || FALLBACK; return P_(l[n % l.length]); };
+
+const GRID = { 1: 'repeat(auto-fit,minmax(280px,1fr))', 2: 'repeat(auto-fit,minmax(280px,1fr))', 3: 'repeat(auto-fit,minmax(240px,1fr))', 4: 'repeat(auto-fit,minmax(200px,1fr))' };
+const nToStr = n => (n < 10 ? '0' + n : '' + n);
+
+class Component extends DCLogic {
+  state = { route: 'home', mega: null, menuOpen: false, sortDirs: {} };
+
+  componentDidUpdate(_, prev) {
+    const prevRoute = prev ? prev.route : this._lastRoute;
+    this._lastRoute = this.state.route;
+    if (prevRoute !== this.state.route && typeof window !== 'undefined') {
+      // The DC runtime sets html,body{height:100%}, which can make <body> the
+      // scroller — window.scrollTo is then a no-op, so reset every candidate.
+      // Run again on the next frames: the incoming page paints taller and
+      // scroll anchoring can otherwise restore the old offset.
+      const top = () => {
+        window.scrollTo(0, 0);
+        if (document.scrollingElement) document.scrollingElement.scrollTop = 0;
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      };
+      top();
+      requestAnimationFrame(() => { top(); requestAnimationFrame(top); });
+    }
+  }
+
+  scrollTop() {
+    if (typeof window === 'undefined') return;
+    const top = () => {
+      window.scrollTo(0, 0);
+      // The DC runtime sets html,body{height:100%}, so <body> can be the
+      // scroller and window.scrollTo alone is a no-op. Reset every candidate.
+      if (document.scrollingElement) document.scrollingElement.scrollTop = 0;
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    };
+    top();
+    requestAnimationFrame(() => { top(); requestAnimationFrame(top); });
+  }
+
+  go(route) {
+    return e => {
+      if (e && e.preventDefault) e.preventDefault();
+      this.setState({ route, mega: null, menuOpen: false });
+      this.scrollTop();
+    };
+  }
+
+  renderVals() {
+    const nav = this.props.navVariant || 'topbar';
+    const home = this.props.homeVariant || 'split';
+    const route = this.state.route;
+    const page = PAGES[route];
+    const label = id => (PAGES[id] ? PAGES[id].title : id);
+
+    const LIVE = SECTIONS.filter(s => !isDraft(s.id));
+
+    const navSections = LIVE.map(s => ({
+      label: s.label, upper: s.label.toUpperCase(), go: this.go(s.id),
+      children: s.children.filter(cid => !isDraft(cid))
+        .map((cid, i) => ({ label: label(cid), num: nToStr(i + 1), go: this.go(cid) }))
+    }));
+
+    const navItems = LIVE.map(s => {
+      const active = route === s.id || (page && (page.parent === s.id || (PAGES[page.parent] && PAGES[page.parent].parent === s.id) || (PAGES[page.parent] && PAGES[PAGES[page.parent].parent] && PAGES[PAGES[page.parent].parent].parent === s.id)));
+      return {
+        label: s.label, weight: active ? 500 : 400,
+        rule: active ? '#000000' : 'transparent',
+        go: this.go(s.id),
+        enter: nav === 'mega' ? () => this.setState({ mega: s.id }) : () => {}
+      };
+    });
+
+    let topId = route;
+    { let p = route, guard = 0;
+      while (PAGES[p] && PAGES[p].parent && guard++ < 5) p = PAGES[p].parent;
+      topId = p; }
+
+    const megaSec = nav === 'mega' && this.state.mega ? SECTIONS.find(s => s.id === this.state.mega) : null;
+    const megaChildren = megaSec ? megaSec.children.filter(cid => !isDraft(cid)).map((cid, i) => ({ label: label(cid), num: nToStr(i + 1), go: this.go(cid) })) : [];
+
+    const crumbs = [];
+    if (page) {
+      let p = page.parent, guard = 0;
+      while (p && guard++ < 5) { crumbs.unshift({ label: PAGES[p].title.toUpperCase(), go: this.go(p) }); p = PAGES[p].parent; }
+      crumbs.push({ label: page.title.toUpperCase(), go: this.go(route) });
+    }
+
+    const blocks = page ? page.blocks.map((b, i) => {
+      const slot = route + '-b' + i;
+      const sortKey = 'sort-' + slot;
+      const dir = this.state.sortDirs && this.state.sortDirs[sortKey] ? this.state.sortDirs[sortKey] : 'desc';
+      const out = {
+        isText: b.t === 'text', isPhoto: b.t === 'photo', isPair: b.t === 'pair', isCards: b.t === 'cards',
+        isList: b.t === 'list', isForm: b.t === 'form', isFigure: b.t === 'figure', isNext: b.t === 'next',
+        isTags: b.t === 'tags', tags: b.tags || [],
+        isLineage: b.t === 'lineage', embedH: b.hgt || '760px',
+        isFramework: b.t === 'framework',
+        isConceptFig: b.t === 'conceptfig',
+        h: b.h, body: b.body || [], cap: b.cap, hasCap: !!(b.cap && String(b.cap).trim() && !/^Caption line/.test(b.cap)), ph: b.ph, hgt: b.hgt, meta: b.meta, slot,
+        src: (b.t === 'photo' || b.t === 'pair') ? pick(route, i + 1) : undefined,
+        cred: (b.t === 'photo' || b.t === 'pair') ? credOf(pick(route, i + 1)) : undefined,
+        grid: GRID[b.per || 3], cols: 'minmax(0,1fr) minmax(0,1fr)',
+        ordA: b.flip ? 2 : 1, ordB: b.flip ? 1 : 2,
+        items: (b.items || []).filter(it => {
+          // launch cut: drop cards/links that point at an unpublished page
+          if (b.t !== 'cards' && b.t !== 'next' && b.t !== 'list') return true;
+          if (it.url) return true;
+          const t = it.to;
+          return !(t && isDraft(t) && t !== route);
+        }).map((it, j) => ({
+          label: it.label, note: it.note, kicker: it.kicker, ph: it.ph,
+          h: it.h, detail: it.detail, year: it.year || '', yearLabel: (it.year || '').slice(0, 4),
+          author: it.author || '', showAuthor: Boolean(it.author),
+          hasThumb: !b.noThumb,
+          cols: (b.noThumb ? '' : '130px ') + (it.author ? 'minmax(0,1fr) minmax(0,1.05fr) minmax(0,0.5fr) 56px 110px' : 'minmax(0,1fr) minmax(0,1.05fr) 56px 110px'),
+          slot: slot + '-i' + j,
+          go: it.url ? (e => { e.preventDefault(); window.open(it.url, '_blank', 'noopener'); }) : this.go(it.to || route),
+          src: b.t === 'form' ? undefined : (it.img ? (it.img.indexOf('.') !== -1 ? './' + it.img : P_(it.img)) : pick(route, i + j + 1)),
+          cred: b.t === 'form' ? undefined : (it.img ? undefined : credOf(pick(route, i + j + 1)))
+        }))
+      };
+      const dated = b.t === 'list' && out.items.some(x => x.year);
+      const authored = b.t === 'list' && out.items.some(x => x.author);
+      const outletish = b.t === 'list' && /press/i.test(String(b.h || ''));
+      out.hasHeaders = authored;
+      out.colTitle = 'TITLE';
+      out.colNote = 'DESCRIPTION';
+      out.colAuthor = outletish ? 'OUTLET' : 'AUTHOR';
+      out.colDate = 'DATE';
+      out.sortable = dated;
+      out.plainMeta = !dated;
+      if (dated) {
+        out.items = out.items.slice().sort((x, y) => {
+          const a = x.year || '', c2 = y.year || '';
+          if (!a && !c2) return 0;
+          if (!a) return 1;
+          if (!c2) return -1;
+          return dir === 'desc' ? (a < c2 ? 1 : a > c2 ? -1 : 0) : (a < c2 ? -1 : a > c2 ? 1 : 0);
+        });
+        out.sortLabel = dir === 'desc' ? 'NEWEST FIRST' : 'OLDEST FIRST';
+        out.sortArrow = dir === 'desc' ? 'rotate(0deg)' : 'rotate(180deg)';
+        out.sortToggle = () => this.setState(s => {
+          const d = Object.assign({}, s.sortDirs);
+          d[sortKey] = (d[sortKey] === 'asc') ? 'desc' : 'asc';
+          return { sortDirs: d };
+        });
+      }
+      return out;
+    }) : [];
+
+    return {
+      navBar: nav !== 'minimal', navMinimal: nav === 'minimal',
+      megaShow: megaChildren.length > 0, megaChildren,
+      megaLabel: megaSec ? megaSec.label.toUpperCase() : '',
+      megaSlotId: megaSec ? 'mega-' + megaSec.id : 'mega-none',
+      megaSlotHint: 'Section teaser image — ' + (megaSec ? megaSec.label : ''),
+      megaSlotSrc: megaSec ? pick(megaSec.id, 3) : undefined,
+      megaSlotCredit: megaSec ? credOf(pick(megaSec.id, 3)) : undefined,
+      megaClose: () => this.setState({ mega: null }),
+      menuOpen: this.state.menuOpen, menuClosed: !this.state.menuOpen,
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
+      isHome: route === 'home', isPage: route !== 'home',
+      homeSplit: home === 'split', homeFull: home === 'fullbleed', homeMosaic: home === 'mosaic',
+      navItems, navSections, crumbs,
+      pageKicker: page ? page.kicker : '', pageTitle: page ? page.title : '',
+      pageStandfirst: page ? page.stand : '',
+      pageTint: (SECTION_COLOR[topId] || ['#FE6453', '#FFFFFF'])[1],
+      pageInk: (SECTION_COLOR[topId] || ['#FE6453', '#FFFFFF'])[0],
+      pageSlotCredit: page ? credOf(pick(route, 0)) : undefined,
+      pageSlotId: route + '-lead', pageSlotHint: page ? page.slot : '', pageSlotSrc: page ? pick(route, 0) : undefined,
+      blocks,
+      goHome: this.go('home'), goDonate: this.go('donate'), goResearch: this.go('research'),
+      goAbout: this.go('about'), goNews: this.go('news'),
+      quickLinks: [
+        { label: 'What is critical ecology?', note: 'Start with the concepts.', kicker: 'WELCOME', ph: 'Concept image — soil, root, archive', slot: 'ql-1', src: './soil-horizons.jpg', go: this.go('themes') },
+        { label: 'Explore the research', note: 'Active projects and findings.', kicker: 'EVIDENCE', ph: 'Fieldwork, medium crop', slot: 'ql-2', src: './quadrat-gas-sampling.jpg', cred: 'Photo by Sophia Ramirez', go: this.go('research') },
+        { label: 'Learn with us', note: 'Academic & professional training.', kicker: 'EDUCATION', ph: 'Teaching or cohort photo', slot: 'ql-3', src: './soil-sorting-roots.jpg', go: this.go('programs') },
+        { label: 'Ways to take action', note: 'Collaborate, volunteer, sustain.', kicker: 'SUPPORT', ph: 'Community partnership photo', slot: 'ql-4', src: './hands-soil.jpg', go: this.go('donate') }
+      ],
+      newsItems: [
+        { label: 'Unearthing Climate Colonialism on St. Croix', meta: 'PRESS · THE EQUALITY INSTITUTE', ph: 'Publication lead image', slot: 'news-1', src: './sugarcane-dusk.jpg', go: e => { e.preventDefault(); window.open('https://www.equalityinstitute.org/unearthing-climate-colonialism-on-st-croix/', '_blank', 'noopener'); } },
+        { label: '[Founder\u2019s Note] Why we keep going.', meta: 'LAB UPDATE · MARCH 2026', ph: 'Editorial photo', slot: 'news-2', src: './lab-portrait-seated.jpg', go: this.go('post-founders-note') },
+        { label: 'Critical Ecology Lab Founder Delivers Historic Lectures in Nuuk, Greenland', meta: 'LAB UPDATE · FEBRUARY 2026', ph: 'Nuuk, Greenland', slot: 'news-3', src: './nuuk-greenland.jpg', go: this.go('post-greenland') }
+      ],
+      programCards: [
+        { label: 'Academic Training', note: 'Rigorous, scholarly, and actionable training for early career to professionals.', ph: 'Classroom or field teaching, 4:3', slot: 'pg-1', src: './lab-portrait-wide.jpg', go: this.go('academic-training') },
+        { label: 'Eco Afro Futures Platform', note: 'Using Earth science and ecological knowledge to inspire communities to lead.', ph: 'Platform key art or summit, 4:3', slot: 'pg-2', src: './city-crossing.jpg', go: this.go('eco-afro') },
+        { label: 'Public Events', note: 'Talks, screenings, community gatherings.', ph: 'Audience at an evening event, 4:3', slot: 'pg-3', src: './eco-afro-futures-2026-group.jpg', cred: undefined, go: this.go('public-events') }
+      ],
+      slotCount: '120+'
+    };
+  }
+}
+</script>
+</body>
+</html>
