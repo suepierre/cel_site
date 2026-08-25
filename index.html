@@ -52,6 +52,7 @@ a:hover{color:#FE6453}
   [data-m="ldetail"]>span:empty{display:none}
   [data-m="nav"]{gap:6px 16px!important;margin-left:0!important;width:100%}
   [data-m="nav"]>a{font-size:14px!important}
+  [data-m="nlgrid"]{grid-template-columns:1fr!important}
   image-slot{touch-action:pan-y!important}
 }
 @keyframes fadein{from{opacity:0}to{opacity:1}}
@@ -246,6 +247,40 @@ a:hover{color:#FE6453}
     </div>
   </section>
 
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <section style="padding:clamp(52px,6vw,88px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8">
+      <div data-m="one" style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,3.6vw,64px);align-items:start">
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">NEWSLETTER</span>
+          <h2 style="margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">Field notes from the lab</h2>
+          <p style="margin:0;font-size:17px;line-height:1.4;font-weight:400;color:#313131;max-width:46ch;text-wrap:pretty">New research, program announcements, and essays on the roots of the climate crisis. Sent occasionally, never shared.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:520px">
+          <sc-if value="{{ nlIdle }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ nlSubmit }}" style="display:flex;flex-direction:column;gap:18px">
+              <div data-m="nlgrid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px">
+                <input name="fields[first_name]" type="text" placeholder="First name" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;color:#000000;background:transparent;border:0;border-bottom:1px solid #C9C9C9;padding:12px 0;outline:none;min-width:0" style-focus="border-bottom-color:#000000">
+                <input name="fields[affiliation]" type="text" placeholder="Affiliation (optional)" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;color:#000000;background:transparent;border:0;border-bottom:1px solid #C9C9C9;padding:12px 0;outline:none;min-width:0" style-focus="border-bottom-color:#000000">
+              </div>
+              <input name="email_address" type="email" required="required" placeholder="Email address" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;color:#000000;background:transparent;border:0;border-bottom:1px solid #C9C9C9;padding:12px 0;outline:none" style-focus="border-bottom-color:#000000">
+              <button type="submit" style="align-self:flex-start;font-family:Residenz,Helvetica,Arial,sans-serif;font-size:14.5px;font-weight:500;color:#FFFFFF;background:#000000;border:0;padding:14px 30px;border-radius:2px;cursor:pointer;transition:background .2s,color .2s" style-hover="background:#CEE13E;color:#000000">{{ nlLabel }}</button>
+            </form>
+          </sc-if>
+          <sc-if value="{{ nlDone }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;font-size:17px;line-height:1.5;color:#313131">Thank you — you are on the list. Watch for a confirmation email.</p>
+          </sc-if>
+          <sc-if value="{{ nlError }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;font-size:15px;line-height:1.5;color:#313131">That did not go through. Please write to <a href="mailto:criticalecologylab@inquiringsystems.org">criticalecologylab@inquiringsystems.org</a> and we will add you.</p>
+          </sc-if>
+          <sc-if value="{{ nlSetup }}" hint-placeholder-val="{{ false }}">
+            <p style="margin:0;font-size:17px;line-height:1.5;color:#313131">To join the newsletter, write to <a href="mailto:criticalecologylab@inquiringsystems.org">criticalecologylab@inquiringsystems.org</a>.</p>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+
   <section style="position:relative;height:52vh;min-height:380px">
     <div style="position:absolute;inset:0"><image-slot id="home-donate" shape="rect" fit="cover" src="./hands-soil.jpg" placeholder="FULL-BLEED — hands / soil / community work, wide crop"></image-slot></div>
     <div style="position:absolute;inset:0;pointer-events:none;background:rgba(0,0,0,0.52)"></div>
@@ -330,7 +365,7 @@ a:hover{color:#FE6453}
             <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
             <div data-m="cards" style="display:grid;grid-template-columns:{{ b.grid }};gap:22px">
               <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="3">
-                <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;gap:15px;transition:transform .3s" style-hover="transform:translateY(-4px)">
+                <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;gap:15px;transition:transform .3s;cursor:{{ i.cursor }}" style-hover="transform:{{ i.lift }}">
                   <div style="height:230px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ i.slot }}" shape="rect" fit="cover" src="{{ i.src }}" credit="{{ i.cred }}" placeholder="{{ i.ph }}"></image-slot></div>
                   <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#FE6453">{{ i.kicker }}</span>
                   
@@ -368,7 +403,7 @@ a:hover{color:#FE6453}
                 </div>
               </sc-if>
               <sc-for list="{{ b.items }}" as="i" hint-placeholder-count="4">
-                <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;padding:20px 0 0;border-top:1px solid #D8D8D8;transition:padding-left .25s,background .25s;--od:0px;--oo:0" style-hover="padding-left:12px;background:#FAFAFA;--od:180px;--oo:1">
+                <a href="#" onClick="{{ i.go }}" style="display:flex;flex-direction:column;padding:20px 0 0;border-top:1px solid #D8D8D8;transition:padding-left .25s,background .25s;cursor:{{ i.cursor }};--od:0px;--oo:0" style-hover="padding-left:{{ i.rowPad }};background:{{ i.rowBg }};--od:{{ i.rowOd }};--oo:{{ i.rowOo }}">
                   <div data-m="lrow" style="display:grid;grid-template-columns:{{ i.cols }};gap:28px;align-items:center;padding-bottom:20px">
                     <sc-if value="{{ i.hasThumb }}" hint-placeholder-val="{{ true }}"><div style="height:96px;overflow:hidden;background:#E1E1E1"><image-slot id="{{ i.slot }}" shape="rect" fit="cover" src="{{ i.src }}" credit="{{ i.cred }}" placeholder="{{ i.ph }}"></image-slot></div></sc-if>
                     <span style="font-size:20px;font-weight:500;line-height:1.2;letter-spacing:0">{{ i.label }}</span>
@@ -397,13 +432,36 @@ a:hover{color:#FE6453}
           <div data-m="one" style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
             <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">{{ b.h }}</h2>
             <div style="display:flex;flex-direction:column;gap:22px;max-width:640px">
-              <sc-for list="{{ b.items }}" as="f" hint-placeholder-count="4">
-                <div style="display:flex;flex-direction:column;gap:8px">
-                  <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">{{ f.label }}</span>
-                  <div style="height:{{ f.h }};border:1px solid #C9C9C9;background:#FAFAFA"></div>
-                </div>
-              </sc-for>
-              <div style="align-self:flex-start;font-size:14.5px;font-weight:500;color:#FFFFFF;background:#000000;padding:14px 28px;border-radius:2px">Submit</div>
+              <sc-if value="{{ cfIdle }}" hint-placeholder-val="{{ true }}">
+                <form onSubmit="{{ cfSubmit }}" style="display:flex;flex-direction:column;gap:22px">
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">NAME</span>
+                    <input name="name" type="text" required="required" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;color:#000000;height:52px;border:1px solid #C9C9C9;background:#FAFAFA;padding:0 14px;outline:none" style-focus="border-color:#000000;background:#FFFFFF">
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">EMAIL</span>
+                    <input name="email" type="email" required="required" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;color:#000000;height:52px;border:1px solid #C9C9C9;background:#FAFAFA;padding:0 14px;outline:none" style-focus="border-color:#000000;background:#FFFFFF">
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">SUBJECT</span>
+                    <input name="subject" type="text" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;color:#000000;height:52px;border:1px solid #C9C9C9;background:#FAFAFA;padding:0 14px;outline:none" style-focus="border-color:#000000;background:#FFFFFF">
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#6E6E6E">MESSAGE</span>
+                    <textarea name="message" required="required" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15.5px;line-height:1.5;color:#000000;height:170px;border:1px solid #C9C9C9;background:#FAFAFA;padding:12px 14px;outline:none;resize:vertical"></textarea>
+                  </div>
+                  <button type="submit" style="align-self:flex-start;font-family:Residenz,Helvetica,Arial,sans-serif;font-size:14.5px;font-weight:500;color:#FFFFFF;background:#000000;border:0;padding:14px 28px;border-radius:2px;cursor:pointer;transition:background .2s,color .2s" style-hover="background:#CEE13E;color:#000000">{{ cfLabel }}</button>
+                </form>
+              </sc-if>
+              <sc-if value="{{ cfDone }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;font-size:16px;line-height:1.5;color:#313131">Thank you — your message is with us. We reply to most enquiries within a week.</p>
+              </sc-if>
+              <sc-if value="{{ cfError }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;font-size:15px;line-height:1.5;color:#313131">That did not send. Please write to <a href="mailto:criticalecologylab@inquiringsystems.org">criticalecologylab@inquiringsystems.org</a>.</p>
+              </sc-if>
+              <sc-if value="{{ cfSetup }}" hint-placeholder-val="{{ false }}">
+                <p style="margin:0;font-size:16px;line-height:1.5;color:#313131">Write to us at <a href="mailto:criticalecologylab@inquiringsystems.org">criticalecologylab@inquiringsystems.org</a>.</p>
+              </sc-if>
             </div>
           </div>
         </sc-if>
@@ -482,6 +540,36 @@ a:hover{color:#FE6453}
 
 <footer style="background:#000000;color:#FFFFFF;padding:clamp(52px,6vw,80px) clamp(20px,2.6vw,40px) 44px">
   <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:64px">
+    <sc-if value="{{ nlInFooter }}" hint-placeholder-val="{{ true }}">
+    <div data-m="one" style="display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1fr);gap:40px;align-items:start;border-bottom:1px solid #4A4A4A;padding-bottom:56px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#FE6453">NEWSLETTER</span>
+        <h2 style="margin:0;font-size:clamp(22px,2.1vw,30px);line-height:1.12;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">Field notes from the lab</h2>
+        <p style="margin:0;font-size:14px;line-height:1.5;font-weight:300;color:#9A9A9A;max-width:44ch;text-wrap:pretty">New research, program announcements, and essays on the roots of the climate crisis. Sent occasionally, never shared.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <sc-if value="{{ nlIdle }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ nlSubmit }}" style="display:flex;flex-direction:column;gap:14px">
+            <div data-m="nlgrid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
+              <input name="fields[first_name]" type="text" placeholder="First name" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15px;color:#FFFFFF;background:transparent;border:0;border-bottom:1px solid #6E6E6E;padding:12px 0;outline:none;min-width:0" style-focus="border-bottom-color:#CEE13E">
+              <input name="fields[affiliation]" type="text" placeholder="Affiliation (optional)" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15px;color:#FFFFFF;background:transparent;border:0;border-bottom:1px solid #6E6E6E;padding:12px 0;outline:none;min-width:0" style-focus="border-bottom-color:#CEE13E">
+            </div>
+            <input name="email_address" type="email" required="required" placeholder="Email address" style="font-family:Residenz,Helvetica,Arial,sans-serif;font-size:15px;color:#FFFFFF;background:transparent;border:0;border-bottom:1px solid #6E6E6E;padding:12px 0;outline:none" style-focus="border-bottom-color:#CEE13E">
+            <button type="submit" style="align-self:flex-start;font-family:Residenz,Helvetica,Arial,sans-serif;font-size:14.5px;font-weight:500;color:#000000;background:#CEE13E;border:0;padding:14px 30px;border-radius:2px;cursor:pointer;transition:background .2s" style-hover="background:#FFFFFF">{{ nlLabel }}</button>
+          </form>
+        </sc-if>
+        <sc-if value="{{ nlDone }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:15px;line-height:1.5;color:#CEE13E">Thank you — you are on the list. Watch for a confirmation email.</p>
+        </sc-if>
+        <sc-if value="{{ nlError }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#FE6453">That did not go through. Please write to <a href="mailto:criticalecologylab@inquiringsystems.org" style="color:#FE6453">criticalecologylab@inquiringsystems.org</a> and we will add you.</p>
+        </sc-if>
+        <sc-if value="{{ nlSetup }}" hint-placeholder-val="{{ false }}">
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#9A9A9A">To join the newsletter, write to <a href="mailto:criticalecologylab@inquiringsystems.org" style="color:#FFFFFF">criticalecologylab@inquiringsystems.org</a>.</p>
+        </sc-if>
+      </div>
+    </div>
+    </sc-if>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:36px 28px">
       <sc-for list="{{ navSections }}" as="s" hint-placeholder-count="7">
         <div style="display:flex;flex-direction:column;gap:12px">
@@ -504,8 +592,8 @@ a:hover{color:#FE6453}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;navVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;topbar&quot;,&quot;mega&quot;,&quot;minimal&quot;],&quot;default&quot;:&quot;minimal&quot;,&quot;tsType&quot;:&quot;'topbar'|'mega'|'minimal'&quot;,&quot;section&quot;:&quot;Variations&quot;},&quot;homeVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;fullbleed&quot;,&quot;mosaic&quot;],&quot;default&quot;:&quot;fullbleed&quot;,&quot;tsType&quot;:&quot;'split'|'fullbleed'|'mosaic'&quot;,&quot;section&quot;:&quot;Variations&quot;}}">
 const T = (h, ...body) => ({ t: 'text', h, body });
-const P = (ph, cap, hgt) => ({ t: 'photo', ph, cap, hgt: hgt || '310px' });
-const PAIR = (h, ph, body, flip) => ({ t: 'pair', h, ph, body, flip: !!flip });
+const P = (ph, cap, hgt, img) => ({ t: 'photo', ph, cap, hgt: hgt || '310px', img });
+const PAIR = (h, ph, body, flip, img) => ({ t: 'pair', h, ph, body, flip: !!flip, img });
 const CARDS = (h, items, per) => ({ t: 'cards', h, items, per: per || 3 });
 const LIST = (h, meta, items, noThumb) => ({ t: 'list', h, meta, items, noThumb: !!noThumb });
 const FORM = (h, items) => ({ t: 'form', h, items });
@@ -524,6 +612,7 @@ const DRAFT = [
   'shop', 'merch', 'reports', 'courses', 'research-opportunities'
 ];
 const isDraft = id => DRAFT.indexOf(id) !== -1;
+const HIDE_FROM_INDEX = ['coming-soon'];
 
 const SECTIONS = [
   { id: 'research', label: 'Research', children: ['themes', 'current-projects', 'research-opportunities', 'scholarly-meetings'] },
@@ -660,10 +749,7 @@ const PAGES = {
         c('Dr. Suzanne Pierre on Reshaping a Siloed Science', 'For The Wild · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://forthewild.world/listen/dr-suzanne-pierre-on-reshaping-a-siloed-science-150'),
         c('Nance Klehm with Ecosystems Ecologist Dr. Suzanne Pierre', 'Spontaneous Vegetation · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://iono.fm/e/993827'),
         c('Defining Sociophysical Drivers of Ecological Change', 'Cary Institute of Ecosystem Studies · seminar.', 'Seminar still', 'SEMINAR', 'browse', 'https://www.caryinstitute.org/news-insights/scientific-seminar-video/critical-ecology-defining-sociophysical-drivers-ecological'),
-        c('Theoretical Lineage of Critical Ecology', 'Critical Ecology Lab · workshop.', 'Workshop still', 'WORKSHOP', 'browse', 'https://www.youtube.com/watch?t=506s&v=LireLlbEyxk'),
-        c('Learning How to Live Together: A Symbiotic Worldview', 'Sheffield DocFest · panel.', 'Panel still', 'PANEL', 'browse', 'https://vimeo.com/566639849'),
-        c('CEL Reading List', 'Our favorite books on Bookshop.org.', 'Book stack', 'READING', 'browse', 'https://bookshop.org/shop/criticalecologylab'),
-        c('Patreon', 'Get an exclusive behind-the-scenes look at our research, thought-provoking content, and the opportunity to engage with our community of change-makers.', 'Contextual photo', 'SUBSCRIBE', 'browse', 'https://patreon.com/CriticalEcologyLab')
+        c('Theoretical Lineage of Critical Ecology', 'Critical Ecology Lab · workshop.', 'Workshop still', 'WORKSHOP', 'browse', 'https://www.youtube.com/watch?t=506s&v=LireLlbEyxk')
       ]),
       T('Citation & reuse', 'Cite articles by their author of record, not by the lab: Author, “Title,” Critical Ecology Lab, year, URL. Where a piece has been revised, cite the version date shown on the article.', 'Articles may be quoted, excerpted, and assigned in teaching with attribution. Republishing an article in full, translating it, or including it in a paid or sponsored product requires written permission from the author and the lab.', 'Figures, maps, and data visualisations may be reproduced with attribution to the lab and to the underlying data source named in the caption. Photographs are licensed to the lab and are not covered by this clause — request permission separately.')
     ] },
@@ -877,21 +963,25 @@ const PAGES = {
         c('Liberation Ecology Field Course', 'Critical Ecology Lab · field cohort.', 'LEFA 2023 cohort photo', 'TAUGHT', 'lefa', undefined, 'lefa-field-seminar.jpg', 'The inaugural 2023 cohort of the field course.', '2023-06-01')
       ])
     ] },
-  lefa: { kicker: 'PROGRAMS', title: 'Liberation Ecology Field Academy (LEFA)', parent: 'academic-training',
-    stand: 'The Liberation Ecology Field Course prepares young adults working in environment-related fields to better understand and mitigate the climate crisis by addressing the role of racial capitalism and social inequality shaping ecosystems and society.',
+  lefa: { kicker: 'PROGRAMS', title: 'Critical Ecology Field Academy (CEFA)', parent: 'academic-training',
+    stand: 'The Critical Ecology Field Academy prepares early-career adults working in environment-related fields to better understand and mitigate the climate crisis by addressing the roles of power and inequality shaping ecosystems and society.',
     slot: 'LEFA cohort in the field',
     blocks: [
-      PAIR('Course description', 'Cohort at work', [
-        'The Liberation Ecology Field Course (LEFC) aims to prepare young adults working in environment-related fields to better understand and mitigate the climate crisis by addressing the role of racial capitalism and social inequality shaping ecosystems and society. The course integrates technical and historical knowledge of local and global environmental change phenomena; methods for environmental analysis; critical social theory of environmental change; and inner work to repair the harmful effects of interpersonal and structural social injustices and build emotional resilience and dignity.',
-        'Our vision merges scientific training with decolonial and anti-oppression theory/praxis in the legacy of the Freedom Schools of the U.S. Civil Rights Movement. LEFC teaches ecological systems thinking, critical analysis of power structures, field research skills, while building a reflexive and affirming environment that centers the knowledge, experiences and healing of Black, Indigenous and people of color.',
-        'Experience with the outdoors (hiking, camping, etc.) is NOT required for participation. LEFC is intended to be accessible to all levels of comfort with the outdoors and levels of ability.'
+      T('Application coming soon', 'Next program Spring 2027.'),
+      LIST('Learn more', 'VIDEO', [
+        c('Watch this video to learn more', 'A short introduction to the Field Academy.', 'Video still', 'WATCH', 'lefa', 'https://youtu.be/3b3SopUDFSI?si=vAKPaw_bMh65jJTg', 'https://img.youtube.com/vi/3b3SopUDFSI/maxresdefault.jpg')
       ]),
-      P('FULL-BLEED — landscape of the field site', 'Caption line — site, season, credit.'),
+      PAIR('Program description', 'Cohort at work', [
+        'The Critical Ecology Field Academy (CEFA) aims to prepare young adults working in environment-related fields to better understand and mitigate the climate crisis by addressing the role of racial capitalism and social inequality shaping ecosystems and society. The course integrates technical and historical knowledge of local and global environmental change phenomena; methods for environmental analysis; critical social theory of environmental change; and inner work to repair the harmful effects of interpersonal and structural social injustices and build emotional resilience and dignity.',
+        'Our vision merges scientific training with decolonial and anti-oppression theory/praxis in the legacy of the Freedom Schools of the U.S. Civil Rights Movement. CEFA teaches ecological systems thinking, critical analysis of power structures, field research skills, while building a reflexive and affirming environment that centers the knowledge, experiences and healing of Black, Indigenous and people of color.',
+        'Experience with the outdoors (hiking, camping, etc.) is NOT required for participation. LEFC is intended to be accessible to all levels of comfort with the outdoors and levels of ability.'
+      ], false, 'lefa-cohort-group.jpg'),
+      P('Cohort seminar in the field', '', undefined, 'lefa-field-seminar.jpg'),
       LIST('Foundations', 'GOALS · OVERVIEW · ELIGIBILITY', [
-        c('Course goals', 'What the course builds the capacity of participants to do.', 'Cohort in discussion', 'GOALS', 'lefa', undefined, undefined, 'Apply analytic and field skills to pursue questions that unite BIPOC experiences with patterns of ecological change in order to dismantle persistent colonial systems. Seek ways to be good ancestors and descendants in the face of social and planetary crisis. Heal from ecological trauma and reclaim a relationship with nature that is a foundation for personal, environmental, epistemic, and political transformation.'),
-        c('Course overview', 'Virtual sessions, field days, overnight trips, and coursework.', 'Field lesson', 'STRUCTURE', 'lefa', undefined, undefined, 'Four virtual sessions providing orientation, introducing critical ecological theory, addressing and developing trust among educators and students. Four field-based day-long lessons and two overnight camping trips in locations ranging from old growth redwood forests to urban coastlines. Reading and writing assignments on core concepts of ecological and climate science, liberation theories, and hands-on data collection methodology. Further details to be announced.'),
-        c('Eligibility', 'Who the course is seeking.', 'Applicant portrait', 'APPLY', 'lefa', undefined, undefined, 'The course seeks applicants who demonstrate that they have thought deeply about their identity and positionality in relation to the unfolding of the current environmental crisis; a specific problem or question at the intersection of environmental change and social justice that they are committed to addressing; and the social and planetary future they wish to help build. We strongly encourage applications from people who are from socially marginalized backgrounds and who are historically underrepresented in the natural sciences, including but not limited to queer, trans, non-binary, Black, Indigenous, people of color, and disabled people.'),
-        c('2023 Program', 'The previous session.', 'Cohort photo', 'PAST', 'lefa', 'https://www.criticalecologylab.org/field-course-2023', undefined, undefined, '2023')
+        c('Course goals', '', 'Cohort in discussion', 'GOALS', 'lefa', undefined, undefined, 'Apply analytic and field skills to pursue questions that unite BIPOC experiences with patterns of ecological change in order to dismantle persistent colonial systems. Seek ways to be good ancestors and descendants in the face of social and planetary crisis. Heal from ecological trauma and reclaim a relationship with nature that is a foundation for personal, environmental, epistemic, and political transformation.'),
+        c('Course overview', '', 'Field lesson', 'STRUCTURE', 'lefa', undefined, undefined, 'Four virtual sessions providing orientation, introducing critical ecological theory, addressing and developing trust among educators and students. Four field-based day-long lessons and two overnight camping trips in locations ranging from old growth redwood forests to urban coastlines. Reading and writing assignments on core concepts of ecological and climate science, liberation theories, and hands-on data collection methodology. Further details to be announced.'),
+        c('Eligibility', '', 'Applicant portrait', 'APPLY', 'lefa', undefined, undefined, 'The course seeks applicants who demonstrate that they have thought deeply about their identity and positionality in relation to the unfolding of the current environmental crisis; a specific problem or question at the intersection of environmental change and social justice that they are committed to addressing; and the social and planetary future they wish to help build. We strongly encourage applications from people who are from socially marginalized backgrounds and who are historically underrepresented in the natural sciences, including but not limited to queer, trans, non-binary, Black, Indigenous, people of color, and disabled people.'),
+        c('2023 Program', '', 'Cohort photo', 'PAST', 'lefa', 'https://www.criticalecologylab.org/field-course-2023', undefined, undefined, '2023')
       ]),
       T('What participants say', '"[The course] changed my perspective on what is possible in my own journey ... That little piece of knowledge is an invaluable gift and I cannot thank CEL enough for giving me that. I know it\u2019ll serve us all well as we change the world. I\u2019ll carry it with me always." — 2023 Course Participant', '"This course was life-changing in so many ways, I can\u2019t even begin to count how many seeds of inspirations this course has planted. But overall, I\u2019m taking away the friendships I made here and a large community of people ready to collectively build together." — 2023 Course Participant'),
       T('With support from', 'Simons Foundation, Science Sandbox.'),
@@ -1188,6 +1278,13 @@ const PAGES = {
       T('Subscribe', 'Sign up with your email address to receive our newsletter.')
     ] },
 
+  'coming-soon': { kicker: 'CRITICAL ECOLOGY LAB', title: 'Coming soon', parent: null,
+    stand: 'This page is being written. Check back shortly, or write to us and we will point you to what exists in the meantime.',
+    slot: 'SPLASH — field or lab scene',
+    blocks: [
+      T('In the meantime', 'Our research, programs and publications are described across the rest of the site. If you were looking for something specific, we are glad to help you find it.', 'Write to criticalecologylab@inquiringsystems.org.'),
+      NEXT('ELSEWHERE ON THE SITE', [{ label: 'Research', to: 'research' }, { label: 'Programs', to: 'programs' }, { label: 'Contact', to: 'contact' }])
+    ] },
   contact: { kicker: 'CONTACT', title: 'Contact', parent: null,
     stand: 'The fastest route to a reply, and where we post.',
     slot: 'SPLASH — place or doorway photograph',
@@ -1199,7 +1296,7 @@ const PAGES = {
       CARDS('Follow us', [
         c('Instagram', '@critical_ecology · field notes, essays, announcements.', 'Feed screenshot', 'FOLLOW', 'contact', 'https://www.instagram.com/critical_ecology/'),
         c('LinkedIn', 'Critical Ecology Lab · roles, partnerships, publications.', 'Feed screenshot', 'FOLLOW', 'contact', 'https://www.linkedin.com/company/critical-ecology-lab/'),
-        c('YouTube', '@criticalecologylab · explainers, talks, recordings.', 'Video thumbnail grid', 'SUBSCRIBE', 'contact', 'https://docs.google.com/forms/d/e/1FAIpQLScqgh3jLO6zBCqlTIM_SpYpYVThWWgUJyZjbhVcAnOUYPDEiw/viewform')
+        c('YouTube', '@criticalecologylab · explainers, talks, recordings.', 'Video thumbnail grid', 'SUBSCRIBE', 'contact', 'https://www.youtube.com/@criticalecologylab')
       ]),
       T('Reach us', 'criticalecologylab@inquiringsystems.org', 'Critical Ecology Lab, c/o Inquiring Systems Inc., 1275 4th Street #371, Santa Rosa, CA 95404', 'Critical Ecology Lab is a fiscally sponsored 501(c)3 nonprofit organization. Our fiscal sponsor is Inquiring Systems Inc.'),
       LIST('Specific enquiries', 'THREE ROUTES', [
@@ -1231,7 +1328,7 @@ const PAGES = {
     ] }
 };
 
-const P_ = n => './' + n + (n.indexOf('.') !== -1 ? '' : '.jpg');
+const P_ = n => /^https?:\/\//.test(n) ? n : './' + n + (n.indexOf('.') !== -1 ? '' : '.jpg');
 // Each route gets a topical run of photographs, used in order for its lead
 // image, editorial photos and card thumbnails.
 const ROUTE_IMG = {
@@ -1322,8 +1419,42 @@ const pick = (route, n) => { const l = ROUTE_IMG[route] || FALLBACK; return P_(l
 const GRID = { 1: 'repeat(auto-fit,minmax(280px,1fr))', 2: 'repeat(auto-fit,minmax(280px,1fr))', 3: 'repeat(auto-fit,minmax(240px,1fr))', 4: 'repeat(auto-fit,minmax(200px,1fr))' };
 const nToStr = n => (n < 10 ? '0' + n : '' + n);
 
+// ---------------------------------------------------------------------------
+// FORM ENDPOINTS — paste the URLs from your email service here.
+// NEWSLETTER_ENDPOINT: the form action URL from Mailchimp / MailerLite /
+// Buttondown / Formspree / a Google Form. CONTACT_ENDPOINT: same idea.
+// While either is empty, that form is replaced by our email address.
+const NEWSLETTER_ENDPOINT = 'https://app.kit.com/forms/9844736/subscriptions';
+const CONTACT_ENDPOINT = '';
+// ---------------------------------------------------------------------------
+
 class Component extends DCLogic {
-  state = { route: 'home', mega: null, menuOpen: false, sortDirs: {} };
+  state = { route: 'home', mega: null, menuOpen: false, sortDirs: {}, nl: 'idle', cf: 'idle' };
+
+  submitTo(endpoint, form, key) {
+    const data = new FormData(form);
+    this.setState(key === 'nl' ? { nl: 'sending' } : { cf: 'sending' });
+    fetch(endpoint, { method: 'POST', mode: 'no-cors', body: data })
+      .then(() => { this.setState(key === 'nl' ? { nl: 'done' } : { cf: 'done' }); form.reset(); })
+      .catch(() => this.setState(key === 'nl' ? { nl: 'error' } : { cf: 'error' }));
+  }
+
+  componentDidMount() {
+    if (typeof window === 'undefined') return;
+    this._onHash = () => {
+      const id = (location.hash || '').replace(/^#\/?/, '') || 'home';
+      if ((id === 'home' || PAGES[id]) && id !== this.state.route) {
+        this.setState({ route: id, mega: null, menuOpen: false });
+        this.scrollTop();
+      }
+    };
+    this._onHash();
+    window.addEventListener('hashchange', this._onHash);
+  }
+
+  componentWillUnmount() {
+    if (this._onHash) window.removeEventListener('hashchange', this._onHash);
+  }
 
   componentDidUpdate(_, prev) {
     const prevRoute = prev ? prev.route : this._lastRoute;
@@ -1362,11 +1493,28 @@ class Component extends DCLogic {
     return e => {
       if (e && e.preventDefault) e.preventDefault();
       this.setState({ route, mega: null, menuOpen: false });
+      if (typeof window !== 'undefined') {
+        const want = '#' + route;
+        if (location.hash !== want) history.pushState(null, '', route === 'home' ? location.pathname : want);
+      }
       this.scrollTop();
     };
   }
 
   renderVals() {
+    const nlState = this.state.nl, cfState = this.state.cf;
+    const nlLive = !!NEWSLETTER_ENDPOINT, cfLive = !!CONTACT_ENDPOINT;
+    const nlVals = {
+      nlSubmit: e => { e.preventDefault(); if (nlLive) this.submitTo(NEWSLETTER_ENDPOINT, e.target, 'nl'); },
+      nlIdle: nlLive && nlState !== 'done', nlSetup: !nlLive,
+      nlDone: nlState === 'done', nlError: nlState === 'error',
+      nlLabel: nlState === 'sending' ? 'Signing you up…' : 'Sign up',
+      cfSubmit: e => { e.preventDefault(); if (cfLive) this.submitTo(CONTACT_ENDPOINT, e.target, 'cf'); },
+      cfIdle: cfLive && cfState !== 'done', cfSetup: !cfLive,
+      cfDone: cfState === 'done', cfError: cfState === 'error',
+      cfLabel: cfState === 'sending' ? 'Sending…' : 'Send message',
+      nlInFooter: this.state.route !== 'home'
+    };
     const nav = this.props.navVariant || 'topbar';
     const home = this.props.homeVariant || 'split';
     const route = this.state.route;
@@ -1418,25 +1566,30 @@ class Component extends DCLogic {
         isFramework: b.t === 'framework',
         isConceptFig: b.t === 'conceptfig',
         h: b.h, body: b.body || [], cap: b.cap, hasCap: !!(b.cap && String(b.cap).trim() && !/^Caption line/.test(b.cap)), ph: b.ph, hgt: b.hgt, meta: b.meta, slot,
-        src: (b.t === 'photo' || b.t === 'pair') ? pick(route, i + 1) : undefined,
+        src: (b.t === 'photo' || b.t === 'pair') ? (b.img ? P_(b.img) : pick(route, i + 1)) : undefined,
         cred: (b.t === 'photo' || b.t === 'pair') ? credOf(pick(route, i + 1)) : undefined,
         grid: GRID[b.per || 3], cols: 'minmax(0,1fr) minmax(0,1fr)',
         ordA: b.flip ? 2 : 1, ordB: b.flip ? 1 : 2,
-        items: (b.items || []).filter(it => {
-          // launch cut: drop cards/links that point at an unpublished page
-          if (b.t !== 'cards' && b.t !== 'next' && b.t !== 'list') return true;
-          if (it.url) return true;
-          const t = it.to;
-          return !(t && isDraft(t) && t !== route);
-        }).map((it, j) => ({
+        items: (b.items || []).map((it, j) => ({
           label: it.label, note: it.note, kicker: it.kicker, ph: it.ph,
           h: it.h, detail: it.detail, year: it.year || '', yearLabel: (it.year || '').slice(0, 4),
           author: it.author || '', showAuthor: Boolean(it.author),
           hasThumb: !b.noThumb,
           cols: (b.noThumb ? '' : '130px ') + (it.author ? 'minmax(0,1fr) minmax(0,1.05fr) minmax(0,0.5fr) 56px 110px' : 'minmax(0,1fr) minmax(0,1.05fr) 56px 110px'),
           slot: slot + '-i' + j,
-          go: it.url ? (e => { e.preventDefault(); window.open(it.url, '_blank', 'noopener'); }) : this.go(it.to || route),
-          src: b.t === 'form' ? undefined : (it.img ? (it.img.indexOf('.') !== -1 ? './' + it.img : P_(it.img)) : pick(route, i + j + 1)),
+          isStatic: !it.url && (!it.to || it.to === route),
+          cursor: (!it.url && (!it.to || it.to === route)) ? 'default' : 'pointer',
+          rowPad: (!it.url && (!it.to || it.to === route)) ? '0px' : '12px',
+          rowBg: (!it.url && (!it.to || it.to === route)) ? 'transparent' : '#FAFAFA',
+          rowOd: (!it.url && (!it.to || it.to === route)) ? '0px' : '180px',
+          rowOo: (!it.url && (!it.to || it.to === route)) ? '0' : '1',
+          lift: (!it.url && (!it.to || it.to === route)) ? 'none' : 'translateY(-4px)',
+          go: it.url
+            ? (e => { e.preventDefault(); window.open(it.url, '_blank', 'noopener'); })
+            : (!it.to || it.to === route)
+              ? (e => e.preventDefault())
+              : this.go(isDraft(it.to) ? 'coming-soon' : it.to),
+          src: b.t === 'form' ? undefined : (it.img ? P_(it.img) : pick(route, i + j + 1)),
           cred: b.t === 'form' ? undefined : (it.img ? undefined : credOf(pick(route, i + j + 1)))
         }))
       };
@@ -1482,6 +1635,7 @@ class Component extends DCLogic {
       toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen }),
       isHome: route === 'home', isPage: route !== 'home',
       homeSplit: home === 'split', homeFull: home === 'fullbleed', homeMosaic: home === 'mosaic',
+      ...nlVals,
       navItems, navSections, crumbs,
       pageKicker: page ? page.kicker : '', pageTitle: page ? page.title : '',
       pageStandfirst: page ? page.stand : '',
