@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Light.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Book.otf") format("opentype");font-weight:350;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:"ABC Gramercy Display";src:url("./ABCGramercyDisplay-Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Light.otf") format("opentype");font-weight:300;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Regular.otf") format("opentype");font-weight:400;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-Medium.otf") format("opentype");font-weight:500;font-display:swap}
+@font-face{font-family:Residenz;src:url("./ResidenzGrotesk-SemiBold.otf") format("opentype");font-weight:600;font-display:swap}
+@font-face{font-family:ResidenzMono;src:url("./ResidenzGrotesk-MonoLight.otf") format("opentype");font-weight:300;font-display:swap}
+html,body{margin:0;padding:0}
+*{box-sizing:border-box}
+a{color:#000000;text-decoration:none}
+a:hover{color:#FE6453}
+</style>
+</helmet>
+
+<div style="font-family:Residenz,Helvetica,Arial,sans-serif;background:#1A1A1A;color:#FFFFFF;height:100%;min-height:{{ shellMinH }};overflow:hidden;display:flex;flex-direction:column">
+
+  <div style="flex:none;padding:clamp(14px,2.6vh,48px) clamp(20px,2.6vw,40px) clamp(12px,2.2vh,36px);display:flex;flex-direction:column;align-items:center;gap:clamp(7px,1.2vh,18px);text-align:center;border-bottom:1px solid rgba(255,255,255,0.12)">
+    <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.3em;color:#CEE13E">LINEAGE</span>
+    <p style="margin:0;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:350;font-size:clamp(15px,1.9vw,26px);line-height:1.3;letter-spacing:0;max-width:52ch;text-wrap:pretty">This is not an exhaustive list. It represents the intellectual heart and aspirations of the Critical Ecology Lab.</p>
+  </div>
+
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="position:relative;flex:1;min-height:0">
+
+      <div style="position:absolute;inset:0;overflow:hidden">
+      <div ref="{{ stageRef }}" onMouseDown="{{ onDown }}" style="position:absolute;inset:0;cursor:{{ cursor }};touch-action:none">
+        <div style="position:absolute;left:0;top:0;width:2400px;height:1720px;transform-origin:0 0;transform:{{ transform }}">
+
+          <svg width="2400" height="1720" style="position:absolute;left:0;top:0;pointer-events:none;overflow:visible">
+            <sc-for list="{{ lines }}" as="l" hint-placeholder-count="0">
+              <line x1="{{ l.x1 }}" y1="{{ l.y1 }}" x2="{{ l.x2 }}" y2="{{ l.y2 }}" stroke="{{ l.stroke }}" stroke-width="{{ l.w }}"></line>
+            </sc-for>
+          </svg>
+
+          <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="0">
+            <div onMouseEnter="{{ n.onEnter }}" onMouseLeave="{{ n.onLeave }}" onClick="{{ n.onClick }}" style="position:absolute;left:{{ n.left }};top:{{ n.top }};width:0;height:0;opacity:{{ n.opacity }};transition:opacity .3s cubic-bezier(.2,.7,.2,1)">
+              <div style="position:absolute;left:{{ n.hitOffset }};top:{{ n.hitOffset }};width:{{ n.hitSize }};height:{{ n.hitSize }};cursor:pointer"></div>
+              <div style="position:absolute;left:{{ n.dotOffset }};top:{{ n.dotOffset }};width:{{ n.size }};height:{{ n.size }};background:{{ n.fill }};border:{{ n.border }};box-shadow:{{ n.ring }};cursor:pointer;pointer-events:none;transition:transform .3s cubic-bezier(.2,.7,.2,1);transform:{{ n.dotScale }}"></div>
+              <span style="position:absolute;left:{{ n.labelLeft }};top:{{ n.labelTop }};width:{{ n.labelWidth }};text-align:{{ n.labelAlign }};font-family:{{ n.labelFamily }};font-size:{{ n.labelSize }};font-weight:{{ n.labelWeight }};letter-spacing:{{ n.labelTracking }};line-height:1.3;color:{{ n.labelColor }};text-transform:{{ n.labelCase }};cursor:pointer;text-wrap:pretty">{{ n.label }}</span>
+            </div>
+          </sc-for>
+
+        </div>
+      </div>
+      </div>
+
+      <sc-if value="{{ card }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;left:{{ cardLeft }};top:{{ cardTop }};width:280px;max-height:{{ cardMaxH }};overflow-y:auto;background:#FFFFFF;border-top:4px solid {{ cardColor }};box-shadow:0 10px 30px rgba(0,0,0,0.18);padding:20px;display:flex;flex-direction:column;gap:12px;z-index:60">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:60px;height:60px;flex:none;background:{{ cardColor }};display:flex;align-items:center;justify-content:center">
+              <span style="font-family:ResidenzMono;font-size:15px;letter-spacing:0.06em;color:#FFFFFF">{{ cardInitials }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+              <span style="font-size:15px;font-weight:600;line-height:1.2;color:#000000">{{ cardName }}</span>
+              <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:{{ cardColor }}">{{ cardDate }}</span>
+            </div>
+          </div>
+          <sc-if value="{{ cardTie }}" hint-placeholder-val="{{ false }}">
+            <span style="align-self:flex-start;font-family:ResidenzMono;font-size:9.5px;letter-spacing:0.2em;background:#CEE13E;color:#000000;padding:6px 10px">{{ cardTie }}</span>
+          </sc-if>
+          <p style="margin:0;font-size:13px;font-weight:400;line-height:1.6;letter-spacing:0.01em;color:#313131;text-wrap:pretty">{{ cardBlurb }}</p>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <div style="flex:none;border-top:1px solid rgba(255,255,255,0.12);padding:9px clamp(16px,2.6vw,40px);display:flex;align-items:center;justify-content:space-between;gap:18px">
+      <div style="display:flex;align-items:center;gap:15px;flex-wrap:wrap;min-width:0">
+        <sc-for list="{{ legend }}" as="g" hint-placeholder-count="4">
+          <button type="button" onClick="{{ g.go }}" onMouseEnter="{{ g.onEnter }}" onMouseLeave="{{ g.onLeave }}" style="display:flex;align-items:center;gap:7px;cursor:pointer;background:transparent;border:none;padding:4px 0;font-family:Residenz,Helvetica,Arial,sans-serif">
+            <span style="width:10px;height:10px;flex:none;background:{{ g.ink }}"></span>
+            <span style="font-size:11.5px;font-weight:400;line-height:1.2;white-space:nowrap;color:{{ g.color }};transition:color .2s">{{ g.label }}</span>
+          </button>
+        </sc-for>
+        <div style="display:flex;align-items:center;gap:7px">
+          <span style="width:10px;height:10px;flex:none;background:#1A1A1A;border:2px solid #CEE13E"></span>
+          <span style="font-size:11.5px;font-weight:400;line-height:1.2;white-space:nowrap;color:#9A9A9A">Direct lineage</span>
+        </div>
+        <span style="font-family:ResidenzMono;font-size:9.5px;letter-spacing:0.2em;color:#6E6E6E;white-space:nowrap">{{ hint }}</span>
+      </div>
+      <div style="display:flex;gap:7px;flex:none">
+        <button type="button" onClick="{{ zoomOut }}" style="width:32px;height:32px;background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-family:ResidenzMono;font-size:15px;cursor:pointer;transition:background .2s,border-color .2s,color .2s" style-hover="background:#CEE13E;border-color:#CEE13E;color:#000000">&#8722;</button>
+        <button type="button" onClick="{{ zoomIn }}" style="width:32px;height:32px;background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-family:ResidenzMono;font-size:15px;cursor:pointer;transition:background .2s,border-color .2s,color .2s" style-hover="background:#CEE13E;border-color:#CEE13E;color:#000000">+</button>
+        <button type="button" onClick="{{ fitAll }}" style="height:32px;padding:0 14px;background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-family:ResidenzMono;font-size:10px;letter-spacing:0.2em;cursor:pointer;transition:background .2s,border-color .2s,color .2s" style-hover="background:#CEE13E;border-color:#CEE13E;color:#000000">FIT ALL</button>
+        <button type="button" onClick="{{ reset }}" style="height:32px;padding:0 14px;background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-family:ResidenzMono;font-size:10px;letter-spacing:0.2em;cursor:pointer;transition:background .2s,border-color .2s,color .2s" style-hover="background:#CEE13E;border-color:#CEE13E;color:#000000">CENTRE</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="padding:28px 20px 60px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;flex:1;min-height:0">
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:center;padding:22px;background:#FE6453;color:#FFFFFF">
+        <span style="font-family:ResidenzMono;font-size:10px;letter-spacing:0.24em">AT THE CENTRE</span>
+        <span style="font-size:17px;font-weight:600;letter-spacing:0.01em">Critical Ecology Lab</span>
+      </div>
+      <sc-for list="{{ mobileClusters }}" as="c" hint-placeholder-count="4">
+        <div style="border-top:4px solid {{ c.ink }};background:#FFFFFF">
+          <div onClick="{{ c.toggle }}" style="padding:18px 20px;display:flex;justify-content:space-between;gap:16px;align-items:center;cursor:pointer">
+            <span style="font-size:15px;font-weight:600;line-height:1.25;color:#000000">{{ c.label }}</span>
+            <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.16em;color:{{ c.ink }};flex:none">{{ c.badge }}</span>
+          </div>
+          <sc-if value="{{ c.open }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column">
+              <sc-for list="{{ c.items }}" as="e" hint-placeholder-count="3">
+                <div style="border-top:1px solid #D8D8D8;padding:18px 20px;display:flex;flex-direction:column;gap:9px">
+                  <span style="font-size:15px;font-weight:600;line-height:1.2;color:#000000">{{ e.name }}</span>
+                  <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:{{ c.ink }}">{{ e.date }}</span>
+                  <sc-if value="{{ e.tie }}" hint-placeholder-val="{{ false }}">
+                    <span style="align-self:flex-start;font-family:ResidenzMono;font-size:9.5px;letter-spacing:0.2em;background:#CEE13E;color:#000000;padding:6px 10px">{{ e.tie }}</span>
+                  </sc-if>
+                  <p style="margin:0;font-size:13px;line-height:1.6;color:#313131;text-wrap:pretty">{{ e.blurb }}</p>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;embedded&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Map&quot;},&quot;showLabels&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Map&quot;},&quot;spread&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.7,&quot;max&quot;:1.4,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Map&quot;}}">
+const CLUSTERS = [
+  { id: 'c1', label: 'Black Feminist Intellectual Tradition', short: 'Black Feminist Thought', ink: '#678E79', angle: 193, dist: 470 },
+  { id: 'c2', label: 'Independent Scientific Research Institutes', short: 'Independent Institutes', ink: '#6B5E8E', angle: 342, dist: 515 },
+  { id: 'c3', label: 'Popular Education & Political Formation', short: 'Popular Education', ink: '#5478BE', angle: 118, dist: 400 },
+  { id: 'c4', label: 'Field Science & Ecological Inquiry', short: 'Field Science', ink: '#BC7057', angle: 58, dist: 335 }
+];
+
+const ENTITIES = {
+  c1: [
+    { name: 'Anna Julia Cooper', date: '1858–1964', blurb: 'Among the earliest Black feminist intellectuals, whose 1892 A Voice from the South anticipated intersectional analysis by nearly a century. She argued that Black women\u2019s liberation was the fulcrum on which all human liberation turned. She conducted serious scholarship outside the institutions that refused to admit or employ her.' },
+    { name: 'Audre Lorde', date: '1934–1992', blurb: 'Poet and theorist whose essays on the erotic as a site of knowledge and the body as a source of political capacity are foundational to CEL\u2019s somatic literacy framework. Her insistence that the master\u2019s tools will never dismantle the master\u2019s house defines CEL\u2019s relationship to Western scientific institutions.' },
+    { name: 'Patricia Hill Collins', date: 'b. 1948', blurb: 'Sociologist whose concept of the matrix of domination — interlocking systems of race, class, gender, and sexuality as mutually constitutive — provides the analytical infrastructure for critical ecology\u2019s understanding of power. Her standpoint epistemology grounds CEL\u2019s critique of objectivity and neutrality in ecological science.' },
+    { name: 'bell hooks', date: '1952–2021', blurb: 'Educator and critic whose Teaching to Transgress is a direct ancestor of CEL\u2019s pedagogical model. Her concept of engaged pedagogy — in which the teacher\u2019s growth is inseparable from the student\u2019s and the classroom is a site of liberation — defines how CEL teaches.' },
+    { name: 'Sylvia Wynter', date: 'b. 1928', blurb: 'Scholar whose analysis of how a particular European conception of the human became the universal standard against which all others are measured provides deep theoretical grounding for CEL\u2019s critique of Western scientific epistemology. Her work explains how colonial knowledge systems naturalize hierarchy and how science participates in that naturalization.' },
+    { name: 'Katherine McKittrick', date: 'b. 1970', blurb: 'Geographer whose Demonic Grounds established Black feminist geography as a field, analyzing how space and landscape are produced through racial capitalism and slavery. Her work is a direct intellectual ancestor of CEL\u2019s Space/Land/Scale analytical framework.' },
+    { name: 'Christina Sharpe', date: 'b. 1967', blurb: 'Scholar whose concept of wake work — living and thinking in the ongoing afterlives of slavery — and whose analysis of how slavery\u2019s residue persists in soil, water, and atmosphere provides theoretical grounding for CEL\u2019s ESPS research initiative. Her work establishes that ecological data carries the imprint of systems of power.' },
+    { name: 'Dorothy Roberts', date: 'b. 1956', blurb: 'Legal scholar and sociologist whose Fatal Invention demonstrates with rigorous empirical analysis how science has been used to manufacture and legitimize racial categories. Her work grounds CEL\u2019s argument that scientific objectivity is a myth and that the tools of science can be redirected toward liberation.' },
+    { name: 'Ruth Wilson Gilmore', date: 'b. 1950', blurb: 'Geographer and abolitionist scholar whose analysis of how racial capitalism produces both carceral landscapes and ecological sacrifice zones through the same mechanisms informs CEL\u2019s analytical framework. Her geographic approach to understanding how power produces space and vulnerability runs through the Space/Land/Scale module.' },
+    { name: 'adrienne maree brown', date: 'b. 1978', blurb: 'Organizer and theorist whose Emergent Strategy draws explicitly on ecological principles — biomimicry, interdependence, resilience — and applies them to movement building and social transformation. Her work establishes that the relationship between ecology and liberation runs in both directions.' }
+  ],
+  c2: [
+    { name: 'Institute for Advanced Study, Princeton', date: 'est. 1930', blurb: 'Founded as a permanent home for researchers freed from teaching obligations, departmental politics, and short-term grant cycles. Einstein, Gödel, and Oppenheimer worked here. Established that the most serious science sometimes requires institutional independence from the university structure that would otherwise constrain it.' },
+    { name: 'Marine Biological Laboratory, Woods Hole', date: 'est. 1888', blurb: 'One of the oldest and most distinguished independent biological research institutions in the world, predating most university biology programs it has trained. Its model of place-based, field-anchored research conducted outside any single university\u2019s control is a direct structural ancestor of CEL\u2019s approach.' },
+    { name: 'Naples Zoological Station', date: 'est. 1872', blurb: 'Founded by Anton Dohrn as an international, independent marine research station at a time when no university could have created it. Established the model of the independent field research institute as international scientific infrastructure, drawing researchers across national academic systems to a shared place.' },
+    { name: 'Cold Spring Harbor Laboratory', date: 'est. 1890', blurb: 'Transformed molecular biology and genetics through independent research and intensive summer courses that became where working scientists went to learn new methods and frameworks. A model for rigorous, cohort-based advanced scientific education outside any degree-granting institution.' },
+    { name: 'Salk Institute for Biological Studies', date: 'est. 1960', blurb: 'Founded by Jonas Salk explicitly to free researchers from university constraints, with the premise that the most important biological questions required institutional independence. Its founding intention to put scientists and humanists in physical proximity reflects a commitment to integrating scientific rigor with broader humanistic inquiry.' },
+    { name: 'Cary Institute of Ecosystem Studies', date: 'est. 1983', blurb: 'An independent ecological research institute focused on how ecosystems function and how human activity alters them, with an explicit public engagement mission. CEL\u2019s founder was trained at and worked at Cary throughout her career, and CEL\u2019s research remains affiliated with IES. The closest single institutional precedent to CEL: independent ecological research and education committed to applying science to real-world problems.', tie: 'DIRECT LINEAGE' },
+    { name: 'Max Planck Society', date: 'est. 1948', blurb: 'Germany\u2019s network of independent research institutes, each institutionally separate from universities and focused on questions that require time horizons no standard grant cycle can sustain. The Max Planck model holds that certain kinds of research require a home not subject to undergraduate enrollment pressures or departmental politics.' },
+    { name: 'Carnegie Institution for Science', date: 'est. 1902', blurb: 'Philanthropically capitalized as a permanent independent research institution with no students and no teaching obligations, operating continuously for over a century. Its Department of Global Ecology is among the most important centers for Earth system science in the world.' },
+    { name: 'Institut Pasteur', date: 'est. 1887', blurb: 'Founded by Louis Pasteur as an independent research institution because the questions he was asking required an institutional form that did not yet exist within universities. Generated multiple Nobel Prizes and transformed medicine, establishing that an independent institute organized around a specific set of questions can become permanent scientific infrastructure.' },
+    { name: 'Potsdam Institute for Climate Impact Research', date: 'est. 1992', blurb: 'An independent German research institute integrating natural science, economics, and social analysis to study climate change and its consequences, explicitly oriented toward informing policy and public understanding. One of the most influential climate research institutions in the world, operating outside any university structure.' },
+    { name: 'Santa Fe Institute', date: 'est. 1984', blurb: 'Founded by physicists and biologists who believed disciplinary boundaries were preventing the most important questions from being asked. Explicitly post-disciplinary, organized around complexity and cross-domain synthesis rather than departments. The institutional model — small, independent, not degree-granting, organized around big questions — is a direct precedent for CEL.' },
+    { name: 'Organization for Tropical Studies', date: 'est. 1963', blurb: 'Pioneered the rigorous ecological field course as a graduate-level educational form — intensive, place-based, cohort-based, producing knowledge that cannot be produced in a classroom. Not degree-granting but widely recognized as producing the most significant ecological field training available anywhere.' },
+    { name: 'Long Term Ecological Research Network', date: 'est. 1980', blurb: 'Established that ecological understanding requires time horizons and spatial scales that no single research grant or university lab can sustain. Demonstrated that independent, long-term, place-based research infrastructure is necessary for the most important ecological science.' }
+  ],
+  c3: [
+    { name: 'Paulo Freire', date: '1921–1997', blurb: 'Brazilian educator whose Pedagogy of the Oppressed established education not as transmission of knowledge but as collaborative critical analysis of the world, oriented toward transformative action. His concept of the banking model — and its dialogical alternative — defines the terms against which CEL\u2019s teaching practice positions itself.' },
+    { name: 'Highlander Folk School', date: 'est. 1932', blurb: 'Founded by Myles Horton in Tennessee, Highlander trained Rosa Parks, Martin Luther King Jr., and generations of civil rights and labor organizers through non-hierarchical pedagogy rooted in learning from lived experience. Its model — bringing people together to analyze their own conditions and develop collective strategies — is one of CEL\u2019s most direct institutional ancestors.' },
+    { name: 'Freedom Schools', date: 'est. 1964', blurb: 'Organized by SNCC during Freedom Summer in Mississippi to provide the education the segregated school system deliberately withheld — not remedial, but radically expanded: Black history, political philosophy, and civic leadership. Built around the question of what the Movement needed people to know, structurally similar to the question CEL asks of its own curriculum.' },
+    { name: 'Kurt Hahn', date: '1886–1974', blurb: 'Founder of Outward Bound and the United World Colleges, whose conviction that transformative education required real physical challenge, real engagement with the world, and real community shaped the field intensive model. Dr. Pierre is an Outward Bound alumna, who attended at 15 on a Youth Leadership Corps scholarship that changed her life. His argument that demanding experience is itself a pedagogy informs CEL\u2019s approach to field education.', tie: 'DIRECT LINEAGE' },
+    { name: 'Thich Nhat Hanh', date: '1926–2022', blurb: 'Vietnamese Buddhist monk, poet, and peace activist who developed engaged Buddhism — the insistence that contemplative practice and political action are inseparable, and that mindfulness is a deepened capacity to be present within the world rather than a retreat from it. His teaching on interbeing — the radical interdependence of all phenomena — provides philosophical grounding for CEL\u2019s ecological and somatic frameworks.' }
+  ],
+  c4: [
+    { name: 'Alexander von Humboldt', date: '1769–1859', blurb: 'Naturalist and geographer who established that understanding landscapes requires reading the human histories — including colonial histories — written into them, making him among the first scientists to name colonialism as an ecological force. He conducted rigorous field science largely outside institutional structures, funding his own expeditions and operating as an independent scholar. His synthesis of social, political, and ecological analysis in field science is the oldest ancestor of what CEL practices.' }
+  ]
+};
+
+const CX = 1200, CY = 860;
+const RADII = [122, 254, 178, 320];
+
+function initials(name) {
+  const stop = { of: 1, for: 1, the: 1, and: 1, a: 1, an: 1, in: 1, on: 1, to: 1 };
+  const words = name.replace(/[,–—]/g, ' ').split(/\s+/).filter(function (w) { return w && !stop[w.toLowerCase()]; });
+  return words.slice(0, 3).map(function (w) { return w[0].toUpperCase(); }).join('');
+}
+
+class Component extends DCLogic {
+  state = {
+    scale: 0.62, tx: 0, ty: 0,
+    hover: null, hoverCluster: null, pinned: null,
+    dragging: false,
+    vw: (typeof window !== 'undefined' ? window.innerWidth : 1440),
+    open: {}
+  };
+
+  layout() {
+    const spread = this.props.spread == null ? 1 : this.props.spread;
+    const nodes = [];
+    const lines = [];
+    CLUSTERS.forEach(function (cl) {
+      const a = cl.angle * Math.PI / 180;
+      const gx = CX + Math.cos(a) * cl.dist;
+      const gy = CY + Math.sin(a) * cl.dist;
+      lines.push({ id: 'L' + cl.id, x1: CX, y1: CY, x2: gx, y2: gy, cluster: cl.id, w: 1.6 });
+      nodes.push({ id: cl.id, kind: 'cluster', cluster: cl.id, label: cl.label, x: gx, y: gy, ink: cl.ink });
+      const list = ENTITIES[cl.id];
+      const n = list.length;
+      const span = Math.min(3.0, Math.max(0.5, n * 0.29)) * spread;
+      list.forEach(function (e, i) {
+        const t = n === 1 ? 0 : (i / (n - 1)) - 0.5;
+        const ang = a + t * span;
+        const r = RADII[i % RADII.length];
+        const x = gx + Math.cos(ang) * r;
+        const y = gy + Math.sin(ang) * r;
+        lines.push({ id: 'l' + cl.id + i, x1: gx, y1: gy, x2: x, y2: y, cluster: cl.id, w: 1 });
+        nodes.push({ id: cl.id + '-' + i, kind: 'entity', cluster: cl.id, label: e.name, name: e.name, date: e.date, blurb: e.blurb, tie: e.tie, x: x, y: y, ink: cl.ink });
+      });
+    });
+    nodes.unshift({ id: 'cel', kind: 'center', cluster: null, label: 'CRITICAL ECOLOGY LAB', x: CX, y: CY, ink: '#FE6453' });
+    return { nodes: nodes, lines: lines };
+  }
+
+  componentDidMount() {
+    const self = this;
+    this.onResize = function () { self.setState({ vw: window.innerWidth }); };
+    window.addEventListener('resize', this.onResize);
+    this.onMove = function (e) {
+      if (!self.state.dragging) return;
+      self.setState({ tx: e.clientX - self.dragStart.x, ty: e.clientY - self.dragStart.y });
+    };
+    this.onUp = function () { if (self.state.dragging) self.setState({ dragging: false }); };
+    window.addEventListener('mousemove', this.onMove);
+    window.addEventListener('mouseup', this.onUp);
+    this.fit();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('mousemove', this.onMove);
+    window.removeEventListener('mouseup', this.onUp);
+    if (this.stage) this.stage.removeEventListener('wheel', this.onWheel);
+  }
+
+  bounds() {
+    const ns = this.layout().nodes;
+    let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    ns.forEach(function (n) {
+      const pad = n.kind === 'center' ? 140 : n.kind === 'cluster' ? 170 : 182;
+      x0 = Math.min(x0, n.x - pad); x1 = Math.max(x1, n.x + pad);
+      const vpad = n.kind === 'entity' ? 88 : 62;
+      y0 = Math.min(y0, n.y - vpad); y1 = Math.max(y1, n.y + vpad);
+    });
+    return { x0: x0, y0: y0, w: x1 - x0, h: y1 - y0 };
+  }
+
+  fitAll() {
+    const el = this.stage;
+    if (!el) return;
+    const w = el.clientWidth, h = el.clientHeight;
+    if (!w || !h) return;
+    const b = this.bounds();
+    const pad = 18;
+    const s = Math.min((w - pad * 2) / b.w, (h - pad * 2) / b.h);
+    this.setState({
+      scale: s,
+      tx: pad + (w - pad * 2 - b.w * s) / 2 - b.x0 * s,
+      ty: pad + (h - pad * 2 - b.h * s) / 2 - b.y0 * s
+    });
+  }
+
+  focus(x, y, scale) {
+    const el = this.stage;
+    if (!el) return;
+    const w = el.clientWidth, h = el.clientHeight;
+    if (!w || !h) return;
+    const s = scale || 0.78;
+    this.setState({ scale: s, tx: w / 2 - x * s, ty: h / 2 - y * s });
+  }
+
+  centroidOf(id) {
+    const cl = CLUSTERS.filter(function (c) { return c.id === id; })[0];
+    const a = cl.angle * Math.PI / 180;
+    return { x: CX + Math.cos(a) * cl.dist, y: CY + Math.sin(a) * cl.dist };
+  }
+
+  fit() { this.focus(CX, CY, 0.78); }
+
+  setStage = (el) => {
+    if (!el || el === this.stage) return;
+    this.stage = el;
+    const self = this;
+    this.onWheel = function (e) {
+      e.preventDefault();
+      const rect = el.getBoundingClientRect();
+      const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      const s0 = self.state.scale;
+      const s1 = Math.min(2.2, Math.max(0.24, s0 * (e.deltaY < 0 ? 1.1 : 0.9)));
+      const k = s1 / s0;
+      self.setState({ scale: s1, tx: mx - (mx - self.state.tx) * k, ty: my - (my - self.state.ty) * k });
+    };
+    el.addEventListener('wheel', this.onWheel, { passive: false });
+    this.fit();
+  };
+
+  zoomBy = (f) => {
+    const el = this.stage;
+    const w = el ? el.clientWidth : 1200, h = el ? el.clientHeight : 800;
+    const s0 = this.state.scale;
+    const s1 = Math.min(2.2, Math.max(0.24, s0 * f));
+    const k = s1 / s0;
+    this.setState({ scale: s1, tx: w / 2 - (w / 2 - this.state.tx) * k, ty: h / 2 - (h / 2 - this.state.ty) * k });
+  };
+
+  renderVals() {
+    const self = this;
+    const s = this.state;
+    const showLabels = this.props.showLabels !== false;
+    const isMobile = s.vw < 900;
+    const built = this.layout();
+    const groups = {};
+    built.nodes.forEach(function (n) {
+      if (n.kind === 'center') return;
+      n.labelBase = n.kind === 'cluster' ? -38 : -9;
+      const k = n.cluster + (n.x >= CX ? 'R' : 'L');
+      (groups[k] = groups[k] || []).push(n);
+    });
+    Object.keys(groups).forEach(function (k) {
+      const arr = groups[k].slice().sort(function (a, b) {
+        return (a.y + a.labelBase) - (b.y + b.labelBase);
+      });
+      let last = -1e9;
+      arr.forEach(function (n) {
+        const gap = n.kind === 'cluster' ? 50 : 40;
+        n.labelY = Math.max(n.y + n.labelBase, last + gap);
+        last = n.labelY;
+      });
+      let drift = 0;
+      arr.forEach(function (n) { drift += n.labelY - (n.y + n.labelBase); });
+      const shift = drift / arr.length;
+      arr.forEach(function (n) { n.labelY -= shift; });
+    });
+
+    const hoverNode = s.hover ? built.nodes.filter(function (n) { return n.id === s.hover; })[0] : null;
+    const activeCluster = s.hoverCluster || (hoverNode ? hoverNode.cluster : null);
+
+    const lines = built.lines.map(function (l) {
+      const on = activeCluster === l.cluster;
+      const cl = CLUSTERS.filter(function (c) { return c.id === l.cluster; })[0];
+      return { id: l.id, x1: l.x1, y1: l.y1, x2: l.x2, y2: l.y2, w: l.w, stroke: on ? cl.ink : 'rgba(255,255,255,0.15)' };
+    });
+
+    const nodes = built.nodes.map(function (n) {
+      const size = n.kind === 'center' ? 124 : n.kind === 'cluster' ? 64 : 22;
+      const isHot = s.hover === n.id;
+      const dimmed = hoverNode && !isHot && n.cluster !== activeCluster && n.kind === 'entity';
+      const right = n.x >= CX;
+      const labelW = n.kind === 'center' ? 260 : n.kind === 'cluster' ? 215 : 168;
+      return {
+        id: n.id,
+        label: n.label,
+        left: n.x + 'px',
+        top: n.y + 'px',
+        size: size + 'px',
+        dotOffset: (-size / 2) + 'px',
+        dotScale: isHot ? 'scale(1.35)' : 'scale(1)',
+        fill: n.kind === 'center' ? '#FE6453' : n.kind === 'cluster' ? n.ink : (isHot ? n.ink : '#1A1A1A'),
+        border: n.kind === 'entity' ? ('2px solid ' + (n.tie ? '#CEE13E' : n.ink)) : 'none',
+        ring: n.tie ? '0 0 0 3px rgba(206,225,62,0.28)' : 'none',
+        opacity: dimmed ? 0.28 : 1,
+        labelLeft: n.kind === 'center' ? (-labelW / 2) + 'px' : right ? (size / 2 + 14) + 'px' : (-labelW - size / 2 - 14) + 'px',
+        labelTop: n.kind === 'center' ? (size / 2 + 18) + 'px' : (n.labelY - n.y) + 'px',
+        labelWidth: labelW + 'px',
+        labelAlign: n.kind === 'center' ? 'center' : right ? 'left' : 'right',
+        labelFamily: n.kind === 'center' ? 'ResidenzMono' : 'Residenz, Helvetica, Arial, sans-serif',
+        labelSize: n.kind === 'center' ? '14px' : n.kind === 'cluster' ? '15px' : '13px',
+        labelWeight: n.kind === 'entity' ? 500 : 600,
+        labelTracking: n.kind === 'center' ? '0.22em' : '0.01em',
+        labelCase: n.kind === 'center' ? 'uppercase' : 'none',
+        labelColor: ((!showLabels || 13 * s.scale < 8.5) && n.kind === 'entity' && !isHot) ? 'transparent' : (n.kind === 'entity' ? (isHot ? '#FFFFFF' : 'rgba(255,255,255,0.72)') : '#FFFFFF'),
+        hitSize: (n.kind === 'entity' ? 64 : size + 30) + 'px',
+        hitOffset: (n.kind === 'entity' ? -32 : -(size + 30) / 2) + 'px',
+        onEnter: n.kind === 'entity' ? function () { if (!self.state.pinned) self.setState({ hover: n.id }); } : function () { self.setState({ hoverCluster: n.cluster }); },
+        onLeave: n.kind === 'entity' ? function () { if (!self.state.pinned) self.setState({ hover: null }); } : function () { self.setState({ hoverCluster: null }); },
+        onClick: n.kind === 'entity'
+          ? function (e) {
+              e.stopPropagation();
+              const same = self.state.pinned === n.id;
+              self.setState({ pinned: same ? null : n.id, hover: same ? null : n.id });
+            }
+          : function () {}
+      };
+    });
+
+    let cardLeft = 0, cardTop = 0, cardMaxH = '80vh';
+    if (hoverNode) {
+      const sw = this.stage ? this.stage.clientWidth : 1200;
+      const sh = this.stage ? this.stage.clientHeight : 700;
+      const sx = hoverNode.x * s.scale + s.tx;
+      const sy = hoverNode.y * s.scale + s.ty;
+      cardLeft = Math.max(12, Math.min(Math.max(12, sw - 292), hoverNode.x >= CX ? sx - 300 : sx + 26));
+      cardTop = Math.max(12, Math.min(Math.max(12, sh - 240), sy - 150));
+      cardMaxH = Math.max(180, sh - cardTop - 14) + 'px';
+    }
+
+    return {
+      shellMinH: this.props.embedded ? '460px' : '100vh',
+      isDesktop: !isMobile,
+      isMobile: isMobile,
+      nodes: nodes,
+      lines: lines,
+      transform: 'translate(' + s.tx + 'px,' + s.ty + 'px) scale(' + s.scale + ')',
+      cursor: s.dragging ? 'grabbing' : 'grab',
+      stageRef: this.setStage,
+      onDown: function (e) {
+        self.dragStart = { x: e.clientX - s.tx, y: e.clientY - s.ty };
+        self.setState({ dragging: true, pinned: null, hover: null });
+      },
+      zoomIn: function () { self.zoomBy(1.22); },
+      zoomOut: function () { self.zoomBy(0.82); },
+      reset: function () { self.focus(CX, CY, 0.78); },
+      fitAll: function () { self.fitAll(); },
+      hint: 13 * s.scale < 8.5 ? 'OVERVIEW \u00B7 ZOOM IN FOR NAMES' : 'DRAG TO EXPLORE \u00B7 SCROLL TO ZOOM',
+      clusterNav: CLUSTERS.map(function (c) {
+        return {
+          id: c.id, label: c.short, ink: c.ink,
+          go: function () {
+            const p = self.centroidOf(c.id);
+            self.focus(p.x, p.y, 0.78);
+          }
+        };
+      }),
+      card: Boolean(hoverNode),
+      cardName: hoverNode ? hoverNode.name : '',
+      cardDate: hoverNode ? hoverNode.date : '',
+      cardBlurb: hoverNode ? hoverNode.blurb : '',
+      cardColor: hoverNode ? hoverNode.ink : '#678E79',
+      cardInitials: hoverNode ? initials(hoverNode.name) : '',
+      cardTie: hoverNode && hoverNode.tie ? hoverNode.tie : null,
+      cardLeft: cardLeft + 'px',
+      cardTop: cardTop + 'px',
+      cardMaxH: cardMaxH,
+      legend: CLUSTERS.map(function (c) {
+        return {
+          id: c.id, label: c.short, ink: c.ink,
+          color: activeCluster === c.id ? '#FFFFFF' : '#9A9A9A',
+          go: function () { const p = self.centroidOf(c.id); self.focus(p.x, p.y, 0.78); },
+          onEnter: function () { self.setState({ hoverCluster: c.id }); },
+          onLeave: function () { self.setState({ hoverCluster: null }); }
+        };
+      }),
+      mobileClusters: CLUSTERS.map(function (c) {
+        return {
+          id: c.id, label: c.label, ink: c.ink,
+          badge: ENTITIES[c.id].length + (s.open[c.id] ? ' \u2212' : ' +'),
+          open: Boolean(s.open[c.id]),
+          items: ENTITIES[c.id],
+          toggle: function () {
+            const o = Object.assign({}, self.state.open);
+            o[c.id] = !o[c.id];
+            self.setState({ open: o });
+          }
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

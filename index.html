@@ -161,7 +161,7 @@ a:hover{color:#FE6453}
       <div style="position:absolute;left:0;right:0;bottom:0;pointer-events:none;padding:0 clamp(24px,4.4vw,80px) clamp(48px,6vw,88px);display:flex;flex-direction:column;gap:24px;max-width:1200px">
         <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">OUR MISSION</span>
         <h1 style="margin:0;color:#FFFFFF;font-size:clamp(34px,4.6vw,74px);line-height:1.08;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty;max-width:22ch">Critical Ecology Lab</h1>
-        <p style="margin:0;color:rgba(255,255,255,0.86);font-size:19px;line-height:1.2;font-weight:400;letter-spacing:0;max-width:50ch">A research institute fighting to expose the roots of the climate crisis, and chart our future beyond it.</p>
+        <p style="margin:0;color:rgba(255,255,255,0.86);font-size:19px;line-height:1.2;font-weight:400;letter-spacing:0;max-width:50ch">Working towards a functioning Earth system and a just society through their inherent connection.</p>
       </div>
     </section>
   </sc-if>
@@ -219,7 +219,7 @@ a:hover{color:#FE6453}
           <a href="#" onClick="{{ p.go }}" style="display:flex;flex-direction:column;gap:16px">
             <div style="height:280px;overflow:hidden">
               <div style="width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.05)">
-                <image-slot id="{{ p.slot }}" shape="rect" fit="cover" src="{{ p.src }}" placeholder="{{ p.ph }}"></image-slot>
+                <image-slot id="{{ p.slot }}" shape="rect" fit="{{ p.fit }}" src="{{ p.src }}" placeholder="{{ p.ph }}"></image-slot>
               </div>
             </div>
             <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.22em;color:#5478BE">{{ p.meta }}</span>
@@ -253,7 +253,7 @@ a:hover{color:#FE6453}
         <div style="display:flex;flex-direction:column;gap:16px">
           <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:#FE6453">NEWSLETTER</span>
           <h2 style="margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">Field notes from the lab</h2>
-          <p style="margin:0;font-size:17px;line-height:1.4;font-weight:400;color:#313131;max-width:46ch;text-wrap:pretty">New research, program announcements, and essays on the roots of the climate crisis. Sent occasionally, never shared.</p>
+          <p style="margin:0;font-size:17px;line-height:1.4;font-weight:400;color:#313131;max-width:46ch;text-wrap:pretty">New research, program announcements, and essays on the roots of the climate crisis. Sent occasionally.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px;max-width:520px">
           <sc-if value="{{ nlIdle }}" hint-placeholder-val="{{ true }}">
@@ -312,7 +312,7 @@ a:hover{color:#FE6453}
       </div>
       <div style="height:300px;overflow:hidden">
         <div style="width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
-          <image-slot id="{{ pageSlotId }}" shape="rect" fit="cover" src="{{ pageSlotSrc }}" credit="{{ pageSlotCredit }}" placeholder="{{ pageSlotHint }}"></image-slot>
+          <image-slot id="{{ pageSlotId }}" shape="rect" fit="{{ pageSlotFit }}" src="{{ pageSlotSrc }}" credit="{{ pageSlotCredit }}" placeholder="{{ pageSlotHint }}"></image-slot>
         </div>
       </div>
     </div>
@@ -326,8 +326,13 @@ a:hover{color:#FE6453}
           <div data-m="one" style="display:grid;grid-template-columns:minmax(0,0.55fr) minmax(0,1fr);gap:56px">
             <h2 style="margin:0;font-size:clamp(23px,2.2vw,32px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ b.h }}</h2>
             <div style="display:flex;flex-direction:column;gap:18px;max-width:66ch">
-              <sc-for list="{{ b.body }}" as="line" hint-placeholder-count="2">
-                <p style="margin: 0; font-family: 'ABC Gramercy','ABC Gramercy Display',Georgia,serif; font-size: 18px; line-height: 1.4; font-weight: 350; letter-spacing: 0; color: #313131; text-wrap: pretty; font-style: normal">{{ line }}</p>
+              <sc-for list="{{ b.textBody }}" as="line" hint-placeholder-count="2">
+                <div style="display:flex;flex-direction:column;gap:7px">
+                  <p style="margin: 0; font-family: 'ABC Gramercy','ABC Gramercy Display',Georgia,serif; font-size: 18px; line-height: 1.4; font-weight: 350; letter-spacing: 0; color: #313131; text-wrap: pretty; font-style: normal">{{ line.p }}</p>
+                  <sc-if value="{{ line.hasCite }}" hint-placeholder-val="{{ false }}">
+                    <p style="margin:0;font-family:'ABC Gramercy','ABC Gramercy Display',Georgia,serif;font-size:13px;line-height:1.45;font-weight:350;letter-spacing:0.01em;color:#6B6B66;text-wrap:pretty">{{ line.cite }}</p>
+                  </sc-if>
+                </div>
               </sc-for>
             </div>
           </div>
@@ -545,7 +550,7 @@ a:hover{color:#FE6453}
       <div style="display:flex;flex-direction:column;gap:12px">
         <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.24em;color:#FE6453">NEWSLETTER</span>
         <h2 style="margin:0;font-size:clamp(22px,2.1vw,30px);line-height:1.12;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">Field notes from the lab</h2>
-        <p style="margin:0;font-size:14px;line-height:1.5;font-weight:300;color:#9A9A9A;max-width:44ch;text-wrap:pretty">New research, program announcements, and essays on the roots of the climate crisis. Sent occasionally, never shared.</p>
+        <p style="margin:0;font-size:14px;line-height:1.5;font-weight:300;color:#9A9A9A;max-width:44ch;text-wrap:pretty">New research, program announcements, and essays on the roots of the climate crisis. Sent occasionally.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px">
         <sc-if value="{{ nlIdle }}" hint-placeholder-val="{{ true }}">
@@ -788,7 +793,7 @@ const PAGES = {
         c('Funding', 'Who funds us and on what terms.', 'Document or meeting photo', 'FUNDING', 'funding')
       ]),
       CARDS('Elsewhere in About', [
-        c('Our Story', 'How the lab came to be.', 'Archival photograph', 'HISTORY', 'our-story'),
+        c('About the Lab', 'How the lab came to be.', 'Archival photograph', 'HISTORY', 'our-story'),
         c('Meet the Team', 'People, departments, structure.', 'Team portrait grid', 'PEOPLE', 'team'),
         c('Press Kit', 'Logos, photography, boilerplate.', 'Press kit flat-lay', 'MEDIA', 'press-kit'),
         c('Opportunities', 'Roles and collaborations.', 'Workplace photo', 'WORK WITH US', 'opportunities'),
@@ -843,29 +848,44 @@ const PAGES = {
         c('Queer Nature', 'Collaboration.', 'Partner logo', 'PARTNER', 'funding', 'https://www.queernature.org')
       ])
     ] },
-  'our-story': { kicker: 'ABOUT', title: 'Our Story', parent: 'about',
-    stand: 'The lab began with a question that traditional science was not asking: what does ecology miss by ignoring long-term patterns of oppression?',
+  'our-story': { kicker: 'ABOUT', title: 'About the Lab', parent: 'about',
+    stand: '',
     slot: 'Archival or founding-era photograph',
     blocks: [
-      PAIR('Beginnings', 'Archival photograph, grainy', [
-        'The Critical Ecology Lab began as a question—what does academic science miss by ignoring the relationship between long term patterns of oppression and ecosystems?',
-        'As a PhD student, Dr. Suzanne Pierre found that connecting settler colonialism, racism, and capitalism to ecology was not welcome in traditional spaces. She began describing these questions as critical ecology, a way of allowing critical social theory on race and gender to take shape in ecological inquiry. In 2017, she started an Instagram account to connect others with these ideas.',
-        'Despite the wall of resistance and doubt, she knew these questions could produce insight into how and why humans have shaped the climate crisis and how we may navigate it. Pursuing critical ecology was worth the risk. With the support of collaborator Kunal Palawat, Sue formally started the Critical Ecology Lab in winter 2020.'
-      ]),
+      PAIR('Overview', 'Present-day photograph', [
+        'The Critical Ecology Lab is an independent, fiscally sponsored 501(c)(3) nonprofit research organization based in the San Francisco Bay Area.',
+        'We work towards a functional Earth system and a just society through their inherent connection. Through interdisciplinary scientific research, we quantify how the organizing characteristics of the economic and social systems governing regions of the Earth produce measurable differences in ecological and biogeochemical function.',
+        'Our research draws upon ecosystem ecology and biogeochemistry, climate science and Earth system models, geospatial and remote sensing analysis, and causal inference methods, together with the historical records of land, labor, and resource governance.',
+        'Our questions are grounded in critical traditions including standpoint epistemology, metabolic rift theory, decolonial and subaltern knowledge frameworks, and critical physical geography, which regard human power dynamics as constitutive of physical reality rather than as context for it.'
+      ], true),
+      T('Our Premises',
+        { p: '1. Societal natural resource consumption and ecosystem disturbance is dominated not only by people\'s needs, but also by the material requirements of prevailing technologies that maximize the shareholder profits. While the  inputs and products shift across centuries, the logic of extraction, consumption, and discard has remained constant, with detrimental ecological and social effects.', cite: 'Schnaiberg 1980, The Environment: From Surplus to Scarcity · Foster 2000, Marx’s Ecology · Moore 2015, Capitalism in the Web of Life' },
+        { p: '2. Disciplines are only visible in hindsight. Scholarly fields look settled in the present, but their boundaries are drawn in retrospect. Every discipline was once an exploration and an argument. Uncritical resistance to new formations of methodology and knowledge production, on the grounds of being yet unrecognized, is to view the present from the position of the past.\n\n', cite: 'Kuhn 1962, The Structure of Scientific Revolutions · Gieryn 1983, American Sociological Review 48(6)' },
+        { p: '3. The people assigned to the lowest categories of social hierarchies hold unique knowledge of the relationships between ecological systems and social power. This is because their lives interface directly with the production of anthropogenic ecological disturbance as well as the environmental risks that result.', cite: 'Harding 1991, Whose Science? Whose Knowledge? · Collins 1986, Social Problems 33(6) · Whyte 2018, Traditional Ecological Knowledge' },
+        { p: '4. The participation of people with low social and economic status in the academic project of identifying and solving socio-technical problems, like the climate crisis,  threatens the prevailing arrangement of power that requires their exclusion.', cite: 'Fricker 2007, Epistemic Injustice · Prescod-Weinstein 2020, Signs 45(2)' },
+        { p: '5. The effects of social power disparities manifest at every scale of biological organization and compound with increasing complexity in living systems.', cite: 'Levins & Lewontin 1985, The Dialectical Biologist · Geronimus et al. 2006, Am J Public Health 96(5) · Morello-Frosch & Shenassa 2006, Environ Health Perspect 114(8)' },
+        'Suggested citation: Pierre, S. (2026). Critical Ecology Manifesto. Critical Ecology Lab. https://criticalecologylab.org'),
       P('FULL-BLEED — a moment that marks a turning point', 'Caption line — year and context.'),
-      LINEAGE('Where the work comes from', 'Twenty-nine thinkers, institutions and programmes stand behind the lab. Explore the map: hover or tap any node to read what it contributed, and use the cluster names to move between traditions.'),
-      PAIR('Where we are now', 'Present-day photograph', ['The Critical Ecology Lab is an independent, fiscally sponsored 501(c)(3) nonprofit research organization based in the California Bay Area. We research how social and economic power shape the planetary crisis, and share our findings with impacted communities and decision makers.'], true)
+      LINEAGE('Our Intellectual Lineage', 'Twenty-nine thinkers, institutions and programs that have influenced the formation of the Critical Ecology Lab. \nExplore the map: hover or tap any node to read what it contributed, and use the cluster names to move between categories.'),
+      LIST('Major funders', '', [
+        c('Simons Foundation · Science Sandbox', 'Support for the Liberation Ecology Field Course and Eco Afro Futures.', 'Funder logo', 'FUNDER', 'our-story', 'https://www.simonsfoundation.org/science-society-culture/science-sandbox/'),
+        c('National Science Foundation', 'EAGER award — long-term soil biogeochemistry impacts of plantation agriculture.', 'Funder logo', 'FUNDER', 'our-story', 'https://www.nsf.gov/awardsearch/showAward?AWD_ID=2347365'),
+        c('Libra Foundation', 'Grant support.', 'Funder logo', 'FUNDER', 'our-story', 'https://www.thelibrafoundation.org'),
+        c('Wilburforce Foundation', 'Grant support.', 'Funder logo', 'FUNDER', 'our-story', 'https://wilburforce.org'),
+        c('The Kalliopeia Foundation', 'Grant support.', 'Funder logo', 'FUNDER', 'our-story', 'https://kalliopeia.org'),
+        c('National Geographic Foundation', 'Wayfinder Award · Explorer support.', 'Funder logo', 'FUNDER', 'our-story', 'https://www.nationalgeographic.org/society/')
+      ], true),
     ] },
   team: { kicker: 'ABOUT', title: 'Meet the Team', parent: 'about',
     stand: 'Lab staff and associates.',
     slot: 'Group portrait, wide crop',
     blocks: [
       CARDS('Core Team', [
-        c('Suzanne Pierre, Ph.D.', 'Founder, Executive Director', 'Portrait, 4:5 vertical', 'CORE TEAM', 'team', undefined, 'suzanne-pierre-portrait.jpg', 'Suzanne Pierre (she/her) is an ecosystems and biogeochemist, focused on plant-microbe interactions in forest soils. Suzanne received an B.A. in Environmental Studies from New York University (2013), a Ph.D. in Ecology and Evolutionary Biology from Cornell University (2018), and completed a University of California President\u2019s Postdoctoral Fellowship at UC Berkeley (2020). Her technical expertise is in applying molecular and stable isotope approaches to characterizing the biophysical mechanisms controlling nutrient and carbon cycling in plant and microbial systems experiencing climate change. She is a 2022 recipient of the National Geographic Society Wayfinder Award and is a National Geographic Explorer.'),
+        c('Suzanne Pierre, Ph.D.', 'Founder, Executive Director', 'Portrait, 4:5 vertical', 'CORE TEAM', 'team', undefined, 'suzanne-pierre-portrait.png', 'Suzanne Pierre (she/her) is an ecosystems and biogeochemist, focused on plant-microbe interactions in forest soils. Suzanne received an B.A. in Environmental Studies from New York University (2013), a Ph.D. in Ecology and Evolutionary Biology from Cornell University (2018), and completed a University of California President\u2019s Postdoctoral Fellowship at UC Berkeley (2020). Her technical expertise is in applying molecular and stable isotope approaches to characterizing the biophysical mechanisms controlling nutrient and carbon cycling in plant and microbial systems experiencing climate change. She is a 2022 recipient of the National Geographic Society Wayfinder Award and is a National Geographic Explorer.'),
         c('Stacey King, MBA', 'Director of Operations', 'Portrait, 4:5 vertical', 'CORE TEAM', 'team', undefined, 'stacey-king.webp', 'Stacey (she/her) brings over a decade of experience across engineering, investments, and strategic operations. She holds an MBA from the Haas School of Business. Most recently, she has applied this expertise to scaling a mission-driven venture capital fund and supporting climate startups as they build technically feasible and commercially viable products and solutions. In her role at Critical Ecology Lab, Stacey will help shepherd the organization into its next phase of impact through fundraising, partnerships, and operational development.')
       ], 2),
       LIST('Collaborators', 'RESEARCH · EDUCATION', [
-        c('Michelle Wong, Ph.D.', 'Research · Assistant Professor, Yale University, Department of Ecology and Evolutionary Biology.', 'Portrait', 'RESEARCH', 'team', undefined, 'michelle-wong.jpg', 'Trained as an ecosystem ecologist and biogeochemist. Her work examines how plants overcome nutrient limitation through the use of nutrient acquisition strategies in temperate and tropical forests. She comes to CEL acknowledging that many scientific findings have been facilitated by colonialism, and how those who wield power in science perpetuate the culture.'),
+        c('Michelle Wong, Ph.D.', 'Research · Assistant Professor, Yale University, Department of Ecology and Evolutionary Biology.', 'Portrait', 'RESEARCH', 'team', undefined, 'michelle-wong.webp', 'Trained as an ecosystem ecologist and biogeochemist. Her work examines how plants overcome nutrient limitation through the use of nutrient acquisition strategies in temperate and tropical forests. She comes to CEL acknowledging that many scientific findings have been facilitated by colonialism, and how those who wield power in science perpetuate the culture.'),
         c('Anjum Kaur Gujral, MSc.', 'Doctoral Research Associate · University of California, Davis.', 'Portrait', 'RESEARCH', 'team', 'https://anjumgujral.weebly.com', 'anjum-gujral.webp', 'For her masters degree she studied plant form and function, as well as ecological niche and climate modeling. Through the Critical Ecology Lab, Anjum is interested in using plant traits to quantify the impacts of oppressive and extractive land-use histories on plant communities and whole ecosystems more broadly.'),
         c('Nautica Jones Harriott', 'Doctoral Research Associate · University of California, Santa Cruz.', 'Portrait', 'RESEARCH', 'team', undefined, 'nautica-jones.webp', 'A graduate student collaborator on the Ecological Scars of Plantation Slavery project. As a woman of color with a disability, Nautica uses her personal experiences to inform her work and promote accessibility for researchers of diverse backgrounds. She researches the ecological and climate resilience legacies of slavery and maroonage on postbellum forests and soil carbon storage.'),
         c('Pa-Shun Hawkins', 'Doctoral Research Associate · UCLA Institute of the Environment and Sustainability.', 'Portrait', 'RESEARCH', 'team', undefined, 'pa-shun-hawkins.webp', 'Develops protocols for extracting environmental DNA from coral skeletons and mollusk shells. For CEL she supports Hubbard Brook Experimental Forest NSF LTER scientists with research quantifying relationships between the social drivers of ecological disturbances and long-term environmental responses.')
@@ -1032,11 +1052,24 @@ const PAGES = {
         c('CEL Virtual Community Meeting 2', 'Wednesday 29 July 2026 · 9–10 AM PDT · virtual.', 'Community meeting announcement graphic', 'PAST', 'public-events', undefined, undefined, 'The second open call of the year: a research update from the field season, what the lab is publishing next, and an open floor for questions from the community.', '2026-07-29'),
         c('BIPOC Leaders Lounge', 'Oakland, California · SF Climate Week 2026 · 53 attended.', 'Evening gathering photo', 'PAST', 'public-events', 'https://luma.com/lgogtsr5', undefined, 'An evening of connection and vision among Black, Indigenous and allied leaders of colour across the climate space — from grassroots organising to green tech and climate philanthropy. Co-hosted with SF Climate Week to open the week by deepening networks and grounding in commitments to equity, justice and liberation.', '2026-04-20'),
         c('Invisible Impacts Symposium', 'Virtual · June 8–9, 2026 · practitioners, scholars, students and educators.', 'Symposium announcement graphic', 'PAST', 'public-events', 'https://iisymposium.criticalecologylab.org', 'invisible-impacts-symposium', 'Two days on the impacts that conventional environmental science leaves out — the social, economic and bodily consequences of ecological change. Open to practitioners, scholars, students and educators at every level.', '2026-06-08'),
-        c('CEL Virtual Community Meeting 1', 'Wednesday 1 April 2026 · 9–10 AM PDT · virtual.', 'Community meeting announcement graphic', 'PAST', 'public-events', undefined, 'community-meeting-q1.jpg', 'The first quarterly community meeting — an hour-long introduction to the year ahead: active projects, how the lab works, and how people outside the lab can take part.', '2026-04-01')
+        c('CEL Virtual Community Meeting 1', 'Wednesday 1 April 2026 · 9–10 AM PDT · virtual.', 'Community meeting announcement graphic', 'PAST', 'public-events', undefined, 'community-meeting-q1.png', 'The first quarterly community meeting — an hour-long introduction to the year ahead: active projects, how the lab works, and how people outside the lab can take part.', '2026-04-01')
       ]),
       T('Past events', 'Body paragraph — archive, recordings, how to request a talk.')
     ] },
 
+
+  'post-pritzker': { kicker: 'LAB UPDATE', title: 'Suzanne Pierre Named a 2026 Pritzker Emerging Environmental Genius Award Finalist', parent: 'news',
+    stand: 'UCLA has named Dr. Suzanne Pierre one of three finalists for the tenth annual Pritzker Emerging Environmental Genius Award. The winner of the $100,000 prize will be announced at a ceremony at UCLA on October 8.',
+    slot: 'Pritzker finalists composite — Zuzana Buřivalová, Doris Njagi and Suzanne Pierre',
+    blocks: [
+      T('31 July 2026',
+        'The UCLA Institute of the Environment and Sustainability has announced Zuzana Buřivalová, Doris Njagi and Suzanne Pierre as the finalists for the 2026 Pritzker Emerging Environmental Genius Award, which recognizes innovators under 40 whose solutions to global challenges have the power to revolutionize the future. As the award marks its tenth anniversary, one finalist will receive its $100,000 prize at a ceremony at UCLA on October 8.',
+        'The finalists were selected by a panel of eight environmental experts from a field of fifteen candidates. They will next be presented to a panel of judges: Ah-Hyung “Alissa” Park, dean of UCLA’s Samueli School of Engineering; Andrew Steer, former CEO of the Bezos Earth Fund; Anastasia Loukaitou-Sideris, dean of UCLA’s Luskin School of Public Affairs; Audrey Choi, chair of the Generation Foundation; and Christina A. Christie, dean of UCLA’s School of Education and Information Studies.',
+        'Dr. Pierre is a microbial ecologist and biogeochemist working in soil, with technical expertise in nutrient and carbon cycling in plant and microbial systems experiencing climate change. She is the founder and lead investigator of the Critical Ecology Lab, and her research works to explain global ecological change as a response to systems of global colonialism and capitalism.'),
+      T('About the award', 'The Pritzker Emerging Environmental Genius Award provides $100,000 to a scientist, entrepreneur, engineer, activist or artist under 40 who is poised to make a game-changing environmental difference. Since 2017 it has recognized nine winners, twenty-one finalists and 133 nominees from around the world.'),
+      TAGS('TAGGED', ['awards', 'recognition', 'press']),
+      NEXT('MORE', [{ label: 'Read the UCLA announcement', to: 'news', url: 'https://www.ioes.ucla.edu/article/ucla-announces-finalists-for-tenth-annual-pritzker-emerging-environmental-genius-award/' }, { label: 'Press & Lab Updates', to: 'news' }])
+    ] },
 
   'post-founders-note': { kicker: 'LAB UPDATE', title: '[Founder\u2019s Note] Why we keep going.', parent: 'news',
     stand: 'Whenever the work of building and sustaining the Critical Ecology Lab pushes me toward burning out, I return to an exchange I shared with a total stranger in February 2023.',
@@ -1153,7 +1186,7 @@ const PAGES = {
       T('The Rockefeller University',
         'The Rockefeller University is a private biomedical research and graduate-only university in New York City, New York. It focuses primarily on the biological and medical sciences and provides doctoral and postdoctoral education. It is classified as a \u201cSpecial Focus \u2014 Research Institution\u201d.'),
       T('About the lab', 'Critical Ecology Lab is a non-profit founded by Dr. Suzanne Pierre in 2020 to integrate the scientific and generational knowledge of oppressed communities to fight against social and planetary crises. They do this by facilitating informal education resources, creating novel scientific research, and activating communities towards climate action.'),
-      NEXT('MORE', [{ label: 'Press & Lab Updates', to: 'news' }, { label: 'Our Story', to: 'our-story' }])
+      NEXT('MORE', [{ label: 'Press & Lab Updates', to: 'news' }, { label: 'About the Lab', to: 'our-story' }])
     ] },
 
   'post-she-keynote': { kicker: 'LAB UPDATE', title: 'Colonization, Enslavement, and Cross-Scale Ecological Change: Critical Quantification of Global Change', parent: 'news',
@@ -1262,6 +1295,8 @@ const PAGES = {
         c('Unearthing Climate Colonialism on St. Croix', 'A feature on the Ecological Scars of Plantation Slavery research. ', 'Publication lead image', 'FEATURE', 'news', 'https://www.equalityinstitute.org/unearthing-climate-colonialism-on-st-croix/', 'st-croix-ridge-fieldwork.jpg', 'A feature on the lab\u2019s Ecological Scars of Plantation Slavery research on St. Croix. The publisher requires a sign-in; a free archived copy is also available via the Internet Archive.', '2024', 'The Equality Institute'),
       ]),
       LIST('Lab updates', '', [
+        c('Suzanne Pierre Named a 2026 Pritzker Emerging Environmental Genius Award Finalist', 'UCLA names Dr. Pierre one of three finalists for the $100,000 award recognizing environmental innovators under 40.', 'Lead image', 'AWARD', 'post-pritzker', undefined, 'pritzker-ucla-announcement.png', undefined, '2026-07-31', 'Suzanne Pierre'),
+        c('Critical Ecology Lab Joins Mozilla Festival 2026 in Barcelona', 'The lab takes part in MozFest 2026, whose theme, Wilding, asks what happens when rigid systems are loosened and communities are given the conditions to evolve on their own terms.', 'Lead image', 'FESTIVAL', 'news', 'https://www.mozillafestival.org/en/', 'mozfest-2026-suzanne-pierre.png', 'MozFest 2026 runs 28\u201330 October at Recinte Fabra i Coats, Barcelona, as part of Barcelona Open Tech Week. The festival brings together more than 3,000 people across some 200 sessions.', '2026-08-27', 'Suzanne Pierre'),
         c('[Founder\u2019s Note] Why we keep going.', 'On returning to why the work matters, after a year of holding back.', 'Lead image', 'NOTE', 'post-founders-note', undefined, undefined, undefined, '2026-03-23', 'Suzanne Pierre'),
         c('Critical Ecology Lab Welcomes Stacey King as Director of Operations', 'Climate investment strategist and Berkeley Haas MBA joins the lab.', 'Lead image', 'NEWS', 'post-stacey-king', undefined, 'stacey-king.webp', undefined, '2026-02-12', 'Suzanne Pierre'),
         c('Critical Ecology Lab Founder Delivers Historic Lectures in Nuuk, Greenland, Bridging Arctic and Caribbean Colonial Histories', 'Guest lectures for Greenland\u2019s first natural sciences degree programme.', 'Lead image', 'NEWS', 'post-greenland', undefined, undefined, undefined, '2026-02-10', 'Suzanne Pierre'),
@@ -1332,6 +1367,7 @@ const P_ = n => /^https?:\/\//.test(n) ? n : './' + n + (n.indexOf('.') !== -1 ?
 // Each route gets a topical run of photographs, used in order for its lead
 // image, editorial photos and card thumbnails.
 const ROUTE_IMG = {
+  'post-pritzker': ['pritzker-ucla-announcement.png', 'lab-portrait-seated'],
   'post-stacey-king': ['stacey-king.webp', 'lab-portrait-wide', 'city-crossing'],
   'post-greenland': ['nuuk-greenland', 'coastal-ridge-hike', 'cane-field-burning'],
   research: ['quadrat-gas-sampling', 'stem-section-vascular', 'cane-field-burning', 'field-team-processing', 'leaf-beetle-iridescent', 'forest-river-silt', 'soil-sorting-overhead', 'field-mapping', 'hands-soil', 'cane-stalks-cut', 'farmworkers-harvest'],
@@ -1382,6 +1418,7 @@ const SECTION_COLOR = {
 };
 const SOPHIA = ['quadrat-gas-sampling', 'field-team-processing', 'coastal-ridge-hike', 'field-team-understory', 'field-researcher-portrait', 'field-mapping'];
 const CREDITS = {
+  'pritzker-ucla-announcement.png': 'Screenshot: UCLA Institute of the Environment and Sustainability',
   'nuuk-greenland': 'Photo by John Kristian Petersen on Pexels',
   'researcher-microscope': 'Photo by Cornell CALS',
   'soil-sorting-overhead': 'Photo by Cornell CALS',
@@ -1565,7 +1602,8 @@ class Component extends DCLogic {
         isLineage: b.t === 'lineage', embedH: b.hgt || '760px',
         isFramework: b.t === 'framework',
         isConceptFig: b.t === 'conceptfig',
-        h: b.h, body: b.body || [], cap: b.cap, hasCap: !!(b.cap && String(b.cap).trim() && !/^Caption line/.test(b.cap)), ph: b.ph, hgt: b.hgt, meta: b.meta, slot,
+        h: b.h, body: b.body || [], cap: b.cap,
+        textBody: (Array.isArray(b.body) ? b.body : (b.body ? [b.body] : [])).map(x => (x && typeof x === 'object') ? { p: x.p, cite: x.cite || '', hasCite: !!x.cite } : { p: x, cite: '', hasCite: false }), hasCap: !!(b.cap && String(b.cap).trim() && !/^Caption line/.test(b.cap)), ph: b.ph, hgt: b.hgt, meta: b.meta, slot,
         src: (b.t === 'photo' || b.t === 'pair') ? (b.img ? P_(b.img) : pick(route, i + 1)) : undefined,
         cred: (b.t === 'photo' || b.t === 'pair') ? credOf(pick(route, i + 1)) : undefined,
         grid: GRID[b.per || 3], cols: 'minmax(0,1fr) minmax(0,1fr)',
@@ -1642,6 +1680,7 @@ class Component extends DCLogic {
       pageTint: (SECTION_COLOR[topId] || ['#FE6453', '#FFFFFF'])[1],
       pageInk: (SECTION_COLOR[topId] || ['#FE6453', '#FFFFFF'])[0],
       pageSlotCredit: page ? credOf(pick(route, 0)) : undefined,
+      pageSlotFit: route === 'post-pritzker' ? 'contain' : 'cover',
       pageSlotId: route + '-lead', pageSlotHint: page ? page.slot : '', pageSlotSrc: page ? pick(route, 0) : undefined,
       blocks,
       goHome: this.go('home'), goDonate: this.go('donate'), goResearch: this.go('research'),
@@ -1653,14 +1692,14 @@ class Component extends DCLogic {
         { label: 'Ways to take action', note: 'Collaborate, volunteer, sustain.', kicker: 'SUPPORT', ph: 'Community partnership photo', slot: 'ql-4', src: './hands-soil.jpg', go: this.go('donate') }
       ],
       newsItems: [
-        { label: 'Unearthing Climate Colonialism on St. Croix', meta: 'PRESS · THE EQUALITY INSTITUTE', ph: 'Publication lead image', slot: 'news-1', src: './sugarcane-dusk.jpg', go: e => { e.preventDefault(); window.open('https://www.equalityinstitute.org/unearthing-climate-colonialism-on-st-croix/', '_blank', 'noopener'); } },
-        { label: '[Founder\u2019s Note] Why we keep going.', meta: 'LAB UPDATE · MARCH 2026', ph: 'Editorial photo', slot: 'news-2', src: './lab-portrait-seated.jpg', go: this.go('post-founders-note') },
-        { label: 'Critical Ecology Lab Founder Delivers Historic Lectures in Nuuk, Greenland', meta: 'LAB UPDATE · FEBRUARY 2026', ph: 'Nuuk, Greenland', slot: 'news-3', src: './nuuk-greenland.jpg', go: this.go('post-greenland') }
+        { label: 'Suzanne Pierre Named a 2026 Pritzker Emerging Environmental Genius Award Finalist', meta: 'LAB UPDATE · JULY 2026', ph: 'Pritzker finalists composite', slot: 'news-2', src: './pritzker-ucla-announcement.png', fit: 'contain', go: this.go('post-pritzker') },
+        { label: 'Unearthing Climate Colonialism on St. Croix', meta: 'PRESS · THE EQUALITY INSTITUTE', ph: 'Publication lead image', slot: 'news-1', src: './sugarcane-dusk.jpg', fit: 'cover', go: e => { e.preventDefault(); window.open('https://www.equalityinstitute.org/unearthing-climate-colonialism-on-st-croix/', '_blank', 'noopener'); } },
+        { label: 'Critical Ecology Lab Founder Delivers Historic Lectures in Nuuk, Greenland', meta: 'LAB UPDATE · FEBRUARY 2026', ph: 'Nuuk, Greenland', slot: 'news-3', src: './nuuk-greenland.jpg', fit: 'cover', go: this.go('post-greenland') }
       ],
       programCards: [
         { label: 'Academic Training', note: 'Rigorous, scholarly, and actionable training for early career to professionals.', ph: 'Classroom or field teaching, 4:3', slot: 'pg-1', src: './lab-portrait-wide.jpg', go: this.go('academic-training') },
         { label: 'Eco Afro Futures Platform', note: 'Using Earth science and ecological knowledge to inspire communities to lead.', ph: 'Platform key art or summit, 4:3', slot: 'pg-2', src: './city-crossing.jpg', go: this.go('eco-afro') },
-        { label: 'Public Events', note: 'Talks, screenings, community gatherings.', ph: 'Audience at an evening event, 4:3', slot: 'pg-3', src: './eco-afro-futures-2026-group.jpg', cred: undefined, go: this.go('public-events') }
+        { label: 'Public Events', note: 'Talks, screenings, community gatherings.', ph: 'Audience at an evening event, 4:3', slot: 'pg-3', src: './eco-afro-futures-2026-group.png', cred: undefined, go: this.go('public-events') }
       ],
       slotCount: '120+'
     };
