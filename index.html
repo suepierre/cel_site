@@ -191,10 +191,10 @@ a:hover{color:#FE6453}
         <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.24em;color:#6E6E6E">FOUR ENTRY POINTS</span>
       </div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
         <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="4">
-          <a href="#" onClick="{{ q.go }}" style="display:flex;flex-direction:column;gap:16px;border:1px solid #D8D8D8;padding:0 0 26px;background:#FFFFFF;transition:border-color .2s,transform .3s,box-shadow .3s" style-hover="border-color:#000000;transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,0.09)">
+          <a href="#" onClick="{{ q.go }}" style="display:flex;flex-direction:column;gap:16px;border:1px solid #D8D8D8;border-top:8px solid {{ q.accent }};padding:0 0 26px;background:{{ q.tint }};transition:border-color .2s,transform .3s,box-shadow .3s" style-hover="border-color:#000000;transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,0.09)">
             <div style="height:190px;overflow:hidden"><image-slot id="{{ q.slot }}" shape="rect" fit="cover" src="{{ q.src }}" credit="{{ q.cred }}" placeholder="{{ q.ph }}"></image-slot></div>
             <div style="padding:0 24px;display:flex;flex-direction:column;gap:9px">
-              <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.26em;color:#FE6453">{{ q.kicker }}</span>
+              <span style="font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.26em;color:{{ q.accent }}">{{ q.kicker }}</span>
               <span style="font-size:22px;font-weight:500;line-height:1.2;letter-spacing:0">{{ q.label }}</span>
               <div style="box-sizing: border-box; display: flex; flex-direction: column; gap: 12px"><span style="font-size: 14px; font-weight: 400; line-height: 1.5; letter-spacing: 0.02em; color: #6E6E6E">{{ q.note }}</span></div>
             </div>
@@ -228,7 +228,7 @@ a:hover{color:#FE6453}
         </sc-for>
       </div>
     </div>
-  </section><section style="padding:clamp(52px,6vw,88px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8;background:#D9D8FD">
+  </section><section style="padding:clamp(52px,6vw,88px) clamp(20px,2.6vw,40px);border-bottom:1px solid #D8D8D8;background:#D4EED5">
     <div style="max-width:1560px;margin:0 auto;display:flex;flex-direction:column;gap:36px">
       <h2 style="margin:0;font-size:clamp(26px,2.6vw,38px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0">Our Programs</h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
@@ -307,8 +307,8 @@ a:hover{color:#FE6453}
     <div data-m="one" style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,3.6vw,56px);align-items:end">
       <div style="display:flex;flex-direction:column;gap:20px">
         <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.3em;color:{{ pageInk }}">{{ pageKicker }}</span>
-        <h1 style="margin:0;font-size:clamp(32px,3.9vw,64px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ pageTitle }}</h1>
-        <p style="margin:0;font-size:18px;line-height:1.2;font-weight:400;letter-spacing:0;color:#313131;max-width:54ch;text-wrap:pretty">{{ pageStandfirst }}</p>
+        <h1 style="margin:0;font-size:clamp(32px,3.9vw,64px);line-height:1.1;font-family:'ABC Gramercy Display','ABC Gramercy',Georgia,serif;font-weight:500;letter-spacing:0;text-wrap:pretty">{{ pageTitle }}</h1><p style="margin:0;font-size:18px;line-height:1.2;font-weight:400;letter-spacing:0;color:#313131;max-width:54ch;text-wrap:pretty">{{ pageStandfirst }}</p>
+        
       </div>
       <div style="height:300px;overflow:hidden">
         <div style="width:100%;height:100%;transition:transform .9s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.04)">
@@ -328,7 +328,7 @@ a:hover{color:#FE6453}
             <div style="display:flex;flex-direction:column;gap:18px;max-width:66ch">
               <sc-for list="{{ b.textBody }}" as="line" hint-placeholder-count="2">
                 <div style="display:flex;flex-direction:column;gap:7px">
-                  <p style="margin: 0; font-family: 'ABC Gramercy','ABC Gramercy Display',Georgia,serif; font-size: 18px; line-height: 1.4; font-weight: 350; letter-spacing: 0; color: #313131; text-wrap: pretty; font-style: normal">{{ line.p }}</p>
+                  <p style="margin:0;font-family:'ABC Gramercy','ABC Gramercy Display',Georgia,serif;font-size:18px;line-height:1.4;font-weight:350;letter-spacing:0;color:#313131;text-wrap:pretty">{{ line.p }}</p>
                   <sc-if value="{{ line.hasCite }}" hint-placeholder-val="{{ false }}">
                     <p style="margin:0;font-family:'ABC Gramercy','ABC Gramercy Display',Georgia,serif;font-size:13px;line-height:1.45;font-weight:350;letter-spacing:0.01em;color:#6B6B66;text-wrap:pretty">{{ line.cite }}</p>
                   </sc-if>
@@ -342,7 +342,7 @@ a:hover{color:#FE6453}
           <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
             <div style="height:{{ b.hgt }};overflow:hidden">
               <div style="width:100%;height:100%;transition:transform 1s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.035)">
-                <image-slot id="{{ b.slot }}" shape="rect" fit="cover" src="{{ b.src }}" credit="{{ b.cred }}" placeholder="{{ b.ph }}"></image-slot>
+                <image-slot id="{{ b.slot }}" shape="rect" fit="{{ b.fit }}" src="{{ b.src }}" credit="{{ b.cred }}" placeholder="{{ b.ph }}"></image-slot>
               </div>
             </div>
             <sc-if value="{{ b.hasCap }}" hint-placeholder-val="{{ false }}"><figcaption style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.14em;color:#6E6E6E;max-width:70ch">{{ b.cap }}</figcaption></sc-if>
@@ -503,6 +503,16 @@ a:hover{color:#FE6453}
           </div>
         </sc-if>
 
+        <sc-if value="{{ b.isFigGrid }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+            <sc-for list="{{ b.figs }}" as="g" hint-placeholder-count="4">
+              <a href="#" onClick="{{ g.open }}" title="Click to enlarge" style="display:block;border:1px solid #D8D8D8;background:#FFFFFF;transition:border-color .2s,box-shadow .3s" style-hover="border-color:#000000;box-shadow:0 14px 34px rgba(0,0,0,0.09)">
+                <div style="height:640px"><image-slot id="{{ g.slot }}" shape="rect" fit="contain" src="{{ g.src }}" placeholder="{{ g.alt }}"></image-slot></div>
+              </a>
+            </sc-for>
+          </div>
+        </sc-if>
+
         <sc-if value="{{ b.isLineage }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;flex-direction:column;gap:22px">
             <div style="display:flex;flex-direction:column;gap:12px;max-width:74ch">
@@ -593,6 +603,31 @@ a:hover{color:#FE6453}
     </div>
   </div>
 </footer>
+
+<sc-if value="{{ hasZoom }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeZoom }}" onWheel="{{ zoomWheel }}" style="position:fixed;inset:0;z-index:210;background:rgba(0,0,0,0.82);display:flex;align-items:center;justify-content:center;padding:28px;overflow:hidden;cursor:zoom-out">
+    <div onClick="{{ zoomToggle }}" onMouseDown="{{ zoomDrag }}" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;cursor:{{ zoomCursor }}">
+      <div style="width:100%;height:100%;background:#FFFFFF;transform:{{ zoomTransform }};transition:transform .12s linear"><image-slot id="figure-zoom" shape="rect" fit="contain" src="{{ zoomSrc }}" placeholder="{{ zoomAlt }}"></image-slot></div>
+    </div>
+    <div style="position:absolute;top:20px;right:20px;display:flex;align-items:center;gap:8px">
+      <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.2em;color:#FFFFFF;min-width:52px;text-align:right">{{ zoomPct }}</span>
+      <a href="#" onClick="{{ zoomOut }}" style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:19px;line-height:1;color:#FFFFFF;border:1px solid rgba(255,255,255,0.45);border-radius:2px" style-hover="background:#FFFFFF;color:#000000">&#8722;</a>
+      <a href="#" onClick="{{ zoomIn }}" style="width:38px;height:38px;display:flex;align-items:center;justify-content:center;font-size:19px;line-height:1;color:#FFFFFF;border:1px solid rgba(255,255,255,0.45);border-radius:2px" style-hover="background:#FFFFFF;color:#000000">+</a>
+      <a href="#" onClick="{{ zoomReset }}" style="height:38px;display:flex;align-items:center;padding:0 14px;font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.2em;color:#FFFFFF;border:1px solid rgba(255,255,255,0.45);border-radius:2px" style-hover="background:#FFFFFF;color:#000000">RESET</a>
+      <a href="#" onClick="{{ closeZoom }}" style="height:38px;display:flex;align-items:center;padding:0 14px;font-family:ResidenzMono;font-size:10.5px;letter-spacing:0.2em;color:#FFFFFF;border:1px solid rgba(255,255,255,0.45);border-radius:2px" style-hover="background:#FFFFFF;color:#000000">CLOSE</a>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ notice }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeNotice }}" style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.42);display:flex;align-items:center;justify-content:center;padding:24px">
+    <div style="background:#FFFFFF;max-width:400px;width:100%;padding:34px 32px 28px;display:flex;flex-direction:column;gap:14px;box-shadow:0 18px 50px rgba(0,0,0,0.22)">
+      <span style="font-family:ResidenzMono;font-size:11px;letter-spacing:0.26em;color:#FE6453">UNDER DEVELOPMENT</span>
+      <p style="margin:0;font-family:'ABC Gramercy','ABC Gramercy Display',Georgia,serif;font-size:19px;line-height:1.4;font-weight:350;color:#313131;text-wrap:pretty">This part of the site is still under development. Please check back soon.</p>
+      <a href="#" onClick="{{ closeNotice }}" style="align-self:flex-start;margin-top:6px;font-size:15px;font-weight:400;border:1px solid #C9C9C9;padding:11px 20px;border-radius:2px;transition:background .2s,color .2s,border-color .2s" style-hover="background:#000000;color:#FFFFFF;border-color:#000000">Close</a>
+    </div>
+  </div>
+</sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;navVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;topbar&quot;,&quot;mega&quot;,&quot;minimal&quot;],&quot;default&quot;:&quot;minimal&quot;,&quot;tsType&quot;:&quot;'topbar'|'mega'|'minimal'&quot;,&quot;section&quot;:&quot;Variations&quot;},&quot;homeVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;split&quot;,&quot;fullbleed&quot;,&quot;mosaic&quot;],&quot;default&quot;:&quot;fullbleed&quot;,&quot;tsType&quot;:&quot;'split'|'fullbleed'|'mosaic'&quot;,&quot;section&quot;:&quot;Variations&quot;}}">
@@ -605,6 +640,7 @@ const FORM = (h, items) => ({ t: 'form', h, items });
 const FIG = (h, ph, cap) => ({ t: 'figure', h, ph, cap });
 const NEXT = (h, items) => ({ t: 'next', h, items });
 const TAGS = (h, tags) => ({ t: 'tags', h, tags });
+const FIGGRID = (h, figs) => ({ t: 'figgrid', h, figs });
 const LINEAGE = (h, body, hgt) => ({ t: 'lineage', h, body, hgt });
 const FRAMEWORK = (h, body, hgt) => ({ t: 'framework', h, body, hgt });
 const CONCEPTFIG = (h, body) => ({ t: 'conceptfig', h, body });
@@ -622,7 +658,7 @@ const HIDE_FROM_INDEX = ['coming-soon'];
 const SECTIONS = [
   { id: 'research', label: 'Research', children: ['themes', 'current-projects', 'research-opportunities', 'scholarly-meetings'] },
   { id: 'ideas', label: 'Ideas & Resources', children: ['browse', 'explainer-videos', 'reports'] },
-  { id: 'about', label: 'About', children: ['our-story', 'team', 'press-kit', 'opportunities'] },
+  { id: 'about', label: 'About', children: ['our-story', 'lineage', 'team', 'press-kit', 'opportunities'] },
   { id: 'programs', label: 'Programs', children: ['academic-training', 'eco-afro', 'public-events'] },
   { id: 'news', label: 'Press & Lab Updates', children: [] },
   { id: 'shop', label: 'Shop', children: ['merch'] },
@@ -644,18 +680,41 @@ const PAGES = {
       T('Why this research', 'We investigate how social inequality and extractive economic systems have shaped climate change and ecological dysfunction at local to global scales. The insights we generate help us to create just solutions towards effective land stewardship, just sustainability intervetions, and ecological reparations for colonized and oppressed populations.', 'We practice connecting environmental measurement with intergenerational understandings and memories of a changing planet. We don\u2019t "work with communities", we are the community.')
     ] },
   themes: { kicker: 'RESEARCH', title: 'Themes & Theory', parent: 'research',
-    stand: 'An emerging framework and its application.',
+    stand: '',
     slot: 'Conceptual / archival image',
     blocks: [
       T('The Framework', 'Critical Ecology is an interdisciplinary and emerging approach to investigating and explaining global ecological change under the influence of human activities. It uniquely focuses on the ways that power disparities in societies enable unsustainable biophysical changes on planet Earth.', 'This area of research is being integrated and refined by Dr. Suzanne Pierre and colleagues of the Critical Ecology Lab. It is built upon thought lineages and technical approaches from a range of humanities and physical science disciplines.'),
+      NEXT('THEMES', [{ label: 'Power', to: 'themes' }, { label: 'Extraction', to: 'extraction' }, { label: 'Earth system feedbacks', to: 'themes' }]),
       FRAMEWORK('The Critical Ecology Analytical Framework', 'Critical Ecology works across physical and temporal scales to identify the complex, root causes of global ecological change.', '1180px'),
       CARDS('Themes', [
         c('Power ', 'Social power — the capacity to access resources and influence their distribution — treated as a quantitative variable from the plot to the planetary scale.', 'Theme photo, square crop', 'THEME 01', 'themes'),
-        c('Extraction', 'How colonial and capitalist land relations organised the spatial and temporal intensity of resource extraction, and what that left in the soil.', 'Theme photo, square crop', 'THEME 02', 'themes'),
+        c('Extraction', 'Commercial extraction of resources from land, air, and water fueled global economies for centuries, yet left harm in its wake.', 'Theme photo, square crop', 'THEME 02', 'extraction'),
         c('Earth system feedbacks', 'How ecological responses loop back to shape which places are targeted next, and what mitigation is thought possible.', 'Theme photo, square crop', 'THEME 03', 'themes')
       ]),
       NEXT('GO NEXT', [{ label: 'Current Projects', to: 'current-projects' }, { label: 'Conceptual Figure', to: 'conceptual-figure' }])
     ] },
+  extraction: { kicker: 'RESEARCH', title: 'Extraction', parent: 'themes',
+    stand: '',
+    slot: 'Former sugarcane land, wide crop',
+    blocks: [
+      T('The geography of extraction is measurable',
+        'Colonial natural resource extraction economies were major drivers of land use change, globally. These economies depended on violence and subjugation of populations, and were not evenly distributed around the world. Activities including plantation agriculture and rangeland grazing were concentrated where European colonial empires seized and traded land. This historical data analysis is used to help CEL geographically focus research efforts on the long-term ecological impacts of these systems.'),
+      T('One example: colonial land use in 1850',
+        'The Critical Ecology Lab conducted a geospatial analysis, producing the four maps below. They show land use intensity in 1850 across 556 territories held by the British, Spanish, Portuguese, and Dutch empires. The analysis used published database of colonial occupation records and a gridded reconstruction of historical land use since 1500 (see citation below).',
+        'This analysis reveals that sugarcane cultivation was concentrated in the Caribbean, the Indonesian archipelago, and Bengal, reaching 32% of total land area in Mauritius. The Bengal delta and the New England colonies each cleared more than half the primary forest once present in 1500. Pasture and rangeland was extensive across Spanish South America and southern Africa.',
+        'Colonial land use is one example of ecological disturbances enabled by legal disempowerment of local populations. The same approach can be applied to extractive industry siting, land dispossession, and contemporary resource frontiers.'),
+      FIGGRID('', [
+        { img: '01_sugarcane.jpg', alt: 'Sugarcane, 1850 — percentage of land area across 556 colonised regions' },
+        { img: '02_grazing.jpg', alt: 'Pasture and rangeland, 1850 — percentage of land area across 556 colonised regions' },
+        { img: '03_forest_loss.jpg', alt: 'Forest cleared, 1500–1850 — percentage of forest cover standing in 1500' },
+        { img: '04_nfixing.jpg', alt: 'Nitrogen-fixing crops, 1850 — percentage of land area across 556 colonised regions' }
+      ]),
+      LIST('Data', '', [
+        c('Colonial land-use signatures, 1850', 'Pierre, S. (2026). Critical Ecology Lab. Figures, derived table and code. DOI 10.5281/zenodo.22292836.', 'Source', 'DEPOSIT', 'extraction', 'https://doi.org/10.5281/zenodo.22292836')
+      ], true),
+      NEXT('GO NEXT', [{ label: 'Ecological Scars of Plantation Slavery Initiative', to: 'ecological-scars' }, { label: 'Themes & Theory', to: 'themes' }])
+    ] },
+
   'conceptual-figure': { kicker: 'RESEARCH', title: 'Conceptual Figure', parent: 'themes',
     stand: 'Critical Ecology works across physical and temporal scales to identify the complex, root causes of global ecological change.',
     slot: 'Detail crop of the figure',
@@ -754,7 +813,10 @@ const PAGES = {
         c('Dr. Suzanne Pierre on Reshaping a Siloed Science', 'For The Wild · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://forthewild.world/listen/dr-suzanne-pierre-on-reshaping-a-siloed-science-150'),
         c('Nance Klehm with Ecosystems Ecologist Dr. Suzanne Pierre', 'Spontaneous Vegetation · podcast.', 'Podcast key art', 'PODCAST', 'browse', 'https://iono.fm/e/993827'),
         c('Defining Sociophysical Drivers of Ecological Change', 'Cary Institute of Ecosystem Studies · seminar.', 'Seminar still', 'SEMINAR', 'browse', 'https://www.caryinstitute.org/news-insights/scientific-seminar-video/critical-ecology-defining-sociophysical-drivers-ecological'),
-        c('Theoretical Lineage of Critical Ecology', 'Critical Ecology Lab · workshop.', 'Workshop still', 'WORKSHOP', 'browse', 'https://www.youtube.com/watch?t=506s&v=LireLlbEyxk')
+        c('Theoretical Lineage of Critical Ecology', 'Critical Ecology Lab · workshop.', 'Workshop still', 'WORKSHOP', 'browse', 'https://www.youtube.com/watch?t=506s&v=LireLlbEyxk'),
+        c('Learning How to Live Together: A Symbiotic Worldview', 'Sheffield DocFest · panel.', 'Panel still', 'PANEL', 'browse', 'https://vimeo.com/566639849'),
+        c('CEL Reading List', 'Our favorite books on Bookshop.org.', 'Book stack', 'READING', 'browse', 'https://bookshop.org/shop/criticalecologylab'),
+        c('Patreon', 'Get an exclusive behind-the-scenes look at our research, thought-provoking content, and the opportunity to engage with our community of change-makers.', 'Contextual photo', 'SUBSCRIBE', 'browse', 'https://patreon.com/CriticalEcologyLab')
       ]),
       T('Citation & reuse', 'Cite articles by their author of record, not by the lab: Author, “Title,” Critical Ecology Lab, year, URL. Where a piece has been revised, cite the version date shown on the article.', 'Articles may be quoted, excerpted, and assigned in teaching with attribution. Republishing an article in full, translating it, or including it in a paid or sponsored product requires written permission from the author and the lab.', 'Figures, maps, and data visualisations may be reproduced with attribution to the lab and to the underlying data source named in the caption. Photographs are licensed to the lab and are not covered by this clause — request permission separately.')
     ] },
@@ -794,6 +856,7 @@ const PAGES = {
       ]),
       CARDS('Elsewhere in About', [
         c('About the Lab', 'How the lab came to be.', 'Archival photograph', 'HISTORY', 'our-story'),
+        c('Our Intellectual Lineage', 'The thinkers, institutions and programs behind the lab.', 'Lineage map detail', 'LINEAGE', 'lineage'),
         c('Meet the Team', 'People, departments, structure.', 'Team portrait grid', 'PEOPLE', 'team'),
         c('Press Kit', 'Logos, photography, boilerplate.', 'Press kit flat-lay', 'MEDIA', 'press-kit'),
         c('Opportunities', 'Roles and collaborations.', 'Workplace photo', 'WORK WITH US', 'opportunities'),
@@ -856,8 +919,10 @@ const PAGES = {
         'The Critical Ecology Lab is an independent, fiscally sponsored 501(c)(3) nonprofit research organization based in the San Francisco Bay Area.',
         'We work towards a functional Earth system and a just society through their inherent connection. Through interdisciplinary scientific research, we quantify how the organizing characteristics of the economic and social systems governing regions of the Earth produce measurable differences in ecological and biogeochemical function.',
         'Our research draws upon ecosystem ecology and biogeochemistry, climate science and Earth system models, geospatial and remote sensing analysis, and causal inference methods, together with the historical records of land, labor, and resource governance.',
-        'Our questions are grounded in critical traditions including standpoint epistemology, metabolic rift theory, decolonial and subaltern knowledge frameworks, and critical physical geography, which regard human power dynamics as constitutive of physical reality rather than as context for it.'
+        'Our questions are grounded in critical traditions including standpoint epistemology, metabolic rift theory, decolonial and subaltern knowledge frameworks, and critical physical geography, which regard human power dynamics as constitutive of physical reality rather than as context for it.',
+        'We work alongside climate-affected community members to develop and conduct projects.  By sharing our insights with impacted communities, decision makers, and educators through publications, training, and events, we aim to support climate solutions that address root causes.'
       ], true),
+      P('', 'Ecological function is measured across scales, from cell to landscape.', '380px', 'soil-discs-petri'),
       T('Our Premises',
         { p: '1. Societal natural resource consumption and ecosystem disturbance is dominated not only by people\'s needs, but also by the material requirements of prevailing technologies that maximize the shareholder profits. While the  inputs and products shift across centuries, the logic of extraction, consumption, and discard has remained constant, with detrimental ecological and social effects.', cite: 'Schnaiberg 1980, The Environment: From Surplus to Scarcity · Foster 2000, Marx’s Ecology · Moore 2015, Capitalism in the Web of Life' },
         { p: '2. Disciplines are only visible in hindsight. Scholarly fields look settled in the present, but their boundaries are drawn in retrospect. Every discipline was once an exploration and an argument. Uncritical resistance to new formations of methodology and knowledge production, on the grounds of being yet unrecognized, is to view the present from the position of the past.\n\n', cite: 'Kuhn 1962, The Structure of Scientific Revolutions · Gieryn 1983, American Sociological Review 48(6)' },
@@ -865,7 +930,7 @@ const PAGES = {
         { p: '4. The participation of people with low social and economic status in the academic project of identifying and solving socio-technical problems, like the climate crisis,  threatens the prevailing arrangement of power that requires their exclusion.', cite: 'Fricker 2007, Epistemic Injustice · Prescod-Weinstein 2020, Signs 45(2)' },
         { p: '5. The effects of social power disparities manifest at every scale of biological organization and compound with increasing complexity in living systems.', cite: 'Levins & Lewontin 1985, The Dialectical Biologist · Geronimus et al. 2006, Am J Public Health 96(5) · Morello-Frosch & Shenassa 2006, Environ Health Perspect 114(8)' },
         'Suggested citation: Pierre, S. (2026). Critical Ecology Manifesto. Critical Ecology Lab. https://criticalecologylab.org'),
-      P('FULL-BLEED — a moment that marks a turning point', 'Caption line — year and context.'),
+      P('', 'Soil is where the record of land use is held. Our field and laboratory work reads it.', '460px', 'dune-bush-desert'),
       LINEAGE('Our Intellectual Lineage', 'Twenty-nine thinkers, institutions and programs that have influenced the formation of the Critical Ecology Lab. \nExplore the map: hover or tap any node to read what it contributed, and use the cluster names to move between categories.'),
       LIST('Major funders', '', [
         c('Simons Foundation · Science Sandbox', 'Support for the Liberation Ecology Field Course and Eco Afro Futures.', 'Funder logo', 'FUNDER', 'our-story', 'https://www.simonsfoundation.org/science-society-culture/science-sandbox/'),
@@ -876,6 +941,14 @@ const PAGES = {
         c('National Geographic Foundation', 'Wayfinder Award · Explorer support.', 'Funder logo', 'FUNDER', 'our-story', 'https://www.nationalgeographic.org/society/')
       ], true),
     ] },
+  lineage: { kicker: 'ABOUT', title: 'Our Intellectual Lineage', parent: 'about',
+    stand: 'Twenty-nine thinkers, institutions and programs that have influenced the formation of the Critical Ecology Lab.',
+    slot: 'Archival or founding-era photograph',
+    blocks: [
+      LINEAGE('Our Intellectual Lineage', 'Twenty-nine thinkers, institutions and programs that have influenced the formation of the Critical Ecology Lab. \nExplore the map: hover or tap any node to read what it contributed, and use the cluster names to move between categories.'),
+      NEXT('SEE ALSO', [{ label: 'About the Lab', to: 'our-story' }, { label: 'Meet the Team', to: 'team' }])
+    ] },
+
   team: { kicker: 'ABOUT', title: 'Meet the Team', parent: 'about',
     stand: 'Lab staff and associates.',
     slot: 'Group portrait, wide crop',
@@ -1367,28 +1440,29 @@ const P_ = n => /^https?:\/\//.test(n) ? n : './' + n + (n.indexOf('.') !== -1 ?
 // Each route gets a topical run of photographs, used in order for its lead
 // image, editorial photos and card thumbnails.
 const ROUTE_IMG = {
+  extraction: ['charred-wood', 'cane-harvest-workers', 'smokestacks-plume', 'match-head-unlit'],
   'post-pritzker': ['pritzker-ucla-announcement.png', 'lab-portrait-seated'],
   'post-stacey-king': ['stacey-king.webp', 'lab-portrait-wide', 'city-crossing'],
   'post-greenland': ['nuuk-greenland', 'coastal-ridge-hike', 'cane-field-burning'],
-  research: ['quadrat-gas-sampling', 'stem-section-vascular', 'cane-field-burning', 'field-team-processing', 'leaf-beetle-iridescent', 'forest-river-silt', 'soil-sorting-overhead', 'field-mapping', 'hands-soil', 'cane-stalks-cut', 'farmworkers-harvest'],
-  themes: ['soil-horizons', 'wood-section-magenta', 'quarry-sand-aerial', 'city-crossing', 'sugarcane-dusk', 'roots-forest-floor'],
-  'conceptual-figure': ['wood-section-magenta', 'cell-micrograph', 'stem-section-vascular', 'soil-horizons', 'soil-samples-bagged'],
+  research: ['quadrat-gas-sampling', 'leaf-section-stained', 'charred-wood', 'field-team-processing', 'shield-bug-stem', 'forest-river-silt', 'soil-discs-petri', 'field-mapping', 'hand-dark-soil', 'cane-stalks-cut', 'cane-harvest-workers'],
+  themes: ['leaf-section-stained', 'match-head-unlit', 'smokestacks-plume', 'lemurs-huddle', 'charred-wood', 'dune-bush-desert'],
+  'conceptual-figure': ['leaf-section-stained', 'cell-micrograph', 'stem-section-vascular', 'soil-horizons', 'soil-discs-petri'],
   'current-projects': ['cane-rows-sunlit', 'quadrat-gas-sampling', 'aphids-stem', 'field-team-understory', 'river-meander-mist', 'shield-bug-lavender', 'soil-samples-bagged', 'seedling-trays', 'stomata-microscope', 'soil-horizons', 'red-soil-macro'],
-  'ecological-scars': ['cane-rows-sunlit', 'cane-field-burning', 'cane-stalks-cut', 'soil-horizons', 'roots-forest-floor', 'forest-river-silt', 'soil-samples-bagged', 'hands-soil', 'river-meander-mist', 'stomata-microscope', 'soil-sorting-overhead', 'field-mapping', 'red-soil-macro', 'riverside-village-fog', 'lab-portrait-seated', 'farmworkers-harvest', 'sugarcane-dusk', 'river-palms-aerial', 'quadrat-gas-sampling', 'mangrove-boats-aerial'],
+  'ecological-scars': ['cane-rows-sunlit', 'cane-field-burning', 'cane-stalks-cut', 'soil-horizons', 'roots-forest-floor', 'forest-river-silt', 'soil-samples-bagged', 'hand-dark-soil', 'river-meander-mist', 'stomata-microscope', 'soil-discs-petri', 'field-mapping', 'red-soil-macro', 'leaf-litter-brown', 'lab-portrait-seated', 'cane-harvest-workers', 'sugarcane-dusk', 'river-palms-aerial', 'quadrat-gas-sampling', 'mangrove-boats-aerial'],
   'research-opportunities': ['field-researcher-portrait', 'stomata-microscope', 'lab-portrait-wide', 'researcher-microscope', 'field-team-processing'],
   'scholarly-meetings': ['field-team-processing', 'city-crossing', 'wood-section-magenta', 'forest-river-silt', 'lab-portrait-seated'],
-  ideas: ['leaf-veins-vertical', 'stomata-microscope', 'algae-water', 'river-palms-aerial', 'tortoise-beetle-leaf', 'cell-micrograph', 'smokestack-moon', 'quarry-sand-aerial', 'bee-pollinator'],
+  ideas: ['leaf-litter-brown', 'stomata-microscope', 'algae-water', 'river-palms-aerial', 'shield-bug-stem', 'leaf-section-stained', 'smokestacks-plume', 'dune-bush-desert', 'lemurs-huddle'],
   browse: ['algae-water', 'damselfly-shade', 'smokestack-moon', 'mine-coal-aerial', 'stem-section-vascular', 'leaf-veins', 'forest-river-silt', 'cell-micrograph', 'shield-bug-lavender', 'soil-horizons', 'tree-canopy', 'mangrove-boats-aerial', 'city-crossing'],
   'explainer-videos': ['stomata-microscope', 'cell-micrograph', 'aphids-stem', 'leaf-veins', 'algae-water', 'wood-section-magenta', 'soil-horizons', 'bee-pollinator'],
-  reports: ['plastic-waste', 'smokestack-moon', 'mine-coal-aerial', 'quarry-sand-aerial', 'stem-section-vascular', 'soil-horizons', 'algae-water'],
+  reports: ['smokestacks-plume', 'plastic-waste', 'mine-coal-aerial', 'quarry-sand-aerial', 'match-head-unlit', 'charred-wood', 'algae-water'],
   about: ['field-researcher-portrait', 'lab-portrait-seated', 'coastal-ridge-hike', 'soil-sorting-overhead', 'city-crossing', 'farmworkers-harvest', 'lab-portrait-wide', 'roots-forest-floor'],
 
-  mission: ['coastal-ridge-hike', 'tree-canopy', 'river-meander-mist', 'sugarcane-dusk'],
-  vision: ['leaf-veins-vertical', 'tree-canopy', 'bee-pollinator', 'algae-water'],
+  mission: ['dune-bush-desert', 'tree-canopy', 'river-meander-mist', 'lemurs-huddle'],
+  vision: ['leaf-litter-brown', 'tree-canopy', 'bee-pollinator', 'algae-water'],
   funding: ['city-crossing', 'lab-portrait-seated', 'field-mapping'],
-  'our-story': ['sugarcane-dusk', 'farmworkers-harvest', 'hands-soil', 'coastal-ridge-hike'],
+  'our-story': ['hand-dark-soil', 'leaf-section-stained', 'dune-bush-desert', 'soil-discs-petri', 'lemurs-huddle', 'leaf-litter-brown', 'coastal-ridge-hike', 'field-team-processing'],
   team: ['field-team-processing', 'field-researcher-portrait', 'lab-portrait-wide', 'lab-portrait-seated'],
-  departments: ['soil-samples-bagged', 'researcher-microscope', 'lab-portrait-wide', 'field-mapping'],
+  departments: ['soil-discs-petri', 'researcher-microscope', 'lab-portrait-wide', 'field-mapping'],
   hierarchy: ['lab-portrait-seated', 'field-mapping'],
   'press-kit': ['city-crossing', 'smokestack-moon', 'plastic-waste'],
   opportunities: ['field-team-processing', 'lab-portrait-wide', 'field-mapping'],
@@ -1418,6 +1492,21 @@ const SECTION_COLOR = {
 };
 const SOPHIA = ['quadrat-gas-sampling', 'field-team-processing', 'coastal-ridge-hike', 'field-team-understory', 'field-researcher-portrait', 'field-mapping'];
 const CREDITS = {
+  'match-head-unlit': 'Photo by Pixabay on Pexels',
+  'dune-bush-desert': 'Photo by Mili Vigerova on Pexels',
+  'smokestacks-plume': 'Photo by wal_ on Pexels',
+  'leaf-litter-brown': 'Photo by Daven Hsu on Pexels',
+  'soil-discs-petri': 'Photo by Mikhail Nilov on Pexels',
+  'hand-dark-soil': 'Photo by Hanielyaks on Pexels',
+  'leaf-section-stained': 'Photo by Fayette Reynolds M.S. on Pexels',
+  'cane-harvest-workers': 'Photo by Plato Terentev on Pexels',
+  'shield-bug-stem': 'Photo by Erik Karits on Pexels',
+  'charred-wood': 'Photo by Tomas Hakl on Pexels',
+  'lemurs-huddle': 'Photo by Claudia CDK on Pexels',
+  '01_sugarcane.jpg': 'Pierre, S. (2026). Colonial land-use signatures, 1850. Critical Ecology Lab. DOI 10.5281/zenodo.22292836',
+  '02_grazing.jpg': 'Pierre, S. (2026). Colonial land-use signatures, 1850. Critical Ecology Lab. DOI 10.5281/zenodo.22292836',
+  '03_forest_loss.jpg': 'Pierre, S. (2026). Colonial land-use signatures, 1850. Critical Ecology Lab. DOI 10.5281/zenodo.22292836',
+  '04_nfixing.jpg': 'Pierre, S. (2026). Colonial land-use signatures, 1850. Critical Ecology Lab. DOI 10.5281/zenodo.22292836',
   'pritzker-ucla-announcement.png': 'Screenshot: UCLA Institute of the Environment and Sustainability',
   'nuuk-greenland': 'Photo by John Kristian Petersen on Pexels',
   'researcher-microscope': 'Photo by Cornell CALS',
@@ -1451,6 +1540,15 @@ const credOf = p => {
   return SOPHIA.some(n => p.indexOf(n) !== -1) ? 'Photo by Sophia Ramirez' : undefined;
 };
 const FALLBACK = ['roots-forest-floor', 'soil-horizons', 'lab-portrait-wide', 'algae-water'];
+const HOME_IMG = ['soil-horizons.jpg', 'quadrat-gas-sampling.jpg', 'soil-sorting-roots.jpg', 'field-team-processing.jpg', 'hands-soil.jpg'];
+const ALL_IMG = (() => {
+  const seen = {}, out = [];
+  Object.keys(ROUTE_IMG).forEach(k => ROUTE_IMG[k].forEach(n => {
+    const p = P_(n);
+    if (!seen[p] && !/\.(png|webp)$/.test(p) && !/^0[1-4]_/.test(n)) { seen[p] = 1; out.push(p); }
+  }));
+  return out;
+})();
 const pick = (route, n) => { const l = ROUTE_IMG[route] || FALLBACK; return P_(l[n % l.length]); };
 
 const GRID = { 1: 'repeat(auto-fit,minmax(280px,1fr))', 2: 'repeat(auto-fit,minmax(280px,1fr))', 3: 'repeat(auto-fit,minmax(240px,1fr))', 4: 'repeat(auto-fit,minmax(200px,1fr))' };
@@ -1466,7 +1564,7 @@ const CONTACT_ENDPOINT = '';
 // ---------------------------------------------------------------------------
 
 class Component extends DCLogic {
-  state = { route: 'home', mega: null, menuOpen: false, sortDirs: {}, nl: 'idle', cf: 'idle' };
+  state = { route: 'home', mega: null, menuOpen: false, sortDirs: {}, nl: 'idle', cf: 'idle', notice: false, zoom: null, zoomAlt: '', zoomScale: 1, zoomX: 0, zoomY: 0 };
 
   submitTo(endpoint, form, key) {
     const data = new FormData(form);
@@ -1539,6 +1637,35 @@ class Component extends DCLogic {
   }
 
   renderVals() {
+    const notice = this.state.notice;
+    const closeNotice = e => { if (e) e.preventDefault(); this.setState({ notice: false }); };
+    const zoom = this.state.zoom, zoomAlt = this.state.zoomAlt;
+    const closeZoom = e => { if (e) e.preventDefault(); this.setState({ zoom: null, zoomScale: 1, zoomX: 0, zoomY: 0 }); };
+    const zs = this.state.zoomScale || 1;
+    const clampS = v => Math.max(1, Math.min(6, v));
+    const setScale = v => this.setState(s => {
+      const n = clampS(v);
+      return n === 1 ? { zoomScale: 1, zoomX: 0, zoomY: 0 } : { zoomScale: n };
+    });
+    const zoomIn = e => { e.preventDefault(); e.stopPropagation(); setScale(zs * 1.5); };
+    const zoomOut = e => { e.preventDefault(); e.stopPropagation(); setScale(zs / 1.5); };
+    const zoomReset = e => { e.preventDefault(); e.stopPropagation(); setScale(1); };
+    const zoomWheel = e => { e.preventDefault(); setScale(zs * (e.deltaY < 0 ? 1.18 : 1 / 1.18)); };
+    const zoomToggle = e => {
+      e.preventDefault(); e.stopPropagation();
+      if (zs > 1) { setScale(1); return; }
+      const r = e.currentTarget.getBoundingClientRect();
+      const dx = (r.left + r.width / 2 - e.clientX), dy = (r.top + r.height / 2 - e.clientY);
+      this.setState({ zoomScale: 2.5, zoomX: dx * 2.5, zoomY: dy * 2.5 });
+    };
+    const zoomDrag = e => {
+      if (zs <= 1) return;
+      e.preventDefault(); e.stopPropagation();
+      const sx = e.clientX, sy = e.clientY, ox = this.state.zoomX, oy = this.state.zoomY;
+      const move = ev => this.setState({ zoomX: ox + (ev.clientX - sx), zoomY: oy + (ev.clientY - sy) });
+      const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+      window.addEventListener('mousemove', move); window.addEventListener('mouseup', up);
+    };
     const nlState = this.state.nl, cfState = this.state.cf;
     const nlLive = !!NEWSLETTER_ENDPOINT, cfLive = !!CONTACT_ENDPOINT;
     const nlVals = {
@@ -1591,24 +1718,45 @@ class Component extends DCLogic {
       crumbs.push({ label: page.title.toUpperCase(), go: this.go(route) });
     }
 
+    const pool = (ROUTE_IMG[route] || FALLBACK).map(P_);
+    const reserved = {};
+    if (page) page.blocks.forEach(b => {
+      if (b.img) reserved[P_(b.img)] = 1;
+      (b.items || []).forEach(it => { if (it.img) reserved[P_(it.img)] = 1; });
+    });
+    HOME_IMG.forEach(n => { reserved[P_(n)] = 1; });
+    const used = {};
+    let spill = 0;
+    const nextImg = () => {
+      for (let k = 0; k < pool.length; k++) if (!used[pool[k]] && !reserved[pool[k]]) { used[pool[k]] = 1; return pool[k]; }
+      for (let k = 0; k < ALL_IMG.length; k++) if (!used[ALL_IMG[k]] && !reserved[ALL_IMG[k]]) { used[ALL_IMG[k]] = 1; return ALL_IMG[k]; }
+      for (let k = 0; k < ALL_IMG.length; k++) if (!used[ALL_IMG[k]]) { used[ALL_IMG[k]] = 1; return ALL_IMG[k]; }
+      return ALL_IMG[(spill++) % ALL_IMG.length];
+    };
+    const heroSrc = page ? nextImg() : undefined;
+
     const blocks = page ? page.blocks.map((b, i) => {
       const slot = route + '-b' + i;
       const sortKey = 'sort-' + slot;
       const dir = this.state.sortDirs && this.state.sortDirs[sortKey] ? this.state.sortDirs[sortKey] : 'desc';
+      const bImg = (b.t === 'photo' || b.t === 'pair') ? (b.img ? P_(b.img) : nextImg()) : undefined;
       const out = {
         isText: b.t === 'text', isPhoto: b.t === 'photo', isPair: b.t === 'pair', isCards: b.t === 'cards',
         isList: b.t === 'list', isForm: b.t === 'form', isFigure: b.t === 'figure', isNext: b.t === 'next',
         isTags: b.t === 'tags', tags: b.tags || [],
         isLineage: b.t === 'lineage', embedH: b.hgt || '760px',
+        isFigGrid: b.t === 'figgrid',
+        figs: (b.figs || []).map((g, j) => ({ alt: g.alt, src: P_(g.img), slot: slot + '-f' + j, open: (e => { e.preventDefault(); this.setState({ zoom: P_(g.img), zoomAlt: g.alt }); }) })),
         isFramework: b.t === 'framework',
         isConceptFig: b.t === 'conceptfig',
+        fit: route === 'extraction' ? 'contain' : 'cover',
         h: b.h, body: b.body || [], cap: b.cap,
         textBody: (Array.isArray(b.body) ? b.body : (b.body ? [b.body] : [])).map(x => (x && typeof x === 'object') ? { p: x.p, cite: x.cite || '', hasCite: !!x.cite } : { p: x, cite: '', hasCite: false }), hasCap: !!(b.cap && String(b.cap).trim() && !/^Caption line/.test(b.cap)), ph: b.ph, hgt: b.hgt, meta: b.meta, slot,
-        src: (b.t === 'photo' || b.t === 'pair') ? (b.img ? P_(b.img) : pick(route, i + 1)) : undefined,
-        cred: (b.t === 'photo' || b.t === 'pair') ? credOf(pick(route, i + 1)) : undefined,
+        src: bImg,
+        cred: bImg ? credOf(bImg) : undefined,
         grid: GRID[b.per || 3], cols: 'minmax(0,1fr) minmax(0,1fr)',
         ordA: b.flip ? 2 : 1, ordB: b.flip ? 1 : 2,
-        items: (b.items || []).map((it, j) => ({
+        items: (b.items || []).map((it, j) => { const itImg = b.t === 'form' ? undefined : (it.img ? P_(it.img) : (b.noThumb ? undefined : nextImg())); return ({
           label: it.label, note: it.note, kicker: it.kicker, ph: it.ph,
           h: it.h, detail: it.detail, year: it.year || '', yearLabel: (it.year || '').slice(0, 4),
           author: it.author || '', showAuthor: Boolean(it.author),
@@ -1625,11 +1773,11 @@ class Component extends DCLogic {
           go: it.url
             ? (e => { e.preventDefault(); window.open(it.url, '_blank', 'noopener'); })
             : (!it.to || it.to === route)
-              ? (e => e.preventDefault())
+              ? (e => { e.preventDefault(); this.setState({ notice: true }); })
               : this.go(isDraft(it.to) ? 'coming-soon' : it.to),
-          src: b.t === 'form' ? undefined : (it.img ? P_(it.img) : pick(route, i + j + 1)),
-          cred: b.t === 'form' ? undefined : (it.img ? undefined : credOf(pick(route, i + j + 1)))
-        }))
+          src: itImg,
+          cred: itImg ? credOf(itImg) : undefined
+        }); })
       };
       const dated = b.t === 'list' && out.items.some(x => x.year);
       const authored = b.t === 'list' && out.items.some(x => x.author);
@@ -1661,6 +1809,11 @@ class Component extends DCLogic {
     }) : [];
 
     return {
+      notice: notice, closeNotice: closeNotice,
+      zoom: zoom, zoomSrc: zoom, zoomAlt: zoomAlt, hasZoom: !!zoom, closeZoom: closeZoom,
+      zoomTransform: 'translate(' + (this.state.zoomX || 0) + 'px,' + (this.state.zoomY || 0) + 'px) scale(' + zs + ')',
+      zoomCursor: zs > 1 ? 'grab' : 'zoom-in', zoomPct: Math.round(zs * 100) + '%',
+      zoomIn: zoomIn, zoomOut: zoomOut, zoomReset: zoomReset, zoomWheel: zoomWheel, zoomToggle: zoomToggle, zoomDrag: zoomDrag,
       navBar: nav !== 'minimal', navMinimal: nav === 'minimal',
       megaShow: megaChildren.length > 0, megaChildren,
       megaLabel: megaSec ? megaSec.label.toUpperCase() : '',
@@ -1681,15 +1834,15 @@ class Component extends DCLogic {
       pageInk: (SECTION_COLOR[topId] || ['#FE6453', '#FFFFFF'])[0],
       pageSlotCredit: page ? credOf(pick(route, 0)) : undefined,
       pageSlotFit: route === 'post-pritzker' ? 'contain' : 'cover',
-      pageSlotId: route + '-lead', pageSlotHint: page ? page.slot : '', pageSlotSrc: page ? pick(route, 0) : undefined,
+      pageSlotId: route + '-lead', pageSlotHint: page ? page.slot : '', pageSlotSrc: heroSrc,
       blocks,
       goHome: this.go('home'), goDonate: this.go('donate'), goResearch: this.go('research'),
       goAbout: this.go('about'), goNews: this.go('news'),
       quickLinks: [
-        { label: 'What is critical ecology?', note: 'Start with the concepts.', kicker: 'WELCOME', ph: 'Concept image — soil, root, archive', slot: 'ql-1', src: './soil-horizons.jpg', go: this.go('themes') },
-        { label: 'Explore the research', note: 'Active projects and findings.', kicker: 'EVIDENCE', ph: 'Fieldwork, medium crop', slot: 'ql-2', src: './quadrat-gas-sampling.jpg', cred: 'Photo by Sophia Ramirez', go: this.go('research') },
-        { label: 'Learn with us', note: 'Academic & professional training.', kicker: 'EDUCATION', ph: 'Teaching or cohort photo', slot: 'ql-3', src: './soil-sorting-roots.jpg', go: this.go('programs') },
-        { label: 'Ways to take action', note: 'Collaborate, volunteer, sustain.', kicker: 'SUPPORT', ph: 'Community partnership photo', slot: 'ql-4', src: './hands-soil.jpg', go: this.go('donate') }
+        { label: 'What is critical ecology?', note: 'Start with the concepts.', kicker: 'WELCOME', accent: '#5478BE', tint: '#E1E1E1', ph: 'Concept image — soil, root, archive', slot: 'ql-1', src: './soil-horizons.jpg', go: this.go('themes') },
+        { label: 'Explore the research', note: 'Active projects and findings.', kicker: 'EVIDENCE', accent: '#678E79', tint: '#D4EED5', ph: 'Fieldwork, medium crop', slot: 'ql-2', src: './quadrat-gas-sampling.jpg', cred: 'Photo by Sophia Ramirez', go: this.go('research') },
+        { label: 'Learn with us', note: 'Academic & professional training.', kicker: 'EDUCATION', accent: '#6B5E8E', tint: '#D9D8FD', ph: 'Teaching or cohort photo', slot: 'ql-3', src: './soil-sorting-roots.jpg', go: this.go('programs') },
+        { label: 'Ways to take action', note: 'Collaborate, volunteer, sustain.', kicker: 'SUPPORT', accent: '#BC7057', tint: '#FBF8E2', ph: 'Community partnership photo', slot: 'ql-4', src: './field-team-processing.jpg', go: this.go('donate') }
       ],
       newsItems: [
         { label: 'Suzanne Pierre Named a 2026 Pritzker Emerging Environmental Genius Award Finalist', meta: 'LAB UPDATE · JULY 2026', ph: 'Pritzker finalists composite', slot: 'news-2', src: './pritzker-ucla-announcement.png', fit: 'contain', go: this.go('post-pritzker') },
